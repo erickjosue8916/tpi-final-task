@@ -41,6 +41,7 @@ Lo correcto seria utilizar ajax para el llenado de los elementos pero ocuparia e
             - especificar en esta linea si el metodo retorna algo
     */
 Ejemplo:
+
     /*
         function get_Clientes().
             - metodo utilizado para obtener todos los registros de la BD
@@ -48,10 +49,11 @@ Ejemplo:
             - retorna un arreglo de datos
     */
     public function get_Clientes()
+    
     {
         $query = "SELECT * FROM clientes";
         $statement = $this->conn->prepare($query);
-            
+        
         if($statement->execute())
         {
             $this->clientes = $statement->fetchAll(PDO::FETCH_ASSOC);

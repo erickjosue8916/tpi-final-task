@@ -44,7 +44,7 @@
             <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>" class="btn <?=($active == "Main") ? "active": ""; ?>">Home</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Clients/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Clientes</a>
+          <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
           </li>
           <li class="nav-item">
           <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/login" class="btn <?=($active == "Main") ? "active": ""; ?>">Login</a>
@@ -53,7 +53,7 @@
           if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'admin') {
               ?>
-                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Clients/create" class="btn <?=($active == "Main") ? "active": ""; ?>">Nuevo cliente</a>
+                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/create" class="btn <?=($active == "Main") ? "active": ""; ?>">Nueva pelicula</a>
               <?php
             }
           } else {

@@ -49,7 +49,6 @@ Ejemplo:
             - retorna un arreglo de datos
     */
     public function get_Clientes()
-    
     {
         $query = "SELECT * FROM clientes";
         $statement = $this->conn->prepare($query);

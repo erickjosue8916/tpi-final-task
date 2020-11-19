@@ -24,14 +24,11 @@
             <td scope="col"><?=$col?></td>
         <?php } ?>
           <?php
-            if ($_COOKIE['rol'] === 'admin') {
+            if ($_COOKIE['rol'] === 'Administrador') {
               echo "<td> <a href='" . BASE_DIR . "Clients/details&id=" . $cols['id'] . "' class=''> visualizar </a> </td>";
               echo "<td> <a href='" . BASE_DIR . "Clients/update&id=" . $cols['id'] . "' class=''> editar </a> </td>";
               echo "<td> <a href='" . BASE_DIR . "Clients/delete&id=" . $cols['id'] . "' class=''> eliminar </a> </td>";
-            }else if ($_COOKIE['rol'] === 'gerente') {
-              echo "<td> <a href='" . BASE_DIR . "Clients/details&id=" . $cols['id'] . "' class=''> visualizar </a> </td>";
-              echo "<td> <a href='" . BASE_DIR . "Clients/update&id=" . $cols['id'] . "' class=''> editar </a> </td>";
-            } else {
+            }else {
               echo "<td> <a href='" . BASE_DIR . "Clients/details&id=" . $cols['id'] . "' class=''> visualizar </a> </td>";
             }
           ?>

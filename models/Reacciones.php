@@ -25,7 +25,7 @@ class Reacciones extends MySqlConnection {
 
   public function list () {
     $result = [
-      'clients' => [],
+      'reacciones' => [],
       'error' => ''
     ];
 
@@ -65,7 +65,7 @@ class Reacciones extends MySqlConnection {
 
   public function details ($id) {
     $result = [
-      'clients' => [],
+      'reacciones' => [],
       'error' => ''
     ];
 

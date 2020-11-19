@@ -31,7 +31,7 @@ class Transacciones extends MySqlConnection {
 
   public function list () {
     $result = [
-      'clients' => [],
+      'transacciones' => [],
       'error' => ''
     ];
 
@@ -73,7 +73,7 @@ class Transacciones extends MySqlConnection {
 
   public function details ($id) {
     $result = [
-      'clients' => [],
+      'transacciones' => [],
       'error' => ''
     ];
 

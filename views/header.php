@@ -51,7 +51,7 @@
           </li>
           <?php
           if ($_COOKIE["sessionId"]) {
-            if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'admin') {
+            if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'Administrador') {
               ?>
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/create" class="btn <?=($active == "Main") ? "active": ""; ?>">Nueva pelicula</a>
               <?php

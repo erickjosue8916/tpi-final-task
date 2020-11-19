@@ -25,7 +25,7 @@ class Compras extends MySqlConnection {
 
   public function list () {
     $result = [
-      'clients' => [],
+      'compras' => [],
       'error' => ''
     ];
 
@@ -65,7 +65,7 @@ class Compras extends MySqlConnection {
 
   public function details ($id) {
     $result = [
-      'clients' => [],
+      'compras' => [],
       'error' => ''
     ];
 

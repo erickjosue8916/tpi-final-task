@@ -28,7 +28,7 @@ class Alquileres extends MySqlConnection {
 
   public function list () {
     $result = [
-      'clients' => [],
+      'alquileres' => [],
       'error' => ''
     ];
 
@@ -69,7 +69,7 @@ class Alquileres extends MySqlConnection {
 
   public function details ($id) {
     $result = [
-      'clients' => [],
+      'alquileres' => [],
       'error' => ''
     ];
 

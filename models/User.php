@@ -13,7 +13,7 @@ class User extends MySqlConnection {
   private $telefono;
   private $direccion;
   private $userName;
-  protected $password;
+  private $userPassword;
   private $rol;
 
   public function setNombre($nombre){$this->nombre = $nombre;}
@@ -34,8 +34,8 @@ class User extends MySqlConnection {
   public function setUserName($userName) { $this->userName = $userName; } 
   public function getUserName() { return $this->userName; } 
   
-  public function setPassword($password) { $this->password = $password; } 
-  public function getPassword() { return $this->password; }
+  public function setUserPassword($userPassword) { $this->userPassword = $userPassword; } 
+  public function getUserPassword() { return $this->userPassword; }
 
   public function setRol($rol) { $this->rol = $rol; } 
   public function getRol() { return $this->rol; }
@@ -58,7 +58,7 @@ class User extends MySqlConnection {
         $nRow = $stmt->rowCount();
         if ($nRow == 1) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($this->getPassword() === $result["password"]) {
+            if ($this->getUserPassword() === $result["password"]) {
                 session_start();
                 $_SESSION["nombre"] = $result["nombre"];
                 $_SESSION["apellido"] = $result["apellido"];

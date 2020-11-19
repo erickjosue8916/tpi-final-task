@@ -33,3 +33,30 @@ DB_NAME | name_db | database, name
 # NOTA
 Lo correcto seria utilizar ajax para el llenado de los elementos pero ocuparia el diseño individual
 
+# Documentacion de metodos
+    /*
+        function nombreMetodo().
+            - definir en una sola linea lo que hace el metodo
+            - especificar en esta linea si recibe algun parametro
+            - especificar en esta linea si el metodo retorna algo
+    */
+Ejemplo:
+    /*
+        function get_Clientes().
+            - metodo utilizado para obtener todos los registros de la BD
+            - no recibe ningun parametro
+            - retorna un arreglo de datos
+    */
+    public function get_Clientes()
+    {
+        $query = "SELECT * FROM clientes";
+        $statement = $this->conn->prepare($query);
+            
+        if($statement->execute())
+        {
+            $this->clientes = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $this->clientes;
+    }
+

@@ -16,7 +16,7 @@ class PeliculasController {
     
     public function create () {
         if ($_COOKIE["sessionId"]) {
-        if ($_COOKIE['rol'] != 'admin') {
+        if ($_COOKIE['rol'] != 'Administrador') {
             header("Location: "  . BASE_DIR . "Users/login");
         }
         } else {
@@ -71,7 +71,7 @@ class PeliculasController {
     }
     public function delete () {
         if ($_COOKIE["sessionId"]) {
-            if ($_COOKIE['rol'] != 'admin') {
+            if ($_COOKIE['rol'] != 'Administrador') {
                 header("Location: "  . BASE_DIR . "Users/login");
             }
         } else {

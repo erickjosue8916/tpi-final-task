@@ -11,7 +11,7 @@ class PeliculasController {
         $peliculas = new Peliculas();
         $result = $peliculas->list();
         $result = json_decode($result, true);
-        require_once "views/PeliculasList.php";
+        require_once "views/peliculasList.php";
     }
     
     public function create () {
@@ -52,7 +52,7 @@ class PeliculasController {
         $Peliculas = new Peliculas();
         $result = $Peliculas->list();
         $result = json_decode($result, true);
-        require_once "views/PeliculasList.php";
+        require_once "views/peliculasList.php";
     }
 
     public function details () {

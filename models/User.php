@@ -7,22 +7,38 @@ class User extends MySqlConnection {
   const TABLE_NAME = 'usuarios';
 
 
-  private $name;
-  private $lastName;
+  private $nombre;
+  private $apellido;
   private $email;
+  private $telefono;
+  private $direccion;
+  private $userName;
+  private $password;
   private $rol;
-  private $userPassword;
 
-  public function setName($name){$this->name = $name;}
-  public function getName() { return $this->name; } 
-  public function setLastName($lastName) { $this->lastName = $lastName; } 
-  public function getLastName() { return $this->lastName; } 
+  public function setNombre($nombre){$this->nombre = $nombre;}
+  public function getNombre() { return $this->nombre; } 
+  
+  public function setApellido($apellido) { $this->apellido = $apellido; } 
+  public function getApellido() { return $this->apellido; } 
+  
   public function setEmail($email) { $this->email = $email; } 
   public function getEmail() { return $this->email; } 
-  public function setUserName($rol) { $this->rol = $rol; } 
+  
+  public function setTelefono($telefono){$this->telefono = $telefono;}
+  public function getTelefono() { return $this->telefono; } 
+  
+  public function setDireccion($direccion){$this->direccion = $direccion;}
+  public function getDireccion() { return $this->direccion; } 
+  
+  public function setUserName($userName) { $this->userName = $userName; } 
   public function getUserName() { return $this->userName; } 
-  public function setPassword($password) { $this->userPassword = $password; } 
-  public function getPassword() { return $this->userPassword; }
+  
+  public function setPassword($password) { $this->password = $password; } 
+  public function getPassword() { return $this->password; }
+
+  public function setRol($rol) { $this->rol = $rol; } 
+  public function getRol() { return $this->rol; }
 
   public function __construct()
   {
@@ -35,17 +51,17 @@ class User extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE email = :email";
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE username = :username";
     $stmt = $this->db->prepare($sql);
-    $stmt->bindValue(":email", $this->getEmail());
+    $stmt->bindValue(":username", $this->getUserName());
     if ($stmt->execute()) {
         $nRow = $stmt->rowCount();
         if ($nRow == 1) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($this->getPassword() === $result["password"]) {
                 session_start();
-                $_SESSION["name"] = $result["nombre"];
-                $_SESSION["latname"] = $result["apellidos"];
+                $_SESSION["nombre"] = $result["nombre"];
+                $_SESSION["apellido"] = $result["apellido"];
                 setcookie("sessionId", true, time() + (60 * 1), '/'); // time() + (60 * 20)
                 setcookie("rol", $result["rol"], time() + (60 * 1), '/');
                 $result['success']=true;

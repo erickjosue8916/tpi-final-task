@@ -12,7 +12,7 @@ class UsersController {
         } else {
             require_once "models/User.php";
             $user = new User();
-            $user->setEmail($_POST['email']);
+            $user->setUserName($_POST['username']);
             $user->setPassword($_POST['password']);
 
             $result = $user->login();

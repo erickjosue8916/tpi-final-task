@@ -1,7 +1,10 @@
 <?php 
 require_once "render/BaseLayout.php";
+require_once "config/db.php";
+require_once "database/Connection.php";
 require_once "config/configControllers.php";
-
+require_once "database/MySqlConnection.php";
+require_once "database/IMySqlActions.php";
 BaseLayout::renderHead();
 
 /**************** CONTROLADOR FRONTAL *********************/

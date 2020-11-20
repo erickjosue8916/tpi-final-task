@@ -8,10 +8,15 @@ class PeliculasController {
 
     public function list () {
         require_once "models/Peliculas.php";
+        $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
+        $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
+        $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
+        $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
         $peliculas = new Peliculas();
-        $result = $peliculas->list();
+        $result = $peliculas->list($page, $limit, $filter, $sort);
         $result = json_decode($result, true);
-        require_once "views/PeliculasList.php";
+        // var_dump($result);
+        require_once "views/movies/movieList.php";
     }
     
     public function create () {
@@ -24,7 +29,7 @@ class PeliculasController {
         }
         
         if (empty($_POST)) {
-            require_once "views/PeliculasCreate.php";
+            require_once "views/movies/movieCreate.php";
         } else {
             require_once "models/Peliculas.php";
             $peliculas = new Peliculas();

@@ -13,7 +13,7 @@ class User extends MySqlConnection {
   private $telefono;
   private $direccion;
   private $userName;
-  private $password;
+  protected $password;
   private $rol;
 
   public function setNombre($nombre){$this->nombre = $nombre;}

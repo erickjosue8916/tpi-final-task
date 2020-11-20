@@ -8,9 +8,11 @@
     <!-- Copyright -->
     </footer>
     <!-- MDB -->
+<?php echo "<script> const baseDir = '" . BASE_DIR . "' </script>"; ?>
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/1.0.0/mdb.min.js"
 ></script>
+<script src="<?=BASE_DIR?>assets/js/index.js"></script>
 </body>
 </html>

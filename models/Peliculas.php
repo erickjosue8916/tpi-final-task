@@ -1,7 +1,6 @@
 <?php
 /* SELECT pe.id, pe.titulo, pe.descripcion, IF (re.id_usuario = 0, 'Yes', 'No') as reaction FROM `peliculas` pe left JOIN reacciones re on re.id_pelicula = pe.id */
-require_once "database/MySqlConnection.php";
-require_once "database/IMySqlActions.php";
+
 class Peliculas extends MySqlConnection {
 
   const TABLE_NAME = 'peliculas';
@@ -50,13 +49,13 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['usuario_id'])) ? $_COOKIE['usuario_id']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Yes', 'No') as reaction FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Yes', 'No') as reaccion FROM " . self::TABLE_NAME . " p";
     $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
     $sql .= " limit $limit offset $offset";
     $stmt = $this->db->prepare($sql);
-    var_dump($filter);
+
     $this->setPrepareValues($stmt, $filter);
     if ($stmt->execute()) {
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

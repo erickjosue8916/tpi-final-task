@@ -44,7 +44,7 @@ class Peliculas extends MySqlConnection {
 
   public function list () {
     $result = [
-      'clients' => [],
+      'peliculas' => [],
       'error' => ''
     ];
 
@@ -88,7 +88,7 @@ class Peliculas extends MySqlConnection {
 
   public function details ($id) {
     $result = [
-      'clients' => [],
+      'peliculas' => [],
       'error' => ''
     ];
 

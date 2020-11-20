@@ -12,7 +12,11 @@
     <!-- Email input -->
     <div class="form-outline mb-4">
         <input type="text" id="form1Example1" name="username" class="form-control" required/>
+<<<<<<< HEAD
         <label class="form-label" for="form1Example1">email</label>
+=======
+        <label class="form-label" for="form1Example1">user</label>
+>>>>>>> 5f7f2a1168bf73f536a145a2421ad4f0f5983a4f
     </div>
 
     <!-- Password input -->

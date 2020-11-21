@@ -63,20 +63,20 @@ class User extends MySqlConnection {
                 session_start();
                 $_SESSION["nombre"] = $result["nombre"];
                 $_SESSION["apellido"] = $result["apellido"];
-                $_SESSION["usuario_id"] = $result["id"];
+                $_SESSION["id_usuarios"] = $result["id"];
                 setcookie("sessionId", true, time() + (60 * 1000000), '/'); // time() + (60 * 20)
                 setcookie("rol", $result["rol"], time() + (60 * 1000000), '/');
                 $result['success']=true;
             }
             else
             {
-                $result['error'] = 'Invalid passoword';
+                $result['error'] = 'Contraseña incorrecta';
             }
         } else {
-          $result['error'] = 'Not found user';
+          $result['error'] = 'Usuario no encontrado';
         }
     } else {
-      $result['error'] = 'Server Error';
+      $result['error'] = 'Se produjo un error, inténtalo de nuevo más tarde';
     }
     return json_encode($result);
   }

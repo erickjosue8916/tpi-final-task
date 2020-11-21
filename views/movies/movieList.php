@@ -1,89 +1,18 @@
 <div class="container p-1">
 	<div class="row">
-		<div class="col-md-4 container_foto ">
-			<div class="ver_mas text-center">
-				<span class="lnr lnr-eye"></span>
+		<?php
+			$rows = $result['peliculas'];
+			foreach ($rows as $key => $data) { ?>
+			<div class="col-md-4 container_foto ">
+				<div class="ver_mas text-center">
+					<span class="lnr lnr-eye"></span>
+				</div>
+				<article class="text-left">
+					<h2><?=$data["titulo"]?></h2>
+					<h4><?=$data["descripcion"]?></h4>
+				</article>
+				<img src="<?=BASE_DIR?>assets/img/movies/<?=$data["imagen"]?>" alt="imagen-pelicula">
 			</div>
-			<article class="text-left">
-				<h2>TÍTULO DE <br>LA IMAGEN</h2>
-				<h4>Descripción corta de la imagen en cuestión</h4>
-			</article>
-			<img src="https://img-aws.ehowcdn.com/400x400/ds-img.studiod.com/Half_Dome_from_Glacier_Point0_1.jpg" alt="">
-        </div>
-    
-	    <div class="col-md-4 container_foto">
-			<div class="ver_mas text-center">
-				<span id="click" class="comprar">Comprar</span>
-				<span id="click" class="alquilar">Alquilar</span>
-			</div>
-			<article class="text-left">
-				<h2>TÍTULO DE <br>LA PELICULA</h2>
-				<h4>Osa osa osa osa osa osa osa osa osa   osa osa osa osa osa osa osa osa</h4>
-			</article>
-			<img src="https://pbs.twimg.com/profile_images/781518570018648065/HcvZhTVn_400x400.jpg" alt="">
-        </div>
-        
-		<div class="col-md-4 container_foto">
-			<div class="ver_mas text-center">
-				<span class="lnr lnr-eye"></span>
-			</div>
-			<article class="text-left">
-				<h2>TÍTULO DE <br>LA IMAGEN</h2>
-				<h4>Descripción corta de la imagen en cuestión</h4>
-			</article>
-			<img src="https://ericrenardphotography.com/wp-content/uploads/Yosemite_Valley_2861-1-400x400.jpg" alt="">
-        </div>
-        
-        <div class="col-md-4 container_foto">
-			<div class="ver_mas text-center">
-				<span class="lnr lnr-eye"></span>
-			</div>
-			<article class="text-left">
-				<h2>TÍTULO DE <br>LA IMAGEN</h2>
-				<h4>Descripción corta de la imagen en cuestión</h4>
-			</article>
-			<img src="https://ericrenardphotography.com/wp-content/uploads/Yosemite_Valley_2861-1-400x400.jpg" alt="">
-        </div>
-        <div class="col-md-4 container_foto">
-			<div class="ver_mas text-center">
-				<span class="lnr lnr-eye"></span>
-			</div>
-			<article class="text-left">
-				<h2>TÍTULO DE <br>LA IMAGEN</h2>
-				<h4>Descripción corta de la imagen en cuestión</h4>
-			</article>
-			<img src="https://ericrenardphotography.com/wp-content/uploads/Yosemite_Valley_2861-1-400x400.jpg" alt="">
-        </div>
-        <div class="col-md-4 container_foto">
-			<div class="ver_mas text-center">
-				<span class="lnr lnr-eye"></span>
-			</div>
-			<article class="text-left">
-				<h2>TÍTULO DE <br>LA IMAGEN</h2>
-				<h4>Descripción corta de la imagen en cuestión</h4>
-			</article>
-			<img src="https://ericrenardphotography.com/wp-content/uploads/Yosemite_Valley_2861-1-400x400.jpg" alt="">
-        </div>
+		<?php } ?>
     </div>
 </div>
-
-<main class="container h-100 d-flex justify-content-center align-items-center">
-    <div>
-    <?php
-        $headers = ['#', 'titulo', 'descripcion', 'imagen', 'stock', 'precio_alquiler', 'precio_venta', 'disponibilidad', 'reaccion'];
-
-        $rows = $result['peliculas'];
-        $config = [
-            'headers' => $headers,
-            'rows' => $rows
-        ];
-
-        require_once "components/table.php";
-    ?>
-    </div>
-    <div>
-        <div id="peliculas">
-        id="peliculas"
-        </div>
-    </div>
-</main>

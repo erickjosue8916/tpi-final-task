@@ -13,6 +13,7 @@ class User extends MySqlConnection {
   private $telefono;
   private $direccion;
   private $userName;
+
   private $userPassword;
   private $rol;
 
@@ -62,8 +63,9 @@ class User extends MySqlConnection {
                 session_start();
                 $_SESSION["nombre"] = $result["nombre"];
                 $_SESSION["apellido"] = $result["apellido"];
-                setcookie("sessionId", true, time() + (60 * 1), '/'); // time() + (60 * 20)
-                setcookie("rol", $result["rol"], time() + (60 * 1), '/');
+                $_SESSION["usuario_id"] = $result["id"];
+                setcookie("sessionId", true, time() + (60 * 1000000), '/'); // time() + (60 * 20)
+                setcookie("rol", $result["rol"], time() + (60 * 1000000), '/');
                 $result['success']=true;
             }
             else

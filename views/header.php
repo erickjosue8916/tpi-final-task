@@ -3,9 +3,9 @@
   if (isset($_REQUEST['controller'])){
     $active = $_REQUEST['controller'];
   }
-  echo "<script> const baseDir = '" . BASE_DIR . "'; </script>"
+  
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

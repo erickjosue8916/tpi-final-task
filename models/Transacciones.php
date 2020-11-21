@@ -5,6 +5,8 @@ require_once "database/IMySqlActions.php";
 class Transacciones extends MySqlConnection {
 
   const TABLE_NAME = 'transacciones';
+  private $filterFields = ['fecha', 'idUsuario', 'estado', 'tipo'];
+  private $sortFields = ['fecha', 'estado', 'tipo'];
 
 
   private $fecha;
@@ -29,14 +31,23 @@ class Transacciones extends MySqlConnection {
     parent::__construct();
   }
 
-  public function list () {
+  public function list ($page = 1, $limit = 20, $filter = [], $sort = []) {
     $result = [
       'transacciones' => [],
       'error' => ''
     ];
-
-    $sql = "SELECT * FROM " . self::TABLE_NAME;
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT t.id, t.fecha, u.nombre, u.email, t.total, t.estado, t.tipo FROM " . self::TABLE_NAME . " t ";//Adecuar el sql
+    $sql .= " LEFT JOIN usuarios u on u.id = t.id_usuario ";
+    $sql .= $this->createSqlFilter($filter);
+    $sql .= $this->createSqlSort($sort);
+    $sql .= " limit $limit offset $offset";
+    
     $stmt = $this->db->prepare($sql);
+    $this->setPrepareValues($stmt, $filter);
+
+    echo $this->createSqlFilter($filter);
+    echo $this->createSqlSort($filter);
     
     if ($stmt->execute()) {
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -48,6 +59,112 @@ class Transacciones extends MySqlConnection {
     }
     return json_encode($result);
   }
+
+  private function createSqlFilter($filter) {
+    $sql = "";
+    $filters = $this->filterFields; // set available filters here
+    var_dump($filter);
+    if (count($filter)) {
+      $i = 0;
+      foreach ($filter as $key => $value) {
+        $searchInFilters = array_search($key, $filters);
+//        echo $searchInFilters;
+        if ($searchInFilters === false) $searchInFilters = -1;
+        if ($searchInFilters >= 0) {
+          $sql .= ($i == 0 ) ? " WHERE " : " AND ";
+          switch ($key) {
+            case 'fecha':
+              $sql .= "t.fecha LIKE :fecha"; 
+              break;
+            case 'idUsuario':
+              $sql .= "t.id_usuario LIKE :id_usuario"; 
+              break;        
+            case 'estado':
+              $sql .= "t.estado LIKE :estado"; 
+              break;        
+            case 'tipo':
+              $sql .= "t.tipo LIKE :tipo"; 
+              break;
+              
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
+
+  private function setPrepareValues ($stmt, $filter) {
+    $filters = $this->filterFields;
+    foreach ($filter as $key => $value) {
+      $searchInFilters = array_search($key, $filters);
+      if ($searchInFilters === false) $searchInFilters = -1;
+      if ($searchInFilters >= 0  ) {
+        switch ($key) {
+          
+          case 'fecha':
+            $fecha = "$value";
+            $stmt->bindParam(':fecha', $fecha);
+            break;
+          case 'idUsuario':
+            $idUsuario = $value;
+            $stmt->bindParam(':id_usuario', $idUsuario);
+            break;
+          case 'estado':
+            $estado = $value;
+            $stmt->bindParam(':estado', $estado);
+            break;
+          case 'tipo':
+            $tipo = $value;
+            $stmt->bindParam(':tipo', $tipo);
+            break;
+
+          default:
+            # code...
+            break;
+        }
+      }
+     // $i++;
+    }
+  }
+
+  private function createSqlSort($rules) {
+    $sql = "";
+    $fields = $this->sortFields; // set available filters here
+    if (count($rules)) {
+      $i = 0;
+      foreach ($rules as $key => $value) {
+        $searchInFilters = array_search($key, $fields);
+        if ($searchInFilters === false) $searchInFilters = -1;
+        echo "<br>";
+        if ($searchInFilters >= 0  ) {
+          $value = strtoupper($value);
+          if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";
+          switch ($key) {
+            case 'fecha':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " t.fecha " . $value ." "; 
+              break;
+            case 'estado':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " t.estado " . $value ." "; 
+              break;
+            case 'tipo':
+              if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " t.tipo " . $value ." "; 
+              break;
+
+            default:
+              # code...
+              break;
+          }
+        }
+        $i++;
+      }
+    }
+    return $sql;
+  }
+
 
   public function create () {
     $result = [

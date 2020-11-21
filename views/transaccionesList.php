@@ -1,7 +1,7 @@
 <main class="container h-100 d-flex justify-content-center align-items-center">
     <div>
     <?php
-        $headers = ['#', 'fecha', 'total', 'id_usuario', 'estado', 'tipo'];
+        $headers = ['#', 'fecha', 'usuario', 'correo', 'total', 'estado', 'tipo'];
 
         $rows = $result['transacciones'];
         $config = [

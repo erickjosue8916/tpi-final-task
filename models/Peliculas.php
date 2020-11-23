@@ -179,11 +179,20 @@ class Peliculas extends MySqlConnection {
 
     try {
       $stmt->execute();
+      
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";
     }
     return json_encode($result);
+  }
+
+  public function guardarImagen($file, $name) {
+    if (move_uploaded_file($file,  "assets/img/movies/" . $name)){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   public function details ($id) {
@@ -192,7 +201,7 @@ class Peliculas extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id";
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_pelicula = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {
@@ -211,7 +220,7 @@ class Peliculas extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id = :id";
+    $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id_pelicula = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {

@@ -35,12 +35,12 @@ class PeliculasController {
             $peliculas = new Peliculas();
             $peliculas->setTitulo($_POST['titulo']);
             $peliculas->setDescripcion($_POST['descripcion']);
-            $peliculas->setImagen('');
+            $peliculas->setImagen($_FILES['movieImage']['name']);
             $peliculas->setStock($_POST['stock']);
             $peliculas->setPrecioAlquiler($_POST['precio_alquiler']);
             $peliculas->setPrecioVenta($_POST['precio_venta']);
             $peliculas->setDisponibilidad($_POST['disponibilidad']);
-
+            $peliculas->guardarImagen($_FILES['movieImage'][''], $_FILES['movieImage']['name']);
             $result = $Peliculas->create();
             if ($result['success']) {
                 header("Location: " . BASE_DIR . "Peliculas/list");

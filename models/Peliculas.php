@@ -49,7 +49,7 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['usuario_id'])) ? $_COOKIE['usuario_id']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Yes', 'No') as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Yes', 'No') as reaccion FROM " . self::TABLE_NAME . " p";
     $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
@@ -179,11 +179,20 @@ class Peliculas extends MySqlConnection {
 
     try {
       $stmt->execute();
+      
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";
     }
     return json_encode($result);
+  }
+
+  public function guardarImagen($file, $name) {
+    if (move_uploaded_file($file,  $name)){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   public function details ($id) {

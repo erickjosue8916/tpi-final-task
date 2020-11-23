@@ -14,7 +14,16 @@ if (isset($_REQUEST)) {
   $result = json_decode($result, true);
   $html = '<div>';
   foreach ($result['peliculas'] as $pelicula) { 
-      $html .= $pelicula['id'] . ' ' . $pelicula['titulo'] . ' ' . $pelicula['descripcion'] . ' ' . $pelicula['stock'] . ' ' . $pelicula['disponibilidad'] . ' ' . $pelicula['reaccion'] . '<br>';
+      $html .= "<div class='col-md-4 container_foto '>
+      <div class='ver_mas text-center'>
+        <span class='lnr lnr-eye'></span>
+      </div>
+      <article class='text-left'>
+        <h2> " . $data["titulo"] . "</h2>
+        <h4> " . $data["descripcion"] . "</h4>
+      </article>
+      <img src='" .BASE_DIR . "assets/img/movies/" . $data["imagen"] ."' alt='imagen-pelicula'>
+    </div>"
   }
   $html .= '</div>';
   echo $html;

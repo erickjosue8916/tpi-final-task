@@ -38,9 +38,9 @@ class TransaccionesController {
             $Transacciones->setEstado($_POST['estado']);
             $Transacciones->setTipo($_POST['tipo']);
             
-            $result = $Transacciones->create();
+            $result = json_decode($Transacciones->create(),true);
             if ($result['success']) {
-                header("Location: " . BASE_DIR . "Transacciones/list");
+                header("Location: " . BASE_DIR . "Transacciones/list&id_transacciones=".$result['id_transaccion']);
             } else {
                 $error = $result['error'];
                 require_once "views/registerUser.php";

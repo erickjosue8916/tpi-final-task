@@ -165,9 +165,37 @@ class Transacciones extends MySqlConnection {
     return $sql;
   }
 
+  public function update($id) {
+    $result = [
+      'id_transaccion' => 0,
+      'success' => false,
+      'error' => ''
+    ];
+    //"UPDATE " . self::TABLE_NAME . " SET fecha_transaccion=:fecha_transaccion,total_transaccion=:total_transaccion,id_usuario=:id_usuario,estado=:estado,tipo_transaccion=:tipo_transaccion WHERE id_transaccion=:id_transaccion"
+    $sql = "UPDATE " . self::TABLE_NAME . " SET fecha_transaccion=:fecha,total_transaccion=:total,id_usuario=:id_usuario,estado=:estado,tipo_transaccion=:tipo WHERE id_transaccion=:id_transaccion";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(":fecha", $this->getFecha());
+    $stmt->bindValue(":total", $this->getTotal());
+    $stmt->bindValue(":id_usuario", $this->getIdUsuario());
+    $stmt->bindValue(":estado", $this->getEstado());
+    $stmt->bindValue(":tipo", $this->getTipo());
+    $stmt->bindValue(":id_transaccion", $id);
+    try {
+      $stmt->execute();
+      $edited_id = $id;
+      $result['id_transaccion'] = $edited_id;
+      $result['success'] = true;
+    } catch (\Throwable $th) {
+      $result['error'] = "$th";
+    }
+    //return json_encode($result);
+    return $result;
+  }
+
 
   public function create () {
     $result = [
+      'id_transaccion' => 0,
       'success' => false,
       'error' => ''
     ];
@@ -178,9 +206,10 @@ class Transacciones extends MySqlConnection {
     $stmt->bindValue(":id_usuario", $this->getIdUsuario());
     $stmt->bindValue(":estado", $this->getEstado());
     $stmt->bindValue(":tipo", $this->getTipo());
-
     try {
       $stmt->execute();
+      $last_id = $this->db->lastInsertId();
+      $result['id_transaccion'] = $last_id;
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";

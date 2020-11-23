@@ -33,7 +33,7 @@ class AlquileresController {
             $Alquileres->setCantidad($_POST['cantidad']);
             $Alquileres->setFecha($_POST['fecha']);
 
-            $result = $Alquileres->create();
+            $result = json_decode($Alquileres->create(),true);
             if ($result['success']) {
                 header("Location: " . BASE_DIR . "Alquileres/list");
             } else {

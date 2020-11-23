@@ -32,7 +32,7 @@ class ComprasController {
             $Compras->setIdPelicula($_POST['id_pelicula']);
             $Compras->setCantidad($_POST['cantidad']);
 
-            $result = $Compras->create();
+            $result = json_decode($Compras->create(),true);
             if ($result['success']) {
                 header("Location: " . BASE_DIR . "Compras/list");
             } else {

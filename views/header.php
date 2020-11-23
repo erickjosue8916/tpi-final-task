@@ -24,13 +24,16 @@
     
     <title>TPI -render con OOP-</title>
 </head>
-<body>
+<body >
 <?php if (isset($_COOKIE["sessionId"])) { ?>
 
 <header>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <nav class="navbar navbar-expand-lg nav_color">
     <div class="container-fluid">
+    <img href="<?=BASE_DIR?>" src="<?=BASE_DIR?>/assets/img/fondo/icon.png" width="40px" height="40px" class="d-inline-block align-top" alt="">
+      <a class="icon" href="<?=BASE_DIR?>">CINEMA</a>
+    
       <button
         class="navbar-toggler"
         type="button"
@@ -43,31 +46,36 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarExample01">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0 ">
           <li class="nav-item active">
             <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>" class="btn <?=($active == "Main") ? "active": ""; ?>">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
           <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/login" class="btn <?=($active == "Main") ? "active": ""; ?>">Login</a>
+          <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/login" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
           </li>
           <?php
           if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'Administrador') {
               ?>
+              <li class="nav-item ">
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/create" class="btn <?=($active == "Main") ? "active": ""; ?>">Nueva pelicula</a>
+              </li>
               <?php
             }
           } else {
             header("Location: "  . BASE_DIR . "Users/login");
           }
           ?>
-          <li class="nav-item">
+          <!--
+<li class="nav-item">
           
           
           </li>
+          -->
+          
         </ul>
       </div>
     </div>

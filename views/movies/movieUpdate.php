@@ -8,7 +8,7 @@
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 
-        <form class="form-container">
+        <form class="form-container opacity_fond">
           <!-- <h2 class="text-center"> PRODUCT DETAILS </h2>  -->
                 <div class="form-group">
                   <label for="mid">Titulo:</label>

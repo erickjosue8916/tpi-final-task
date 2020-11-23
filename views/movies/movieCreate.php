@@ -1,4 +1,8 @@
-<div class="container-fluid bg">
+<div class="fondo2">
+  
+<main class="container h-100 d-flex  align-items-center">
+<div class="formu">
+<div class="container-fluid bg ">
 
          
     <h2 class="text-center"> Agregar Pelicula </h2>   
@@ -6,7 +10,7 @@
 <div class="row">
     <div class="col-md-4 col-sm-4 col-xs-12"></div>
 
-    <div class="col-md-4 col-sm-4 col-xs-12">
+    <div class="col-md-4 col-sm-4 col-xs-12 ">
 
             <form class="form-container">
               <!-- <h2 class="text-center"> PRODUCT DETAILS </h2>  -->
@@ -57,4 +61,7 @@
 </div>
 <div class="col-md-4 col-sm-4 col-xs-12"></div>
     
+</div>
+</div>
+</main>
 </div>

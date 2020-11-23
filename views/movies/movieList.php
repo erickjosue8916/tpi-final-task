@@ -1,3 +1,4 @@
+<div class="fondo">
 <div class="container p-1">
 	<div class="row">
 		<?php
@@ -15,4 +16,5 @@
 			</div>
 		<?php } ?>
     </div>
+</div>
 </div>

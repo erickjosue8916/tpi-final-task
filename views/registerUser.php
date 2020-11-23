@@ -6,7 +6,7 @@
         <?=$error;?>
       </div>
     <?php } ?>
-    <form action="" method="POST">
+    <form class="login" action="" method="POST">
       <!-- 2 column grid layout with text inputs for the first and last names -->
       <div class="row mb-4">
         <div class="col">

@@ -1,8 +1,13 @@
 
+<div class="opaco">
+<main class="container h-100 d-flex justify-content-center align-items-center ">
+    
+    <content  class="formu2">
 
-<main class="container h-100 d-flex justify-content-center align-items-center">
-    <content>
-    <h1>login</h1>
+    <div>
+        <h1>LOGIN</h1>
+    
+   
     <?php if (isset($error)) { ?>
         <div class="alert bg-danger text-white" role="alert">
         <?=$error;?>
@@ -23,6 +28,10 @@
 
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    <button type="submit" class="btn btn-outline-success btn-block">Sign up</button>
     </form>
+    </div>
+    
     </content>
 </main>
+</div>

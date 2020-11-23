@@ -1,5 +1,5 @@
 
-<form class="form" action="" method="post">
+<form class="form formu" action="" method="post">
   <div class="row">
     <div class="col-">
       <div class="content form__tilte">

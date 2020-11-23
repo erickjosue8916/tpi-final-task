@@ -68,7 +68,7 @@ class PeliculasController {
         }
         require_once "models/Peliculas.php";
         if (empty($_POST)) {
-            $id = $_GET["id_pelicula"];
+            $id = $_GET["id"];
             $peliculas = new Peliculas();
             $result = $peliculas->details($id);
             $result = json_decode($result, true);

@@ -23,7 +23,7 @@ if (isset($_REQUEST)) {
         <h4> " . $data["descripcion"] . "</h4>
       </article>
       <img src='" .BASE_DIR . "assets/img/movies/" . $data["imagen"] ."' alt='imagen-pelicula'>
-    </div>"
+    </div>";
   }
   $html .= '</div>';
   echo $html;

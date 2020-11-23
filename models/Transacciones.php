@@ -68,7 +68,7 @@ class Transacciones extends MySqlConnection {
       $i = 0;
       foreach ($filter as $key => $value) {
         $searchInFilters = array_search($key, $filters);
-//        echo $searchInFilters;
+
         if ($searchInFilters === false) $searchInFilters = -1;
         if ($searchInFilters >= 0) {
           $sql .= ($i == 0 ) ? " WHERE " : " AND ";

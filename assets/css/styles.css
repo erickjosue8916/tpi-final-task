@@ -1,4 +1,5 @@
 .container{
+	
 	min-height: 500px;
 }
 .container_foto {
@@ -9,6 +10,107 @@
     height: 400px;
     margin: 3px;
     border-radius: 9px;
+}
+.fondo{
+
+	background-image: url(../img/fondo/fondo1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+	/*background-size: cover;*/
+}
+.nav_color{
+	background-color:  #222831;/*#222831*/
+	
+	font-family: 'Raleway', sans-serif;
+	color: aliceblue;
+	font-size: 24px;
+}
+
+.opacity_fond{
+	background-color: wheat;
+	opacity:0.5;
+	
+}
+
+.icon{
+	margin-left: 50px;
+}
+
+.nav_color ul li{
+	
+	text-align: center;
+	width: 200px;
+	color: aliceblue;
+}
+
+.login{
+	border-radius: 30px;
+	background-color: blanchedalmond; 
+	padding:50px;
+	height: 500px;
+	width:400px;
+	background-image: url(../img/fondo/login.jpg);
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	align-items: center;
+	color: aliceblue;
+	font-family: 'Playfair Display', serif;
+	opacity: 1;
+}
+.login h1{
+	margin-top: 130px;
+	margin-bottom: 30px;
+}
+
+.fondo2{
+	background-image: url(../img/fondo/formu.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.formu{
+	border-radius: 70px;
+	padding:50px;
+	background-color: rgba(0, 0, 0, 0.5);/*rgba(162, 10, 10, 0.5)   rgba(0, 0, 0, 0.5)*/
+	width: 80%;
+	color:white;
+	font-family: 'Playfair Display', serif;
+}
+
+.formu2{
+	text-align: center;
+	border-radius: 30px;
+	padding:50px;
+	background-color: rgba(0, 0, 0, 0.5);/*rgba(162, 10, 10, 0.5)   rgba(0, 0, 0, 0.5)*/
+	width: 45%;
+	color:white;
+	font-family: 'Playfair Display', serif;
+}
+
+
+.opaco{
+	background-image: url(../img/fondo/fondo1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.8;
+}
+
+
+
+.nav_color a{
+	display: inline-flex;
+	text-decoration: none;
+	color: white;
+}
+
+.nav_color ul :hover{
+	background-color: #30475e;
+	color: white;
+	font-weight: bolder;
+	text-align: center;
+	/*height: 80px;*/
 }
 
 .container_foto article {
@@ -84,4 +186,11 @@
 .container_foto:hover .ver_mas {
 	transform: translate(0px, 0px);
 	opacity: 1;
+}
+
+.foot{
+	background-color: rgba(0, 0, 0);
+	height:100px; 
+	padding:30px;
+	color: aliceblue;
 }

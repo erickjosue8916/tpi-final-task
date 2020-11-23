@@ -68,7 +68,7 @@ class PeliculasController {
         }
         require_once "models/Peliculas.php";
         if (empty($_POST)) {
-            $id = $_GET["id"];
+            $id = $_GET["id_pelicula"];
             $peliculas = new Peliculas();
             $result = $peliculas->details($id);
             $result = json_decode($result, true);
@@ -76,7 +76,7 @@ class PeliculasController {
         } else {
             
             $peliculas = new Peliculas();
-            $id = $_GET["id"];
+            $id = $_POST["id_pelicula"];
             $peliculas->setTitulo($_POST['titulo']);
             $peliculas->setDescripcion($_POST['descripcion']);
             $peliculas->setStock($_POST['stock']);
@@ -84,20 +84,15 @@ class PeliculasController {
             $peliculas->setPrecioVenta($_POST['precio_venta']);
             $peliculas->setDisponibilidad($_POST['disponibilidad']);
             
-            /* creation method is required
-            $result = $peliculas->update();
+            $result = $peliculas->update($id);
             if ($result['success']) {
                 header("Location: " . BASE_DIR . "Peliculas/list");
             } else {
                 $error = $result['error'];
                 require_once "views/movies/movieCreate.php";
             } 
-            */
-            
-            
         }
     }
-
     public function details () {
 
         if ($_COOKIE["sessionId"]) {

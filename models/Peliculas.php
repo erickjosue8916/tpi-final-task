@@ -168,11 +168,11 @@ class Peliculas extends MySqlConnection {
       'error' => ''
     ];
     //
-    $sql = "UPDATE " . self::TABLE_NAME . " SET titulo=:titulo,descripcion=:descripcion,imagen=:imagen,stock=:stock,precio_alquiler=:precio_alquiler,precio_venta=:precio_venta,disponibilidad=:disponibilidad WHERE id_pelicula=:id_pelicula ";
+    $sql = "UPDATE " . self::TABLE_NAME . " SET titulo=:titulo,descripcion=:descripcion,stock=:stock,precio_alquiler=:precio_alquiler,precio_venta=:precio_venta,disponibilidad=:disponibilidad WHERE id_pelicula=:id_pelicula ";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":titulo", $this->getTitulo());
     $stmt->bindValue(":descripcion", $this->getdescripcion());
-    $stmt->bindValue(":imagen", $this->getImagen());
+//    $stmt->bindValue(":imagen", $this->getImagen());
     $stmt->bindValue(":stock", $this->getstock());
     $stmt->bindValue(":precio_alquiler", $this->getprecioAlquiler());
     $stmt->bindValue(":precio_venta", $this->getprecioVenta());

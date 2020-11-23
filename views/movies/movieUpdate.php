@@ -1,7 +1,6 @@
 <?php 
 if (isset($result["peliculas"][0])) {
   $pelicula = $result["peliculas"][0];
-
 ?>
   <div class="container-fluid bg">
 
@@ -12,8 +11,9 @@ if (isset($result["peliculas"][0])) {
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 
-        <form class="form-container">
+        <form class="form-container" action="<?=BASE_DIR?>Peliculas/update" method="post">
           <!-- <h2 class="text-center"> PRODUCT DETAILS </h2>  -->
+          <input type="text" hidden='true' name="id_pelicula" value="<?=$pelicula['id_pelicula']?>" >
                 <div class="form-group">
                   <label for="mid">Titulo:</label>
                   <input type="text" class="form-control" id="mid" placeholder="Titulo" name="titulo" value="<?=$pelicula['titulo']?>" >
@@ -21,7 +21,7 @@ if (isset($result["peliculas"][0])) {
 
                 <div class="form-group">
                   <label for="mdate">Descripcion</label>
-                  <textarea type="text" class="form-control" id="mdate" placeholder="Descripcion" name="descripcion" value="<?=$pelicula['descripcion']?>"></textarea>
+                  <textarea type="text" class="form-control" id="mdate" placeholder="Descripcion" name="descripcion"><?=$pelicula['descripcion']?></textarea>
                 </div>
 
                 <div class="form-group">

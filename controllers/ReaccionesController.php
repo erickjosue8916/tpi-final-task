@@ -32,7 +32,7 @@ class ReaccionesController {
             $Reacciones->setIdPelicula($_POST['id_pelicula']);
             $Reacciones->setReaccion($_POST['reaccion']);
 
-            $result = $Reacciones->create();
+            $result = json_decode($Reacciones->create(),true);
             if ($result['success']) {
                 header("Location: " . BASE_DIR . "Reacciones/list");
             } else {

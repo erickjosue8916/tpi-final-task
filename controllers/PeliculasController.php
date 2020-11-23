@@ -46,9 +46,9 @@ class PeliculasController {
                     echo $error;
                     require_once "views/movies/movieCreate.php";
                 } else {
-                    $result = $peliculas->create();
+                    $result = json_decode($peliculas->create(),true);
                     if ($result['success']) {
-                        header("Location: " . BASE_DIR . "Peliculas/list");
+                        header("Location: " . BASE_DIR . "Peliculas/list&id_peliculas=".$result['id_pelicula']);
                     } else {
                         $error = $result['error'];
                         require_once "views/movies/movieCreate.php";

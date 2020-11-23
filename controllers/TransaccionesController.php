@@ -8,10 +8,14 @@ class TransaccionesController {
 
     public function list () {
         require_once "models/Transacciones.php";
+        $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
+        $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
+        $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
+        $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
         $Transacciones = new Transacciones();
-        $result = $Transacciones->list();
+        $result = $Transacciones->list($page, $limit, $filter, $sort);
         $result = json_decode($result, true);
-        //require_once "views/TransaccionesList.php";
+        require_once "views/transaccionesList.php";
     }
     
     public function create () {

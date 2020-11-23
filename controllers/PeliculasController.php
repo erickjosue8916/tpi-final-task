@@ -15,7 +15,6 @@ class PeliculasController {
         $peliculas = new Peliculas();
         $result = $peliculas->list($page, $limit, $filter, $sort);
         $result = json_decode($result, true);
-        // var_dump($result);
         require_once "views/movies/movieList.php";
     }
     
@@ -57,7 +56,7 @@ class PeliculasController {
         $Peliculas = new Peliculas();
         $result = $Peliculas->list();
         $result = json_decode($result, true);
-        require_once "views/PeliculasList.php";
+        require_once "views/peliculasList.php";
     }
 
     public function details () {

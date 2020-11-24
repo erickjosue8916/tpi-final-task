@@ -1,6 +1,5 @@
 <?php
-require_once "config/db.php";
-require_once "database/Connection.php";
+
 class MySqlConnection extends Connection
 {
   public $db;

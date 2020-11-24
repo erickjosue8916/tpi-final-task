@@ -1,0 +1,234 @@
+.container{
+	
+	min-height: 500px;
+}
+.container_foto {
+	background-color: rgba(8, 8, 10, 0.788);
+	padding: 0px;
+	overflow: hidden;
+    max-width: 279px;
+    height: 400px;
+    margin: 3px;
+    border-radius: 9px;
+}
+.fondo{
+
+	background-image: url(../img/fondo/fondo1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+	/*background-size: cover;*/
+}
+.nav_color{
+	background-color:  #222831;/*#222831*/
+	
+	font-family: 'Raleway', sans-serif;
+	color: aliceblue;
+	font-size: 24px;
+}
+
+.opacity_fond{
+	background-color: wheat;
+	opacity:0.5;
+	
+}
+
+.icon{
+	margin-left: 50px;
+}
+
+.nav_color ul li{
+	
+	text-align: center;
+	width: 200px;
+	color: aliceblue;
+}
+
+.login{
+	border-radius: 30px;
+	background-color: blanchedalmond; 
+	padding:50px;
+	height: 500px;
+	width:400px;
+	background-image: url(../img/fondo/login.jpg);
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	align-items: center;
+	color: aliceblue;
+	font-family: 'Playfair Display', serif;
+	opacity: 1;
+}
+.login h1{
+	margin-top: 130px;
+	margin-bottom: 30px;
+}
+
+.fondo2{
+	background-image: url(../img/fondo/formu.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.formu{
+	border-radius: 70px;
+	padding:50px;
+	background-color: rgba(0, 0, 0, 0.5);/*rgba(162, 10, 10, 0.5)   rgba(0, 0, 0, 0.5)*/
+	width: 80%;
+	color:white;
+	font-family: 'Playfair Display', serif;
+}
+
+.formu2{
+	text-align: center;
+	border-radius: 30px;
+	padding:50px;
+	background-color: rgba(0, 0, 0, 0.5);/*rgba(162, 10, 10, 0.5)   rgba(0, 0, 0, 0.5)*/
+	width: 45%;
+	color:white;
+	font-family: 'Playfair Display', serif;
+}
+
+
+.opaco{
+	background-image: url(../img/fondo/fondo1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.8;
+}
+
+
+
+.nav_color a{
+	display: inline-flex;
+	text-decoration: none;
+	color: white;
+}
+
+.nav_color ul :hover{
+	background-color: #30475e;
+	color: white;
+	font-weight: bolder;
+	text-align: center;
+	/*height: 80px;*/
+}
+
+.container_foto article {
+	padding: 10%;
+	position: absolute;
+	bottom: 0;
+	z-index: 1;
+	transition: all 0.5s ease;
+}
+
+.container_foto h2 {
+	color: #fff;
+	font-weight: 800;
+	font-size: 25px;
+	border-bottom: #fff solid 1px;
+}
+
+.container_foto h4 {
+	font-weight: 300;
+	color: #fff;
+	font-size: 16px;
+}
+
+.container_foto img {
+    height: 100%;
+	width: 100%;
+	top: 0;
+    left: 0;
+	opacity: 0.4;
+	transition: all 4s ease;
+}
+
+.ver_mas {
+	background-color: #18191f;
+	position: absolute;
+	width: 100%;
+	height: 70px;
+	bottom: 0;
+	z-index: 1;
+	opacity: 0;
+	transform: translate(0px, 70px);
+	transition: all 0.2s ease-in-out;
+}
+
+.ver_mas span {
+	padding: 22px 40px 22px;
+	font-size: 19px;
+	color: #fff;
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	top: 20px;
+}
+
+/*hovers*/
+.ver_mas span:hover {
+	background-color: tomato;
+	transition: all 0.5s ease;
+}
+.container_foto:hover {
+	cursor: pointer;
+}
+
+.container_foto:hover img {
+	opacity: 0.1;
+	transform: scale(1.5);
+}
+
+.container_foto:hover article {
+	transform: translate(2px, -69px);
+}
+
+.container_foto:hover .ver_mas {
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+.foot{
+	background-color: rgba(0, 0, 0);
+	height:100px; 
+	padding:30px;
+	color: aliceblue;
+}
+=======
+/* Para los forms */
+.bg{
+    background-color: #fff;  
+    width:100%; 
+    height:100vh;}   
+
+h2{ 
+    margin-top: 2vh;
+    font-family:oswald; 
+    color: #172A3A; }
+.form-group {
+    font-family: Oswald ;
+    margin-top: 0px;
+} 
+
+#mlot {  
+    margin-bottom: 10px;
+}
+.btn-create{
+    border-radius: 6px;
+    background-color: palevioletred;
+    box-shadow: -1px 4px 30px -7px rgba(0,0,0,0.75);
+}
+.btn-update{
+    border-radius: 6px;
+    background-color: rgb(94, 211, 129);
+    box-shadow: -1px 4px 30px -7px rgba(0,0,0,0.75);
+}
+.form-container {
+    
+    border:1px solid #000; 
+    padding: 20px 30px ; 
+    margin-top: 1vh;
+    -webkit-box-shadow: -1px 4px 45px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 4px 45px -7px rgba(0,0,0,0.75);
+    box-shadow: -1px 4px 30px -7px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}

@@ -12,8 +12,8 @@ class UsersController {
         } else {
             require_once "models/User.php";
             $user = new User();
-            $user->setEmail($_POST['email']);
-            $user->setPassword($_POST['password']);
+            $user->setUserName($_POST['username']);
+            $user->setUserPassword($_POST['password']);
 
             $result = $user->login();
             $result = json_decode($result, true);

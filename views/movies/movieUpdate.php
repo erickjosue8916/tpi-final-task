@@ -62,11 +62,13 @@ if (isset($result["peliculas"][0])) {
 
   else
   {
+   echo "<div class="alert alert-success" role="alert">
+  No se ha encontrado la Pelicula
+  </div>";
     header("Location: "  . BASE_DIR . "Peliculas/list")
+    
   }
 ?>
-<div class="alert alert-success" role="alert">
-  No se ha encontrado la Pelicula solicitada
-</div>
+
 
 <?php?>

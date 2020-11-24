@@ -161,9 +161,40 @@ class Peliculas extends MySqlConnection {
     return $sql;
   }
 
+  public function update ($id) {
+    $result = [
+      'id_pelicula' => 0,
+      'success' => false,
+      'error' => ''
+    ];
+    //
+    $sql = "UPDATE " . self::TABLE_NAME . " SET titulo=:titulo,descripcion=:descripcion,stock=:stock,precio_alquiler=:precio_alquiler,precio_venta=:precio_venta,disponibilidad=:disponibilidad WHERE id_pelicula=:id_pelicula ";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(":titulo", $this->getTitulo());
+    $stmt->bindValue(":descripcion", $this->getdescripcion());
+//    $stmt->bindValue(":imagen", $this->getImagen());
+    $stmt->bindValue(":stock", $this->getstock());
+    $stmt->bindValue(":precio_alquiler", $this->getprecioAlquiler());
+    $stmt->bindValue(":precio_venta", $this->getprecioVenta());
+    $stmt->bindValue(":disponibilidad", $this->getDisponibilidad());
+    $stmt->bindValue(":id_pelicula", $id);
+
+    try {
+      $stmt->execute();
+      $edited_id = $id;
+      $result['id_pelicula'] = $edited_id;
+      $result['success'] = true;
+    } catch (\Throwable $th) {
+      $result['error'] = "$th";
+    }
+    //return json_encode($result);
+    return $result;
+  }
+
 
   public function create () {
     $result = [
+      'id_peliculas' => 0,
       'success' => false,
       'error' => ''
     ];
@@ -179,11 +210,21 @@ class Peliculas extends MySqlConnection {
 
     try {
       $stmt->execute();
+      $last_id = $this->db->lastInsertId();
+      $result['id_peliculas'] = $last_id;
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";
     }
     return json_encode($result);
+  }
+
+  public function guardarImagen($file, $name) {
+    if (move_uploaded_file($file,  "assets/img/movies/" . $name)){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   public function details ($id) {
@@ -192,7 +233,7 @@ class Peliculas extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id";
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_pelicula = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {
@@ -211,7 +252,7 @@ class Peliculas extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id = :id";
+    $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id_pelicula = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {

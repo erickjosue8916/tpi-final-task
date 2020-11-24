@@ -38,9 +38,9 @@ class TransaccionesController {
             $Transacciones->setEstado($_POST['estado']);
             $Transacciones->setTipo($_POST['tipo']);
             
-            $result = $Transacciones->create();
+            $result = json_decode($Transacciones->create(),true);
             if ($result['success']) {
-                header("Location: " . BASE_DIR . "Transacciones/list");
+                header("Location: " . BASE_DIR . "Transacciones/list&id_transacciones=".$result['id_transaccion']);
             } else {
                 $error = $result['error'];
                 require_once "views/registerUser.php";
@@ -54,6 +54,37 @@ class TransaccionesController {
         $result = $Transacciones->list();
         $result = json_decode($result, true);
         //require_once "views/TransaccionesList.php";
+    }
+
+    public function changeState(){
+        if ($_COOKIE["sessionId"]) {
+            if ($_COOKIE['rol'] != 'Administrador') {
+                header("Location: "  . BASE_DIR . "Users/login");
+            }
+        } else {
+            header("Location: "  . BASE_DIR . "Users/login");
+        }
+        require_once "models/transacciones.php";
+        if (empty($_POST)) {
+            $id = $_GET["id"];
+            $transacciones = new Transacciones();
+            $result = $transacciones->details($id);
+            $result = json_decode($result, true);
+            require_once "views/transaccionesUpdate.php";
+        } else {
+            
+            $transacciones = new transacciones();
+            $id = $_POST["id_transaccion"];
+            $transacciones->setEstado($_POST['estado']);
+            
+            $result = $transacciones->changeState($id);
+            if ($result['success']) {
+                header("Location: " . BASE_DIR . "transacciones/list");
+            } else {
+                $error = $result['error'];
+                require_once "views/transaccionesList.php";
+            } 
+        }
     }
 
     public function details () {

@@ -57,17 +57,16 @@ if (isset($result["peliculas"][0])) {
 <div class="col-md-4 col-sm-4 col-xs-12"></div>
 
 </div>
-<?php
-if (empty($pelicula['id_pelicula'])) {
-  
-  }
+<?php}
+
+
   else
   {
-    header("Location: "  . BASE_DIR . "Users/login")
+    header("Location: "  . BASE_DIR . "Peliculas/list")
   }
 ?>
 <div class="alert alert-success" role="alert">
-  A simple success alert—check it out!
+  No se ha encontrado la Pelicula solicitada
 </div>
 
-<?php } ?>
+<?php?>

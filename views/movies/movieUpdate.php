@@ -11,7 +11,8 @@ if (isset($result["peliculas"][0])) {
 
 <div class="col-md-4 col-sm-4 col-xs-12">
 
-        <form class="form-container" action="<?=BASE_DIR?>Peliculas/update" method="post">
+        <form class="form-container opacity_fond" action="<?=BASE_DIR?>Peliculas/update" method="post">
+
           <!-- <h2 class="text-center"> PRODUCT DETAILS </h2>  -->
           <input type="text" hidden='true' name="id_pelicula" value="<?=$pelicula['id_pelicula']?>" >
                 <div class="form-group">

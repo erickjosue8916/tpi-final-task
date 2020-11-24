@@ -51,6 +51,22 @@ class ReaccionesController {
         //require_once "views/ReaccionesList.php";
     }
 
+    public function changeState(){
+        require_once "models/Reacciones.php";
+        $reacciones = new Reacciones();
+        if (empty($_POST)) {
+            $id = $_GET["id"];
+            $result = $reacciones->details($id);
+            $result = json_decode($result, true);
+            require_once "views/reaccionChange.php";//View de prueba de la funcion
+        } else {
+            $id_usuario = $_POST['id_usuario'];
+            $id_pelicula = $_POST['id_pelicula'];
+            $result = $reacciones->findUserMovie($id_usuario,$id_pelicula);
+            var_dump($result);
+        }
+    }
+
     public function details () {
 
         if ($_COOKIE["sessionId"]) {

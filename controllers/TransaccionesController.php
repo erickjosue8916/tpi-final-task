@@ -56,6 +56,37 @@ class TransaccionesController {
         //require_once "views/TransaccionesList.php";
     }
 
+    public function changeState(){
+        if ($_COOKIE["sessionId"]) {
+            if ($_COOKIE['rol'] != 'Administrador') {
+                header("Location: "  . BASE_DIR . "Users/login");
+            }
+        } else {
+            header("Location: "  . BASE_DIR . "Users/login");
+        }
+        require_once "models/transacciones.php";
+        if (empty($_POST)) {
+            $id = $_GET["id"];
+            $transacciones = new Transacciones();
+            $result = $transacciones->details($id);
+            $result = json_decode($result, true);
+            require_once "views/transaccionesUpdate.php";
+        } else {
+            
+            $transacciones = new transacciones();
+            $id = $_POST["id_transaccion"];
+            $transacciones->setEstado($_POST['estado']);
+            
+            $result = $transacciones->changeState($id);
+            if ($result['success']) {
+                header("Location: " . BASE_DIR . "transacciones/list");
+            } else {
+                $error = $result['error'];
+                require_once "views/transaccionesList.php";
+            } 
+        }
+    }
+
     public function details () {
 
         if ($_COOKIE["sessionId"]) {

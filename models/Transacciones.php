@@ -37,8 +37,8 @@ class Transacciones extends MySqlConnection {
       'error' => ''
     ];
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT t.id, t.fecha, u.nombre, u.email, t.total, t.estado, t.tipo FROM " . self::TABLE_NAME . " t ";//Adecuar el sql
-    $sql .= " LEFT JOIN usuarios u on u.id = t.id_usuario ";
+    $sql = "SELECT t.id_transaccion, t.fecha_transaccion, u.nombre, u.email, t.total_transaccion, t.estado, t.tipo_transaccion FROM " . self::TABLE_NAME . " t ";//Adecuar el sql
+    $sql .= " LEFT JOIN usuarios u on u.id_usuarios = t.id_usuario ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
     $sql .= " limit $limit offset $offset";
@@ -192,6 +192,29 @@ class Transacciones extends MySqlConnection {
     return $result;
   }
 
+  public function changeState($id) {
+    $result = [
+      'id_transaccion' => 0,
+      'success' => false,
+      'error' => ''
+    ];
+
+    //"UPDATE " . self::TABLE_NAME . " SET fecha_transaccion=:fecha_transaccion,total_transaccion=:total_transaccion,id_usuario=:id_usuario,estado=:estado,tipo_transaccion=:tipo_transaccion WHERE id_transaccion=:id_transaccion"
+    $sql = "UPDATE " . self::TABLE_NAME . " SET estado=:estado WHERE id_transaccion=:id_transaccion";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(":estado", $this->getEstado());
+    $stmt->bindValue(":id_transaccion", $id);
+    try {
+      $stmt->execute();
+      $edited_id = $id;
+      $result['id_transaccion'] = $edited_id;
+      $result['success'] = true;
+    } catch (\Throwable $th) {
+      $result['error'] = "$th";
+    }
+    //return json_encode($result);
+    return $result;
+  }
 
   public function create () {
     $result = [
@@ -223,7 +246,7 @@ class Transacciones extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id";
+    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id_transaccion = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {

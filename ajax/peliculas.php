@@ -18,12 +18,23 @@ if (isset($_REQUEST)) {
 	foreach ($result['peliculas'] as $pelicula) { 
 		$html .= "<div class='col-md-4 container_foto '>
 					<div class='ver_mas text-center'>
-						<span>Añadir al carrito</span>
+						<button type='button'>Añadir al carrito</button>
 					</div>
 					<article class='text-left'>
 						<h2> " . $pelicula["titulo"] . "</h2>
-						<h4> " . $pelicula["descripcion"] . "</h4>
-					</article>
+						<h4> " . $pelicula["descripcion"] . "</h4>";
+					if($pelicula["reaccion"] == 'Yes'){
+						$html .= "<button type='button' class='like__btn'>
+							<i class='like__icon fa fa-heart'></i>
+							<span class='like__text'>Me gusta</span>
+						</button>";
+					}else{
+						$html .= "<button type='button' class='like__btn disabled'>
+							<i class='like__icon fa fa-heart'></i>
+							<span class='like__text'>Me gusta</span>
+						</button>";
+					}
+		$html .= "	</article>
 					<img src=".BASE_DIR."assets/img/movies/".$pelicula["imagen"]." alt='imagen-pelicula'>
 				</div>";
 	}

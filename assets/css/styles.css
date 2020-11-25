@@ -107,10 +107,10 @@
 }
 
 .nav_color ul :hover{
-	background-color: #30475e;
-	color: white;
 	font-weight: bolder;
 	text-align: center;
+	color: #dc3545;
+	transition: all 0.5s ease;
 	/*height: 80px;*/
 }
 
@@ -144,6 +144,34 @@
 	transition: all 4s ease;
 }
 
+.like__btn {
+	border: none;
+	background-color: #dc3545;
+	color: white;
+	cursor: pointer;
+	padding: 0.3rem;
+	border-radius: 0.4rem;
+	max-width: 200px;
+	transition: all ease 0.3s;
+	display: flex;
+	align-items: center;
+}
+.like__btn:focus {
+	outline: none; 
+}
+.disabled {
+	background-color: #d4cfcf;
+	color: grey;
+	cursor: pointer;
+}
+.like__icon {
+	font-size: 1rem;
+	margin-right: 0.3rem;
+}
+.like__text{
+	font-size: 0.8rem;
+}
+
 .ver_mas {
 	background-color: #18191f;
 	position: absolute;
@@ -156,18 +184,20 @@
 	transition: all 0.2s ease-in-out;
 }
 
-.ver_mas span {
+.ver_mas button{
+	background-color:  rgba(8, 8, 10, 0.788);
+	border-color: rgba(8, 8, 10, 0.788);
 	padding: 22px 40px 22px;
 	font-size: 20px;
 	color: #fff;
 	position: relative;
 	margin: 0 auto;
 	width: 100%;
-	top: 20px;
+	outline: none;
 }
 
 /*hovers*/
-.ver_mas span:hover {
+.ver_mas button:hover {
 	color: #dc3545;
 	transition: all 0.5s ease;
 }

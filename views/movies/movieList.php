@@ -1,3 +1,7 @@
+<?php
+	require_once "config/loginVerifier.php"
+?>
+
 <div class="fondo">
 	<!-- En este apartado se muestran las peliculas -->
 	<div class="container p-1">
@@ -44,6 +48,11 @@
 				<div class="row">
 					<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="Accion" value="Comprar"/> Comprar</label>
 					<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="Accion" value="Alquilar"/> Alquilar</label>
+				</div>
+				<div class="alert alert-warning" role="alert">
+					<h4 class="alert-heading">Aviso!</h4>
+					<hr>
+					<p class="mb-0">El tiempo de devolucion de una pelicula alquilada es de 1 semana</p>
 				</div>
 			</div>
 			<div class="text-center mt-3">

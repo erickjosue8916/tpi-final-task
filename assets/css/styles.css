@@ -193,7 +193,7 @@
 	padding:30px;
 	color: aliceblue;
 }
-=======
+
 /* Para los forms */
 .bg{
     background-color: #fff;  
@@ -203,7 +203,9 @@
 h2{ 
     margin-top: 2vh;
     font-family:oswald; 
-    color: #172A3A; }
+	color: #172A3A; 
+	
+}
 .form-group {
     font-family: Oswald ;
     margin-top: 0px;
@@ -231,4 +233,10 @@ h2{
     -moz-box-shadow: -1px 4px 45px -7px rgba(0,0,0,0.75);
     box-shadow: -1px 4px 30px -7px rgba(0,0,0,0.75);
     border-radius: 10px;
+}
+.table-border
+{
+    box-shadow: -1px 4px 30px -7px rgba(0,0,0,0.75);
+	border-radius: 10px;
+	
 }

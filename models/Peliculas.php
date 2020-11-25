@@ -49,7 +49,7 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['usuario_id'])) ? $_COOKIE['usuario_id']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Yes', 'No') as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId AND re.status = 'Active', 'Active', 'Inactive') as reaccion FROM " . self::TABLE_NAME . " p";
     $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);

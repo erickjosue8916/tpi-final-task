@@ -65,8 +65,11 @@ class Compras extends MySqlConnection {
       'compras' => [],
       'error' => ''
     ];
+    $sql = "SELECT c.id_compra, c.cantidad, p.titulo, t.fecha_transaccion, t.total_transaccion FROM " . self::TABLE_NAME . " AS c 
+    INNER JOIN peliculas AS p ON c.id_pelicula = p.id_pelicula
+    INNER JOIN transacciones AS t ON c.id_transaccion = t.id_transaccion
+    WHERE c.id_transaccion = :id";
 
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {

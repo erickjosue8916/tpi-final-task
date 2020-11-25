@@ -64,8 +64,8 @@ class User extends MySqlConnection {
                 $_SESSION["nombre"] = $result["nombre"];
                 $_SESSION["apellido"] = $result["apellido"];
                 $_SESSION["id_usuario"] = $result["id_usuario"];
-                setcookie("sessionId", true, time() + (60 * 1000000), '/'); // time() + (60 * 20)
-                setcookie("rol", $result["rol"], time() + (60 * 1000000), '/');
+                setcookie("sessionId", true, strtotime('+1 hour'), '/'); // time() + (60 * 20)
+                setcookie("rol", $result["rol"], strtotime('+1 hour'), '/');
                 $result['success']=true;
             }
             else
@@ -81,4 +81,9 @@ class User extends MySqlConnection {
     return json_encode($result);
   }
 
+  public function logOut() {
+    unset($_COOKIE);
+    unset($_SESSION);
+    header('Location: '.BASE_DIR.'Users/login');//Mandamos de regreso a la pagina de login
+  }
 }

@@ -70,8 +70,11 @@ class Alquileres extends MySqlConnection {
       'alquileres' => [],
       'error' => ''
     ];
+    $sql = "SELECT a.id_alquiler, a.cantidad, p.titulo, t.fecha_transaccion, a.fecha_devolucion, t.total_transaccion FROM alquileres AS a 
+    INNER JOIN peliculas AS p ON a.id_pelicula = p.id_pelicula
+    INNER JOIN transacciones AS t ON a.id_transaccion = t.id_transaccion
+    WHERE a.id_transaccion = :id";
 
-    $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE id = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {

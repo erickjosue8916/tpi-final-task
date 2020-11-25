@@ -1,9 +1,9 @@
 <main class="container h-100 d-flex justify-content-center align-items-center">
 <div class="container table-responsive py-5">
     <?php
-        $headers = ['#', 'transaccion', 'pelicula', 'cantidad', 'fecha de devolucion'];
+        $headers = ['#', 'cantidad', 'pelicula', 'fecha transaccion', 'fecha de devolucion', 'total'];
 
-        $rows = $result['compras'];
+        $rows = $result['alquileres'];
         $config = [
             'headers' => $headers,
             'rows' => $rows

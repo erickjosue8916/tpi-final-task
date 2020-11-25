@@ -40,7 +40,6 @@ class Transacciones extends MySqlConnection {
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
     $sql .= " limit $limit offset $offset";
-    
     $stmt = $this->db->prepare($sql);
     $this->setPrepareValues($stmt, $filter);
 
@@ -61,7 +60,6 @@ class Transacciones extends MySqlConnection {
   private function createSqlFilter($filter) {
     $sql = "";
     $filters = $this->filterFields; // set available filters here
-    var_dump($filter);
     if (count($filter)) {
       $i = 0;
       foreach ($filter as $key => $value) {
@@ -137,7 +135,7 @@ class Transacciones extends MySqlConnection {
       foreach ($rules as $key => $value) {
         $searchInFilters = array_search($key, $fields);
         if ($searchInFilters === false) $searchInFilters = -1;
-        echo "<br>";
+        //echo "<br>";
         if ($searchInFilters >= 0  ) {
           $value = strtoupper($value);
           if ($value == 'ASC' || $value == 'DESC') $sql .= ($i == 0) ? " ORDER BY " : " , ";

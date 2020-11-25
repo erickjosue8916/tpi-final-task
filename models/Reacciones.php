@@ -1,7 +1,5 @@
 <?php
 
-require_once "database/MySqlConnection.php";
-require_once "database/IMySqlActions.php";
 class Reacciones extends MySqlConnection {
 
   const TABLE_NAME = 'reacciones';

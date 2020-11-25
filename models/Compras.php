@@ -1,7 +1,4 @@
 <?php
-
-require_once "database/MySqlConnection.php";
-require_once "database/IMySqlActions.php";
 class Compras extends MySqlConnection {
 
   const TABLE_NAME = 'compras';

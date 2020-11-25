@@ -13,8 +13,8 @@ class TransaccionesController {
         $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
         $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
         $Transacciones = new Transacciones();
-       /*  $result = $Transacciones->list($page, $limit, $filter, $sort);
-        $result = json_decode($result, true); */
+         $result = $Transacciones->list($page, $limit, $filter, $sort);
+        $result = json_decode($result, true); 
         require_once "views/transacciones/transaccionesList.php";
     }
     

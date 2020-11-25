@@ -26,4 +26,14 @@ class UsersController {
             }
         }
     }
+
+    public function logOut(){
+        require_once "models/User.php";
+        $user = new User();
+        setcookie("sessionId", null, strtotime('+10 second'),'/');
+        setcookie("rol",null, strtotime('+10 second'),'/');
+        unset($_SESSION);
+        $user->logOut();
+        //header("Location: " . BASE_DIR);
+    } 
 }

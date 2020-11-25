@@ -1,3 +1,4 @@
+<div class="fondo">
 <main class="container h-100 d-flex justify-content-center align-items-center">
 <div class="container table-responsive py-5">
     <?php

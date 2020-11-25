@@ -1,4 +1,5 @@
 <?php
+require_once "../config/configControllers.php";
 require_once "../config/db.php";
 require_once "../database/Connection.php";
 require_once "../database/MySqlConnection.php";
@@ -12,19 +13,19 @@ if (isset($_REQUEST)) {
   $peliculas = new Peliculas();
   $result = $peliculas->list($page, $limit, $filter, $sort);
   $result = json_decode($result, true);
-  $html = '<div>';
+  $html = '';
   foreach ($result['peliculas'] as $pelicula) { 
       $html .= "<div class='col-md-4 container_foto '>
       <div class='ver_mas text-center'>
         <span class='lnr lnr-eye'></span>
       </div>
       <article class='text-left'>
-        <h2> " . $data["titulo"] . "</h2>
-        <h4> " . $data["descripcion"] . "</h4>
+        <h2> " . $pelicula["titulo"] . "</h2>
+        <h4> " . $pelicula["descripcion"] . "</h4>
       </article>
-      <img src='" .BASE_DIR . "assets/img/movies/" . $data["imagen"] ."' alt='imagen-pelicula'>
+      <img src='" .BASE_DIR . "assets/img/movies/" . $pelicula["imagen"] ."' alt='imagen-pelicula'>
     </div>";
   }
-  $html .= '</div>';
+  $html .= '';
   echo $html;
 }

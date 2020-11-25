@@ -14,21 +14,21 @@
         </div>
     <?php } ?>
     <form action="" method="POST">
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-        <input type="text" id="form1Example1" name="username" class="form-control" required/>
-        <label class="form-label" for="form1Example1">user</label>
-    </div>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="form1Example1" name="username" class="form-control bg-dark text-white" autocomplete=off required/>
+            <label class="form-label text-white" for="form1Example1">Nombre de Usuario</label>
+        </div>
 
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-        <input type="password" id="form1Example2" name="password" class="form-control" required/>
-        <label class="form-label" for="form1Example2">Password</label>
-    </div>
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form1Example2" name="password" class="form-control bg-dark text-white" required/>
+            <label class="form-label text-white" for="form1Example2">Contraseña</label>
+        </div>
 
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-    <button type="submit" class="btn btn-outline-success btn-block">Sign up</button>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+        <button type="submit" class="btn btn-outline-success btn-block">Registrarte</button>
     </form>
     </div>
     

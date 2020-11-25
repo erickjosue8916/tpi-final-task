@@ -1,20 +1,55 @@
 <div class="fondo">
-<div class="container p-1">
-	<div class="row">
-		<?php
-			$rows = $result['peliculas'];
-			foreach ($rows as $key => $data) { ?>
-			<div class="col-md-4 container_foto ">
-				<div class="ver_mas text-center">
-					<span class="lnr lnr-eye"></span>
+	<!-- En este apartado se muestran las peliculas -->
+	<div class="container p-1">
+		<div id="peliculas"></div>
+	</div>
+
+	<!-- Carrito -->
+	<div id="content" class="fabCollapse" class="animate zoomIn">
+		<i id="fab" class="fa fa-shopping-cart"></i>
+		<i id="close" class="fas fa-times-circle fabContent"></i>
+
+		<div class="fabContent">
+			<div class="card bg-dark">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-6">
+							<!-- Imagen de la pelicula -->
+							<img src="<?=BASE_DIR?>assets/img/movies/the_meg.jpg" class="img-responsive mt-2" alt="">
+						</div>
+						<div class="col-6">
+							<!-- Nombre de la pelicula -->
+							<p class="font-weight-bold text-white">The Meg</p>
+							<!-- Precios de venta y alquiler de la pelicula -->
+							<label class="font-weight-light text-white">Comprar <p class="font-weight-bold text-success">$40</p></label><br>
+							<label class="font-weight-light text-white">Alquilar <p class="font-weight-bold text-success">$50</p></label>
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-6">
+							<!-- Imagen de la pelicula -->
+							<img src="<?=BASE_DIR?>assets/img/movies/madmax.jpg" class="img-responsive mt-2" alt="">
+						</div>
+						<div class="col-6">
+							<!-- Nombre de la pelicula -->
+							<p class="font-weight-bold text-white">Mad Max: Fury Road</p>
+							<!-- Precios de venta y alquiler de la pelicula -->
+							<label class="font-weight-light text-white">Comprar <p class="font-weight-bold text-success">$40</p></label><br>
+							<label class="font-weight-light text-white">Alquilar <p class="font-weight-bold text-success">$50</p></label>
+						</div>
+					</div>
 				</div>
-				<article class="text-left">
-					<h2><?=$data["titulo"]?></h2>
-					<h4><?=$data["descripcion"]?></h4>
-				</article>
-				<img src="<?=BASE_DIR?>assets/img/movies/<?=$data["imagen"]?>" alt="imagen-pelicula">
+				
+				<div class="row">
+					<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="Accion" value="Comprar"/> Comprar</label>
+					<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="Accion" value="Alquilar"/> Alquilar</label>
+				</div>
 			</div>
-		<?php } ?>
-    </div>
-</div>
+			<div class="text-center mt-3">
+				<button type="button" class="btn btn-block btn-outline-danger">Realizar Transaccion</button>
+			</div>
+		</div>
+	</div>
+	<!-- Fin Carrito -->
 </div>

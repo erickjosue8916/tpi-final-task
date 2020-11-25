@@ -1,3 +1,10 @@
+async function guardarAlquiler () {
+  
+}
+
+async function guardarCompra () {
+  
+}
 (async () => {
   const peliculasDOM = document.getElementById('peliculas')
   if (peliculasDOM) {

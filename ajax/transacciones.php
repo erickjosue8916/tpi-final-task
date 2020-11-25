@@ -24,7 +24,7 @@ if (isset($_REQUEST)) {
   $transaction->setTipo($tipo);
 
   $result = $transaction->create();
-
+  $result = json_decode($result, true);
   if ($tipo == 'Compra') {
     foreach ($detalleTransaccion as $detalle) { 
       $compra = new Compras();
@@ -41,9 +41,7 @@ if (isset($_REQUEST)) {
       $compra->setFecha(1);
     }
   }
-  // $result = json_decode($result, true);
-  $html = '<div>';
   
-  $html .= '</div>';
-  echo $html;
+  
+  echo $result
 }

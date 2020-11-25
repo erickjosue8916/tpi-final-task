@@ -204,7 +204,9 @@
 h2{ 
     margin-top: 2vh;
     font-family:oswald; 
-    color: #172A3A; }
+	color: #172A3A; 
+	
+}
 .form-group {
     font-family: Oswald ;
     margin-top: 0px;

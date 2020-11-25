@@ -1,4 +1,5 @@
 <?php
+require_once "../config/configControllers.php";
 require_once "../config/db.php";
 require_once "../config/configControllers.php";
 require_once "../database/Connection.php";

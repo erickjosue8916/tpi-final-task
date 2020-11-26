@@ -18,6 +18,18 @@ class PeliculasController {
         require_once "views/movies/movieList.php";
     }
     
+    public function listAdmin () {
+        require_once "models/Peliculas.php";
+        $page = (!isset($_GET['page'])) ? 1 : $_GET['page'];
+        $limit = (!isset($_GET['limit'])) ? 20 : $_GET['limit'];
+        $filter = (!isset($_GET['filter'])) ? [] : $_GET['filter'];
+        $sort = (!isset($_GET['sort'])) ? [] : $_GET['sort'];
+        $peliculas = new Peliculas();
+        $result = $peliculas->listAdmin($page, $limit, $filter, $sort);
+        $result = json_decode($result, true);
+        require_once "views/movies/movieListAdmin.php";
+    }
+
     public function create () {
         if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {

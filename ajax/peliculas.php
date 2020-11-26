@@ -24,12 +24,12 @@ if (isset($_REQUEST)) {
 						<h2> " . $pelicula["titulo"] . "</h2>
 						<h4> " . $pelicula["descripcion"] . "</h4>";
 					if($pelicula["reaccion"] == 'Active'){
-						$html .= "<button type='button' class='like__btn'>
+						$html .= "<button type='button' class='like__btn' onclick='changeReaction(". $pelicula['id_pelicula'] . ")'>
 							<i class='like__icon fa fa-heart'></i>
 							<span class='like__text'>Me gusta</span>
 						</button>";
 					}else{
-						$html .= "<button type='button' class='like__btn disabled'>
+						$html .= "<button type='button' class='like__btn disabled' onclick='changeReaction(". $pelicula['id_pelicula'] . ")'>
 							<i class='like__icon fa fa-heart'></i>
 							<span class='like__text'>Me gusta</span>
 						</button>";

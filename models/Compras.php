@@ -42,6 +42,7 @@ class Compras extends MySqlConnection {
 
   public function create () {
     $result = [
+      'id_compras' => 0,
       'success' => false,
       'error' => ''
     ];
@@ -53,6 +54,8 @@ class Compras extends MySqlConnection {
 
     try {
       $stmt->execute();
+      $last_id = $this->db->lastInsertId();
+      $result['id_compras'] = $last_id;
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";

@@ -18,7 +18,7 @@ if (isset($_REQUEST)) {
 	foreach ($result['peliculas'] as $pelicula) { 
 		$html .= "<div class='col-md-4 container_foto '>
 					<div class='ver_mas text-center'>
-						<button type='button'>Añadir al carrito</button>
+						<button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta])\">Añadir al carrito</button>
 					</div>
 					<article class='text-left'>
 						<h2> " . $pelicula["titulo"] . "</h2>

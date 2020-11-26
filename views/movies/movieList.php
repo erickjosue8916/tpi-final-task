@@ -1,21 +1,15 @@
-<?php
-	require_once "config/loginVerifier.php";
-	if(isset($_POST['buscarNombre'])){
-		header("location: ".BASE_DIR."Peliculas/list&filter[titulo]=".$_POST['buscarNombre']);
-	}
-?>
 
 <div class="fondo">
 	<!-- En este apartado se muestran las peliculas -->
 	<div class="container p-1">
 		<div class="filtros">
-			<form action="<?=BASE_DIR?>Peliculas/list" method="POST">
+			
 				<div class="form-group">
 					<label for="mid">Buscar pelicula por nombre:</label>
 					  <input type="text" class="form-control" id="buscarNombre" placeholder="Buscar por nombre" name="buscarNombre" value="<?= isset($_GET["filter"]["titulo"]) ? $_GET["filter"]["titulo"] : ""?>">
 				</div>
 				<button type="submit" class="btn btn-primary btn-block btn-update">Actualizar</button>
-			</form>
+			
 		</div>
 		<div id="peliculas"></div>
 	</div>

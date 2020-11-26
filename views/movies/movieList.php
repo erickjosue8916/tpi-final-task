@@ -1,10 +1,16 @@
-<?php
-	require_once "config/loginVerifier.php"
-?>
 
 <div class="fondo">
 	<!-- En este apartado se muestran las peliculas -->
 	<div class="container p-1">
+		<div class="filtros">
+			
+				<div class="form-group">
+					<label for="mid">Buscar pelicula por nombre:</label>
+					  <input type="text" class="form-control" id="buscarNombre" placeholder="Buscar por nombre" name="buscarNombre" value="<?= isset($_GET["filter"]["titulo"]) ? $_GET["filter"]["titulo"] : ""?>">
+				</div>
+				<button type="submit" class="btn btn-primary btn-block btn-update">Actualizar</button>
+			
+		</div>
 		<div id="peliculas"></div>
 	</div>
 

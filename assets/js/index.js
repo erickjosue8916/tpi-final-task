@@ -26,9 +26,23 @@ async function chargeProducts() {
 }
 
 (async () => {
-  const peliculasDOM = document.getElementById('peliculas')
+  const peliculasDOM = document.getElementById('peliculas');
+  const filtroNombre = document.getElementById('buscarNombre')
+  let aux = "";
   if (peliculasDOM) {
+
     await chargeProducts(peliculasDOM)
+
+    /* if(filtroNombre && filtroNombre.value){
+      aux+= "&filter[titulo]=" + filtroNombre.value;
+    }
+    console.log(aux);
+    //const request = await fetch(`${baseDir}ajax/peliculas.php${aux}`, {})
+    const request = await fetch(`${baseDir}ajax/peliculas.php`, {})
+    const peliculasHtml = await request.text()
+    console.log(peliculasHtml)
+    peliculasDOM.innerHTML = peliculasHtml */
+
   }
 })()
 

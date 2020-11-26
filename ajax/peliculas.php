@@ -23,7 +23,7 @@ if (isset($_REQUEST)) {
 					<article class='text-left'>
 						<h2> " . $pelicula["titulo"] . "</h2>
 						<h4> " . $pelicula["descripcion"] . "</h4>";
-					if($pelicula["reaccion"] == 'Yes'){
+					if($pelicula["reaccion"] == 'Active'){
 						$html .= "<button type='button' class='like__btn'>
 							<i class='like__icon fa fa-heart'></i>
 							<span class='like__text'>Me gusta</span>

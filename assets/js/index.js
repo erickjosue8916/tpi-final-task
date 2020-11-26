@@ -1,3 +1,23 @@
+let checkoutObject = {
+  details: []
+}
+function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) {
+  let html = `
+<div class="row">
+  <div class="col-6">
+    <img src="${baseDir}assets/img/movies/${imagen}" class="img-responsive mt-2" alt="">
+  </div>
+  <div class="col-6">
+    <p class="font-weight-bold text-white">${nombre}</p>
+    <!-- Precios de venta y alquiler de la pelicula -->
+    <label class="font-weight-light text-white">Comprar <p class="font-weight-bold text-success">${precioAlquiler}</p></label><br>
+    <label class="font-weight-light text-white">Alquilar <p class="font-weight-bold text-success">${precioVenta}</p></label>
+  </div>
+</div>`
+console.log(html)
+  return html
+}
+
 async function guardarAlquiler () {
   
 }
@@ -6,8 +26,16 @@ async function guardarCompra () {
   
 }
 
-async function setReaction(params) {
+function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   
+  checkoutObject.details.push({id,nombre,imagen,precioAlquiler,precioVenta})
+  const elementsString = checkoutObject.details.map(detail => {
+    return getProductInChekout(detail)
+  }) 
+  const html = elementsString.join('<hr>')
+  console.log(html)
+  const element = document.getElementById('chechoutDetails');
+  element.innerHTML = html
 }
 
 async function changeReaction (peliculaId) {

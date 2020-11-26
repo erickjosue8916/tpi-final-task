@@ -2,7 +2,7 @@
 <main class="container h-100 d-flex justify-content-center align-items-center">
 <div class="container table-responsive py-5 ">
 	<?php
-        $headers = ['#', 'Titulo', 'Descripcion', 'Imagen', 'Stock', 'Preciolquiler', 'PrecioVenta', 'Disponibilidad', 'Editar', 'Eliminar'];
+        $headers = ['#', 'Titulo', 'Descripcion', 'Imagen', 'Stock', 'Preciolquiler', 'PrecioVenta', 'Disponibilidad', 'Likes', 'Editar', 'Eliminar'];
 
         $rows = $result['peliculas'];
         $config = [

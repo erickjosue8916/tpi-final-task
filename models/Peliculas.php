@@ -49,10 +49,11 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Active', 'Inactive') as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, count(re.id_pelicula) as likes, IF (re.id_usuario = $usuarioId, 'Active', 'Inactive') as reaccion FROM " . self::TABLE_NAME . " p";
     $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
+    $sql .= " GROUP BY p.id_pelicula";
     $sql .= " limit $limit offset $offset";
     $stmt = $this->db->prepare($sql);
 
@@ -75,9 +76,11 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, count(re.id_pelicula) as likes FROM " . self::TABLE_NAME . " p";
+    $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
+    $sql .= " GROUP BY p.id_pelicula";
     $sql .= " limit $limit offset $offset";
     $stmt = $this->db->prepare($sql);
 

@@ -99,8 +99,8 @@ class Reacciones extends MySqlConnection {
       if(!empty($row)){
         //Modificar el registro encontrado
         $editar = new Reacciones();
-        $editar->setReaccion( $row['reaccion'] == "Inactivo" ? "Activo" : "Inactivo");
-        $editar->changeState($row['id_reaccion']);
+        //$editar->setReaccion( $row['reaccion'] == "Inactivo" ? "Activo" : "Inactivo");
+        $editar->delete($row['id_reaccion']);
 
       }else{
         //Crear el campo nuevo
@@ -141,7 +141,7 @@ class Reacciones extends MySqlConnection {
       'error' => ''
     ];
 
-    $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id = :id";
+    $sql = "DELETE FROM " . self::TABLE_NAME . " WHERE id_reaccion = :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id", $id);
     if ($stmt->execute()) {

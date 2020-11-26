@@ -63,7 +63,8 @@ class ReaccionesController {
             $id_usuario = $_POST['id_usuario'];
             $id_pelicula = $_POST['id_pelicula'];
             $result = $reacciones->findUserMovie($id_usuario,$id_pelicula);
-            var_dump($result);
+            header("location: " .BASE_DIR);
+            //var_dump($result);
         }
     }
 

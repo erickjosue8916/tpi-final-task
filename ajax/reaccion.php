@@ -5,12 +5,12 @@ require_once "../config/configControllers.php";
 require_once "../database/Connection.php";
 require_once "../database/MySqlConnection.php";
 require_once "../database/IMySqlActions.php";
-require_once "../models/Peliculas.php";
+require_once "../models/Reacciones.php";
 if (isset($_REQUEST)) {
 	$pelicula_id = (!isset($_GET['pelicula_id'])) ? 0 : $_GET['pelicula_id'];
 	if ($pelicula_id !== 0) {
-        $peliculas = new Peliculas();
-	    // $result = $peliculas->list($page, $limit, $filter, $sort);
+        $reacciones = new Reacciones();
+	    $result = $reacciones->findUserMovie($_COOKIE['id_usuario'],$pelicula_id);
     }
     echo "Pelicula Id : $pelicula_id";
 }

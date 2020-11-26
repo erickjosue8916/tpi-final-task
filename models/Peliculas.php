@@ -68,6 +68,31 @@ class Peliculas extends MySqlConnection {
     return json_encode($result);
   }
 
+  public function listAdmin ($page = 1, $limit = 20, $filter = [], $sort = []) {
+    $result = [
+      'peliculas' => [],
+      'error' => ''
+    ];
+    $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql .= $this->createSqlFilter($filter);
+    $sql .= $this->createSqlSort($sort);
+    $sql .= " limit $limit offset $offset";
+    $stmt = $this->db->prepare($sql);
+
+    $this->setPrepareValues($stmt, $filter);
+    if ($stmt->execute()) {
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              array_push($result['peliculas'], $row);
+            }
+            
+    } else {
+      $result['error'] = 'Server Error';
+    }
+    return json_encode($result);
+  }
+
   private function createSqlFilter($filter) {
     $sql = "";
     $filters = $this->filterFields; // set available filters here

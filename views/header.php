@@ -50,16 +50,13 @@
           <li class="nav-item active">
             <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>" class="btn <?=($active == "Main") ? "active": ""; ?>">Home</a>
           </li>
-          <li class="nav-item ">
-          <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/logOut" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
-          </li>
           <?php
           if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'Administrador') {
               ?>
+              <li class="nav-item ">
+                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/listAdmin" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
+              </li>
               <li class="nav-item ">
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/create" class="btn <?=($active == "Main") ? "active": ""; ?>">Nueva pelicula</a>
               </li>
@@ -67,15 +64,22 @@
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Transacciones/list" class="btn <?=($active == "Main") ? "active": ""; ?>">Transacciones</a>
               </li>
               <?php
+            }else{
+              ?>
+              <li class="nav-item ">
+                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
+              </li>
+              <?php
             }
           } else {
             header("Location: "  . BASE_DIR . "Users/login");
           }
           ?>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/logOut" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
+          </li>
           <!--
-<li class="nav-item">
-          
-          
+          <li class="nav-item">
           </li>
           -->
           

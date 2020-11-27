@@ -8,9 +8,10 @@
 					type="text" 
 					placeholder="Buscar pelicula"
 					name="buscarNombre"
-					value="<?= isset($_GET["filter"]["titulo"]) ? $_GET["filter"]["titulo"] : ""?>" autocomplete=off required>
+					id="busquedaInput"
+					autocomplete="off">
 			<div class="input-group-append">
-				<button type="button" class="btn btn-danger"><i class="fas fa-search text-grey"></i></button>
+				<button type="button" class="btn btn-danger" onclick='actualizarListadoPeliculas()'><i class="fas fa-search text-grey"></i></button>
 			</div>
 		</div>
 	</div>
@@ -26,9 +27,9 @@
 
 			</div>
 			<div class="row p-2 bg-dark mx-auto operacion">
-				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="Accion" value="Comprar" /> Comprar</label>
-				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="Accion" value="Alquilar"/> Alquilar</label>
-				<h5 class="text-center text-white">Total <span class="badge badge-success">$0.00</span></h5>
+				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="accion" value="Comprar" /> Comprar</label>
+				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="accion" value="Alquilar"/> Alquilar</label>
+				<h5 class="text-center text-white">Total <span class="badge badge-success" id="totalCarrito">$0.00</span></h5>
 			</div>
 			<div class="alert alert-warning" role="alert">
 				<h4 class="alert-heading">Aviso!</h4>
@@ -36,7 +37,7 @@
 				<p class="mb-0 font-weight-light">El tiempo de devolucion de una pelicula alquilada es de 1 semana</p>
 			</div>
 			<div class="text-center mt-3">
-				<button type="button" class="btn btn-block btn-outline-danger">Realizar Transaccion</button>
+				<button type="button" class="btn btn-block btn-outline-danger" onclick="crearTransaccion()">Realizar Transaccion</button>
 			</div>
 		</div>
 	</div>

@@ -13,7 +13,6 @@ if (isset($_REQUEST)) {
   $total = (isset($_REQUEST['transaction'])) ? $_REQUEST['total']: 0;
   $estado = (isset($_REQUEST['estado'])) ? $_REQUEST['estado']: 'Cancelado';
   $tipo = (isset($_REQUEST['tipo'])) ? $_REQUEST['tipo']: 'Compra';
-  $usuarioId = (isset($_REQUEST["id_usuario"])) ? $_REQUEST["id_usuario"] : 0;
   $detalleTransaccion = (isset($_REQUEST["detalle"])) ? $_REQUEST["id_usuario"] : 0;
   
   $transaction = new Transacciones();

@@ -26,6 +26,46 @@ async function guardarCompra () {
   
 }
 
+async function actualizarListadoPeliculas() {
+  const filter = document.getElementById('busquedaInput').value || null
+  const sort = document.getElementById('ordenInput').value || 'titulo'
+  let url = `${baseDir}ajax/peliculas.php?sort[${sort}]=asc`
+  if (filter) url += `&filter[titulo]=${filter}`
+  const element = document.getElementById('peliculas')
+  const request = await fetch(url, {})
+  const peliculasHtml = await request.text()
+  // console.log(peliculasHtml)
+  element.innerHTML = peliculasHtml
+}
+
+async function crearTransaccion() {
+  const tipo = document.getElementById('accion').value
+  const fecha = moment().format('YYYY-MM-DD')
+  const estado = (tipo === 'Compra') ? 'Cancelado' : 'Pendiente'
+  checkoutObject.tipo = tipo
+  checkoutObject.fecha = fecha
+  checkoutObject.estado = estado
+  setTotalCarrito()
+  const request = await fetch(`${baseDir}ajax/transacciones.php`, {
+    method: 'POST',
+    body: JSON.stringify(checkoutObject)
+  })
+  if (typo === 'Compra') alert('Compra realizada')
+  else alert("Alquiler realizado")
+  const peliculasHtml = await request.text()
+  const element = document.getElementById('chechoutDetails');
+  element.innerHTML = ''
+  checkoutObject.details = []
+}
+
+function setTotalCarrito() {
+  const tipo = document.getElementById('accion').value
+  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
+    if (tipo === 'Compra') prev += pelicula.precioVenta
+    else prev += pelicula.precioAlquiler
+    return prev
+  }, 0)
+}
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   
   checkoutObject.details.push({id,nombre,imagen,precioAlquiler,precioVenta})
@@ -33,9 +73,12 @@ function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
     return getProductInChekout(detail)
   }) 
   const html = elementsString.join('<hr>')
+  setTotalCarrito()
   console.log(html)
   const element = document.getElementById('chechoutDetails');
   element.innerHTML = html
+  const totalElement = document.getElementById('totalCarrito')
+  totalElement.innerText = `$ ${checkoutObject.total}`
 }
 
 async function changeReaction (peliculaId) {

@@ -76,7 +76,7 @@ class Peliculas extends MySqlConnection {
       'error' => ''
     ];
 
-    $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;//Tomamos el id del usuario actual
+    $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: -1;//Tomamos el id del usuario actual, si no hay ningun usuario entonces tomamos el valor de -1
 
     //Tomamos los campos necesarios donde el id_usuario en en la tabla reacciones coincide con el id del usuario actual (el usuario le ha dado like)
     $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Activo', 'Inactivo') as reaccion FROM " . self::TABLE_NAME . " p";

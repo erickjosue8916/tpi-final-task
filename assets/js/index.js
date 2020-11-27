@@ -29,7 +29,8 @@ async function guardarCompra () {
 async function actualizarListadoPeliculas() {
   const filter = document.getElementById('busquedaInput').value || null
   const sort = document.getElementById('ordenInput').value || 'titulo'
-  let url = `${baseDir}ajax/peliculas.php?sort[${sort}]=asc`
+  const form = sort == 'titulo' ? 'asc' : 'desc';
+  let url = `${baseDir}ajax/peliculas.php?sort[${sort}]=${form}`
   if (filter) url += `&filter[titulo]=${filter}`
   const element = document.getElementById('peliculas')
   const request = await fetch(url, {})
@@ -86,7 +87,7 @@ function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
 async function changeReaction (peliculaId) {
   const url = `${baseDir}ajax/reaccion.php?pelicula_id=${peliculaId}`
   $result = await (await fetch(url, {})).text()
-  console.log($result)
+  //console.log($result)
   await chargeProducts()
 }
 

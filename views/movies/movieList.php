@@ -11,7 +11,7 @@
 				<option value="likes">Mas calificada</option>
 			</select>
 			<div class="input-group-append">
-				<label class="input-group-text bg-danger text-white label-select" for="ordenInput">Ordenar por</label>
+				<button class="input-group-text bg-danger text-white label-select" for="ordenInput" onclick='actualizarListadoPeliculas()'>Ordenar por</button>
 			</div>
 		</div>
 

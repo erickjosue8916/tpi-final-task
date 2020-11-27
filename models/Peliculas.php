@@ -5,7 +5,7 @@ class Peliculas extends MySqlConnection {
 
   const TABLE_NAME = 'peliculas';
   private $filterFields = ['titulo', 'disponibilidad'];
-  private $sortFields = ['titulo', 'stock', 'precio_alquiler', 'precio_venta', 'disponibilidad'];
+  private $sortFields = ['titulo', 'stock', 'precio_alquiler', 'precio_venta', 'disponibilidad','likes'];
 
   private $titulo;
   private $descripcion;
@@ -65,6 +65,7 @@ class Peliculas extends MySqlConnection {
     } else {
       $result['error'] = 'Server Error';
     }
+    //echo $sql;
     return json_encode($result);
   }
 
@@ -203,7 +204,9 @@ class Peliculas extends MySqlConnection {
             case 'disponibilidad':
               if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " p.disponibilidad " . $value ." "; 
               break;
-            
+              case 'likes':
+                if ( $value == 'ASC' || $value == 'DESC' ) $sql .= " likes " . $value ." , titulo ASC "; 
+                break;
             default:
               # code...
               break;

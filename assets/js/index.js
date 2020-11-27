@@ -1,6 +1,5 @@
 let checkoutObject = {
-  details: [],
-  total: 0
+  details: []
 }
 function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) {
   let html = `
@@ -46,6 +45,11 @@ async function crearTransaccion() {
   checkoutObject.tipo = tipo
   checkoutObject.fecha = fecha
   checkoutObject.estado = estado
+  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
+    if (tipo === 'Compra') prev += pelicula.precioVenta
+    else prev += pelicula.precioAlquiler
+    return prev
+  }, 0)
   const request = await fetch(`${baseDir}ajax/transacciones.php`, {
     method: 'POST',
     body: JSON.stringify(checkoutObject)
@@ -55,6 +59,7 @@ async function crearTransaccion() {
   const peliculasHtml = await request.text()
   const element = document.getElementById('chechoutDetails');
   element.innerHTML = ''
+  checkoutObject.details = []
 }
 
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {

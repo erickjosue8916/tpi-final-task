@@ -26,7 +26,6 @@
     <link rel="shortcut icon" href="<?=BASE_DIR?>assets/img/fondo/favicon.ico">
 </head>
 <body>
-<?php if (isset($_COOKIE["sessionId"])) { ?>
 
 <header>
   <!-- Navbar -->
@@ -52,7 +51,7 @@
             <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>" class="btn <?=($active == "Main") ? "active": ""; ?>">Home</a>
           </li>
           <?php
-          if ($_COOKIE["sessionId"]) {
+          if (isset($_COOKIE["sessionId"])) {
             if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'Administrador') {
               ?>
               <li class="nav-item ">
@@ -70,15 +69,24 @@
               <li class="nav-item ">
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/logOut" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
+              </li>
               <?php
             }
           } else {
-            header("Location: "  . BASE_DIR . "Users/login");
+            ?>
+            <li class="nav-item ">
+              <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/login" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign in</a>
+            </li>
+            <?php
+            //header("Location: "  . BASE_DIR . "Users/login");
           }
           ?>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/logOut" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
-          </li>
+
           <!--
           <li class="nav-item">
           </li>
@@ -91,5 +99,3 @@
   <!-- Navbar -->
 
 </header>
-
-  <?php } ?>

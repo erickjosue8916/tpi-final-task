@@ -10,8 +10,8 @@ function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) 
   <div class="col-6">
     <p class="font-weight-bold text-white">${nombre}</p>
     <!-- Precios de venta y alquiler de la pelicula -->
-    <label class="font-weight-light text-white">Comprar <p class="font-weight-bold text-success">${precioAlquiler}</p></label><br>
-    <label class="font-weight-light text-white">Alquilar <p class="font-weight-bold text-success">${precioVenta}</p></label>
+    <label class="font-weight-light text-white">Alquilar <p class="font-weight-bold text-success">${precioAlquiler}</p></label><br>
+    <label class="font-weight-light text-white">Comprar <p class="font-weight-bold text-success">${precioVenta}</p></label>
   </div>
 </div>`
 //console.log(html)
@@ -52,8 +52,8 @@ async function crearTransaccion() {
     body: JSON.stringify(checkoutObject)
   })
   if (tipo === 'Comprar') alert('Compra realizada')
-  else alert("Alquiler realizado")
   const peliculasHtml = await request.text()
+  console.log(peliculasHtml);
   const element = document.getElementById('chechoutDetails');
   element.innerHTML = ''
   checkoutObject.details = []
@@ -61,20 +61,6 @@ async function crearTransaccion() {
 
 function setTotalCarrito() {
   let tipo = getRadioValue("accion");
-  console.log(tipo);
-  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
-    if (tipo === "Comprar") prev += pelicula.precioAlquiler
-    else prev += pelicula.precioVenta
-    return prev
-  }, 0)
-  const totalElement = document.getElementById('totalCarrito')
-  totalElement.innerText = `$ ${checkoutObject.total}`
-}
-
-/*//Se comento esta porque los valores me los tira al revez
-function setTotalCarrito() {
-  let tipo = getRadioValue("accion");
-  console.log(tipo);
   checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
     if (tipo === "Comprar") prev += pelicula.precioVenta
     else prev += pelicula.precioAlquiler
@@ -82,8 +68,8 @@ function setTotalCarrito() {
   }, 0)
   const totalElement = document.getElementById('totalCarrito')
   totalElement.innerText = `$ ${checkoutObject.total}`
-} 
-*/
+}
+
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   
   checkoutObject.details.push({id,nombre,imagen,precioAlquiler,precioVenta})
@@ -95,8 +81,6 @@ function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   //console.log(html)
   const element = document.getElementById('chechoutDetails');
   element.innerHTML = html
-  const totalElement = document.getElementById('totalCarrito')
-  totalElement.innerText = `$ ${checkoutObject.total}`
 }
 
 async function changeReaction (peliculaId) {

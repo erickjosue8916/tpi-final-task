@@ -1,31 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{
+	/*Fuente general de toda la Pagina*/
 	font-family: 'Roboto', sans-serif;
 }
 
-.container{
-	min-height: 500px;
-}
-.container_foto {
-	background-color: rgba(8, 8, 10, 0.788);
-	padding: 0px;
-	overflow: hidden;
-    max-width: 279px;
-    height: 400px;
-    margin: 3px;
-    border-radius: 9px;
-}
 .fondo{
-
 	background-image: url(../img/fondo/fondo1.png);
 	background-repeat: no-repeat;
 	background-size: cover;
-	
-	/*background-size: cover;*/
 }
 .nav_color{
 	background-color:  #222831;/*#222831*/
-	
 	font-family: 'Raleway', sans-serif;
 	color: aliceblue;
 	font-size: 24px;
@@ -34,7 +19,6 @@
 .opacity_fond{
 	background-color: wheat;
 	opacity:0.5;
-	
 }
 
 .icon{
@@ -42,29 +26,9 @@
 }
 
 .nav_color ul li{
-	
 	text-align: center;
 	width: 200px;
 	color: aliceblue;
-}
-
-.login{
-	border-radius: 30px;
-	background-color: blanchedalmond; 
-	padding:50px;
-	height: 500px;
-	width:400px;
-	background-image: url(../img/fondo/login.jpg);
-	text-align: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	align-items: center;
-	color: aliceblue;
-	opacity: 1;
-}
-.login h1{
-	margin-top: 130px;
-	margin-bottom: 30px;
 }
 
 .fondo2{
@@ -84,10 +48,10 @@
 
 .formu2{
 	text-align: center;
-	border-radius: 25px;
+	border-radius: 10px;
 	padding:50px;
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 35%;
+	background-color: rgba(0, 0, 0, 0.589);
+	width: auto;
 	color:white;
 }
 
@@ -112,9 +76,32 @@
 	text-align: center;
 	color: #dc3545;
 	transition: all 0.5s ease;
-	/*height: 80px;*/
 }
 
+/* Searchbar estilos */
+.input-search{
+	border: none;
+	background-color: rgba(8, 8, 10, 0.459);
+}
+.input-search:focus{
+	background-color: rgba(8, 8, 10, 0.699);
+}
+.input-search::placeholder{
+	color: white;
+}
+/* Fin Searchbar estilos */
+
+/* Peliculas Cards estilos */
+
+.container_foto {
+	background-color: rgba(8, 8, 10, 0.788);
+	padding: 0px;
+	overflow: hidden;
+    max-width: 279px;
+    height: 400px;
+    margin: 3px;
+    border-radius: 9px;
+}
 .container_foto article {
 	padding: 10%;
 	position: absolute;
@@ -122,20 +109,17 @@
 	z-index: 1;
 	transition: all 0.5s ease;
 }
-
 .container_foto h2 {
 	color: #fff;
 	font-weight: 800;
 	font-size: 25px;
 	border-bottom: #fff solid 1px;
 }
-
 .container_foto h4 {
 	font-weight: 300;
 	color: #fff;
 	font-size: 16px;
 }
-
 .container_foto img {
     height: 100%;
 	width: 100%;
@@ -144,7 +128,6 @@
 	opacity: 0.4;
 	transition: all 4s ease;
 }
-
 .like__btn {
 	border: none;
 	background-color: #dc3545;
@@ -172,7 +155,6 @@
 .like__text{
 	font-size: 0.8rem;
 }
-
 .ver_mas {
 	background-color: #18191f;
 	position: absolute;
@@ -184,7 +166,6 @@
 	transform: translate(0px, 70px);
 	transition: all 0.2s ease-in-out;
 }
-
 .ver_mas button{
 	background-color:  rgba(8, 8, 10, 0.788);
 	border-color: rgba(8, 8, 10, 0.788);
@@ -196,8 +177,7 @@
 	width: 100%;
 	outline: none;
 }
-
-/*hovers*/
+/* Hovers */
 .ver_mas button:hover {
 	color: #dc3545;
 	transition: all 0.5s ease;
@@ -219,38 +199,7 @@
 	transform: translate(0px, 0px);
 	opacity: 1;
 }
-.foot{
-	background-color: rgba(0, 0, 0);
-	height:90px; 
-	padding:20px;
-	color: aliceblue;
-}
-/* para la tabla admin */
-.table-admin
-{
-	height: auto;
-	width: 100%;
-	border-radius: 5px;
-	background-color: pink;
-	
-}
-/* Para los forms */
-/* .bg{
-    background-color: #fff;  
-    width:80%; 
-	height:100vh;
-}    */
-
-h2{ 
-    margin-top: 2vh;
-    font-family:oswald; 
-	color: #f79fcf; 
-	
-}
-.form-group {
-    font-family: Oswald ;
-    margin-top: 0px;
-} 
+/* Fin Peliculas Cards estilos */
 
 #mlot {  
     margin-bottom: 10px;
@@ -276,7 +225,7 @@ h2{
     border-radius: 10px;
 }
 
-/* Carritos estilos */
+/* Carrito estilos */
 .fabCollapse {
 	display: block;
 	position: fixed;
@@ -293,75 +242,64 @@ h2{
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
-	/* 6dp */
 	box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
 	  0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
 	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-  
 .fabContent {
 	display: none;
 }
 .fabContentICO {
 	display: none;
 }
-
 .fa-times-circle{
 	color: #dc3545;
 	font-size: 25px;
 	padding: 7px;
 }
-
 .fabOpen {
 	background-color: rgba(8, 8, 10, 0.788);
 	width: 400px;
 	height: 300px;
 	border-radius: 8px;
-	/* 7dp */
 	box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2),
 	  0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12);
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
-  
 .fabOpen svg {
 	display: none;
 }
-  /* IMAGES */
 .img-responsive {
 	width: 100%;
 	max-width: 100%;
 	height: auto;
 	border-radius: 7px;
 }
-  
-  /* KEYFRAMES */
+.operacion{
+	border-radius: 8px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+/* MediaQueries */
 @media (min-width: 992px) {
 	.animate {
 	  animation-duration: 0.2s;
-	  -webkit-animation-duration: 0.2s;
 	  animation-fill-mode: both;
-	  -webkit-animation-fill-mode: both;
 	}
 }
-  
-  /* On screens that are 992px or less*/
 @media screen and (max-width: 992px) {
 	.modal {
 	  width: 70%;
 	}
-  
 	.fabOpen {
 	  height: 60%;
 	}
 }
-  
-  /* On screens that are 600px or less*/
 @media screen and (max-width: 600px) {
 	.modal {
 	  width: 90%;
 	}
-  
 	.fabOpen {
 	  right: 0;
 	  height: 100%;
@@ -369,4 +307,13 @@ h2{
 	  bottom: 0;
 	}
 }
-  
+/* Fin Carrito estilos */
+
+/* Footer */
+.foot{
+	background-color: rgba(0, 0, 0);
+	height:90px; 
+	padding:20px;
+	color: aliceblue;
+}
+/* Fin Footer */

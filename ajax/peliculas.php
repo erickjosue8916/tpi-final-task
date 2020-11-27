@@ -18,7 +18,7 @@ if (isset($_REQUEST)) {
 	$result2 = $peliculas->likedbyUser();//Obtenemos todas las peliculas que el usuario actual le ha dado like
 	$result2 = json_decode($result2, true);
 
-	$html = '<div class="row">';
+	$html = '<div class="row justify-content-center align-items-center">';
 	foreach ($result['peliculas'] as $pelicula) {//Por cada pelicula
 
 		foreach ($result2['peliculas'] as $key => $likesUsuario) {//Por cada pelicula que el usuario haya dado like

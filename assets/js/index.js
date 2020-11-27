@@ -45,11 +45,7 @@ async function crearTransaccion() {
   checkoutObject.tipo = tipo
   checkoutObject.fecha = fecha
   checkoutObject.estado = estado
-  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
-    if (tipo === 'Compra') prev += pelicula.precioVenta
-    else prev += pelicula.precioAlquiler
-    return prev
-  }, 0)
+  setTotalCarrito()
   const request = await fetch(`${baseDir}ajax/transacciones.php`, {
     method: 'POST',
     body: JSON.stringify(checkoutObject)
@@ -62,6 +58,14 @@ async function crearTransaccion() {
   checkoutObject.details = []
 }
 
+function setTotalCarrito() {
+  const tipo = document.getElementById('accion').value
+  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
+    if (tipo === 'Compra') prev += pelicula.precioVenta
+    else prev += pelicula.precioAlquiler
+    return prev
+  }, 0)
+}
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   
   checkoutObject.details.push({id,nombre,imagen,precioAlquiler,precioVenta})
@@ -69,9 +73,12 @@ function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
     return getProductInChekout(detail)
   }) 
   const html = elementsString.join('<hr>')
+  setTotalCarrito()
   console.log(html)
   const element = document.getElementById('chechoutDetails');
   element.innerHTML = html
+  const totalElement = document.getElementById('totalCarrito')
+  totalElement.innerText = `$ ${checkoutObject.total}`
 }
 
 async function changeReaction (peliculaId) {

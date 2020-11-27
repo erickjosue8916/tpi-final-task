@@ -29,7 +29,7 @@
 			<div class="row p-2 bg-dark mx-auto operacion">
 				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="accion" value="Comprar" /> Comprar</label>
 				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="accion" value="Alquilar"/> Alquilar</label>
-				<h5 class="text-center text-white">Total <span class="badge badge-success">$0.00</span></h5>
+				<h5 class="text-center text-white">Total <span class="badge badge-success" id="totalCarrito">$0.00</span></h5>
 			</div>
 			<div class="alert alert-warning" role="alert">
 				<h4 class="alert-heading">Aviso!</h4>

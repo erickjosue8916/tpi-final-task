@@ -52,11 +52,10 @@ class Peliculas extends MySqlConnection {
     $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, count(re.id_pelicula) as likes, IF (re.id_usuario = $usuarioId, 'Activo', 'Inactivo') as reaccion FROM " . self::TABLE_NAME . " p";
     $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
     $sql .= $this->createSqlFilter($filter);
-    $sql .= $this->createSqlSort($sort);
     $sql .= " GROUP BY p.id_pelicula";
+    $sql .= $this->createSqlSort($sort);
     $sql .= " limit $limit offset $offset";
     $stmt = $this->db->prepare($sql);
-
     $this->setPrepareValues($stmt, $filter);
     if ($stmt->execute()) {
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

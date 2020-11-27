@@ -3,6 +3,18 @@
 <main class="container">
 	<!-- En este apartado se muestran las peliculas -->
 	<div class="row justify-content-center align-items-center">
+
+		<div class="input-group mb-3 col-sm m-3">
+			<select class="custom-select input-search text-white" id="ordenInput">
+				<option selected>Seleccione una opción...</option>
+				<option value="titulo">Titulo</option>
+				<option value="likes">Mas calificada</option>
+			</select>
+			<div class="input-group-append">
+				<label class="input-group-text bg-danger text-white label-select" for="ordenInput">Ordenar por</label>
+			</div>
+		</div>
+
 		<div class="input-group mb-3 col-sm m-3">
 			<input class="form-control input-search text-white" 
 					type="text" 
@@ -36,7 +48,7 @@
 				<hr>
 				<p class="mb-0 font-weight-light">El tiempo de devolucion de una pelicula alquilada es de 1 semana</p>
 			</div>
-			<div class="text-center mt-3">
+			<div class="text-center mt-3 p-2">
 				<button type="button" class="btn btn-block btn-outline-danger" onclick="crearTransaccion()">Realizar Transaccion</button>
 			</div>
 		</div>

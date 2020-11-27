@@ -90,6 +90,9 @@
 	color: white;
 }
 
+.custom-select:focus{
+	background-color:  rgba(8, 8, 10, 0.76);
+}
 .label-select{
 	border: none;
 }

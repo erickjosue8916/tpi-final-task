@@ -49,10 +49,11 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Active', 'Inactive') as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, count(re.id_pelicula) as likes, IF (re.id_usuario = $usuarioId, 'Activo', 'Inactivo') as reaccion FROM " . self::TABLE_NAME . " p";
     $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
+    $sql .= " GROUP BY p.id_pelicula";
     $sql .= " limit $limit offset $offset";
     $stmt = $this->db->prepare($sql);
 
@@ -68,6 +69,33 @@ class Peliculas extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Busca todas las peliculas a las que el usuario actual les ha dado like
+  public function likedbyUser(){
+    $result = [
+      'peliculas' => [],
+      'error' => ''
+    ];
+
+    $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;//Tomamos el id del usuario actual
+
+    //Tomamos los campos necesarios donde el id_usuario en en la tabla reacciones coincide con el id del usuario actual (el usuario le ha dado like)
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, IF (re.id_usuario = $usuarioId, 'Activo', 'Inactivo') as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
+    $sql .= " WHERE re.id_usuario = :id";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':id', $usuarioId);
+
+    if ($stmt->execute()) {
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {//Obtenemos todos los campos que coinciden con la busqueda
+              array_push($result['peliculas'], $row);
+            }
+            
+    } else {
+      $result['error'] = 'Server Error';
+    }
+    return json_encode($result);//Devuelve todas las peliculas que el usuario le dio like
+  }
+
   public function listAdmin ($page = 1, $limit = 20, $filter = [], $sort = []) {
     $result = [
       'peliculas' => [],
@@ -75,9 +103,11 @@ class Peliculas extends MySqlConnection {
     ];
     $usuarioId = (isset($_COOKIE['id_usuario'])) ? $_COOKIE['id_usuario']: 0;
     $offset = ($page - 1) * $limit;
-    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad as reaccion FROM " . self::TABLE_NAME . " p";
+    $sql = "SELECT p.id_pelicula, p.titulo, p.descripcion,  p.imagen, p.stock, p.precio_alquiler, p.precio_venta, p.disponibilidad, count(re.id_pelicula) as likes FROM " . self::TABLE_NAME . " p";
+    $sql .= " LEFT JOIN reacciones re on re.id_pelicula = p.id_pelicula ";
     $sql .= $this->createSqlFilter($filter);
     $sql .= $this->createSqlSort($sort);
+    $sql .= " GROUP BY p.id_pelicula";
     $sql .= " limit $limit offset $offset";
     $stmt = $this->db->prepare($sql);
 

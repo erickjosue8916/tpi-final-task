@@ -42,7 +42,7 @@ async function crearTransaccion() {
   //const tipo = document.getElementById('accion').value
   const tipo = getRadioValue("accion");
   const fecha = moment().format('YYYY-MM-DD')
-  const estado = (tipo === 'Compra') ? 'Cancelado' : 'Pendiente'
+  const estado = (tipo === 'Comprar') ? 'Cancelado' : 'Pendiente'
   checkoutObject.tipo = tipo
   checkoutObject.fecha = fecha
   checkoutObject.estado = estado
@@ -51,7 +51,7 @@ async function crearTransaccion() {
     method: 'POST',
     body: JSON.stringify(checkoutObject)
   })
-  if (tipo === 'Compra') alert('Compra realizada')
+  if (tipo === 'Comprar') alert('Compra realizada')
   else alert("Alquiler realizado")
   const peliculasHtml = await request.text()
   const element = document.getElementById('chechoutDetails');
@@ -61,13 +61,29 @@ async function crearTransaccion() {
 
 function setTotalCarrito() {
   let tipo = getRadioValue("accion");
-  tipo = tipo == null ? "Compra" : tipo;
+  console.log(tipo);
   checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
-    if (tipo === "Compra") prev += pelicula.precioVenta
+    if (tipo === "Comprar") prev += pelicula.precioAlquiler
+    else prev += pelicula.precioVenta
+    return prev
+  }, 0)
+  const totalElement = document.getElementById('totalCarrito')
+  totalElement.innerText = `$ ${checkoutObject.total}`
+}
+
+/*//Se comento esta porque los valores me los tira al revez
+function setTotalCarrito() {
+  let tipo = getRadioValue("accion");
+  console.log(tipo);
+  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
+    if (tipo === "Comprar") prev += pelicula.precioVenta
     else prev += pelicula.precioAlquiler
     return prev
   }, 0)
-}
+  const totalElement = document.getElementById('totalCarrito')
+  totalElement.innerText = `$ ${checkoutObject.total}`
+} 
+*/
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   
   checkoutObject.details.push({id,nombre,imagen,precioAlquiler,precioVenta})

@@ -13,7 +13,7 @@
 
     <section class="">
         <h2>Peliculas</h2>
-	<table class="" style="background-color:aquamarine">
+	<table class="table table-bordered table-hover table-admin" >
 	<thead class="thead-dark">
 		<tr>
 		<?php

@@ -13,34 +13,31 @@ if (isset($_REQUEST)) {
   $total = (isset($_REQUEST['transaction'])) ? $_REQUEST['total']: 0;
   $estado = (isset($_REQUEST['estado'])) ? $_REQUEST['estado']: 'Cancelado';
   $tipo = (isset($_REQUEST['tipo'])) ? $_REQUEST['tipo']: 'Compra';
-  $detalleTransaccion = (isset($_REQUEST["detalle"])) ? $_REQUEST["id_usuario"] : 0;
-  
+  $detailsTransaccion = (isset($_REQUEST["details"])) ? $_COOKIE['id_usuario'] : 0;
   $transaction = new Transacciones();
   $transaction->setFecha($fecha);
   $transaction->setTotal($total);
-  $transaction->setIdUsuario($usuarioId);
+  $transaction->setIdUsuario($_COOKIE['id_usuario']);
   $transaction->setEstado($estado);
   $transaction->setTipo($tipo);
-
   $result = $transaction->create();
   $result = json_decode($result, true);
+  var_dump($_REQUEST["details"]);
   if ($tipo == 'Compra') {
-    foreach ($detalleTransaccion as $detalle) { 
+    foreach ($detailsTransaccion as $details) { 
       $compra = new Compras();
       $compra->setIdTransaccion(1);
-      $compra->setIdPelicula($detalle["pelicula_id"]);
-      $compra->setCantidad($detalle["cantidad_id"]);
+      $compra->setIdPelicula($details["pelicula_id"]);
+      $compra->setCantidad($details["cantidad_id"]);
     }
   } else {
-    foreach ($detalleTransaccion as $detalle) { 
+    foreach ($detailsTransaccion as $details) { 
       $compra = new Alquileres();
       $compra->setIdTransaccion(1);
-      $compra->setIdPelicula($detalle["pelicula_id"]);
-      $compra->setCantidad($detalle["cantidad_id"]);
+      $compra->setIdPelicula($details["pelicula_id"]);
+      $compra->setCantidad($details["cantidad_id"]);
       $compra->setFecha(1);
     }
   }
-  
-  
-  echo $result
+  echo $result;
 }

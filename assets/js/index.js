@@ -1,5 +1,6 @@
 let checkoutObject = {
-  details: []
+  details: [],
+  total: 0
 }
 function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) {
   let html = `
@@ -24,6 +25,36 @@ async function guardarAlquiler () {
 
 async function guardarCompra () {
   
+}
+
+async function actualizarListadoPeliculas() {
+  const filter = document.getElementById('busquedaInput').value || null
+  const sort = document.getElementById('ordenInput').value || 'titulo'
+  let url = `${baseDir}ajax/peliculas.php?sort[${sort}]=asc`
+  if (filter) url += `&filter[titulo]=${filter}`
+  const element = document.getElementById('peliculas')
+  const request = await fetch(url, {})
+  const peliculasHtml = await request.text()
+  // console.log(peliculasHtml)
+  element.innerHTML = peliculasHtml
+}
+
+async function crearTransaccion() {
+  const tipo = document.getElementById('accion').value
+  const fecha = moment().format('YYYY-MM-DD')
+  const estado = (tipo === 'Compra') ? 'Cancelado' : 'Pendiente'
+  checkoutObject.tipo = tipo
+  checkoutObject.fecha = fecha
+  checkoutObject.estado = estado
+  const request = await fetch(`${baseDir}ajax/transacciones.php`, {
+    method: 'POST',
+    body: JSON.stringify(checkoutObject)
+  })
+  if (typo === 'Compra') alert('Compra realizada')
+  else alert("Alquiler realizado")
+  const peliculasHtml = await request.text()
+  const element = document.getElementById('chechoutDetails');
+  element.innerHTML = ''
 }
 
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {

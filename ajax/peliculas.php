@@ -14,7 +14,7 @@ if (isset($_REQUEST)) {
 	$peliculas = new Peliculas();
 	$result = $peliculas->list($page, $limit, $filter, $sort);
 	$result = json_decode($result, true);
-	$html = '<div class="row">';
+	$html = '<div class="row justify-content-center align-items-center">';
 	foreach ($result['peliculas'] as $pelicula) { 
 		$html .= "<div class='col-md-4 container_foto '>
 					<div class='ver_mas text-center'>

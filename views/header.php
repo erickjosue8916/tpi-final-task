@@ -22,9 +22,11 @@
     <!-- CSS Styles -->
     <link rel="stylesheet" href="<?=BASE_DIR?>/assets/css/styles.css">
     
-    <title>TPI -render con OOP-</title>
+    <title>Cinema</title>
+
+    <link rel="shortcut icon" href="<?=BASE_DIR?>/assets/img/fondo/favicon.ico">
 </head>
-<body >
+<body>
 <?php if (isset($_COOKIE["sessionId"])) { ?>
 
 <header>

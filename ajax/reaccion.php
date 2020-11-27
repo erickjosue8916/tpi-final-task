@@ -10,7 +10,8 @@ if (isset($_REQUEST)) {
 	$pelicula_id = (!isset($_GET['pelicula_id'])) ? 0 : $_GET['pelicula_id'];
 	if ($pelicula_id !== 0) {
         $reacciones = new Reacciones();
-	    $result = $reacciones->findUserMovie($_COOKIE['id_usuario'],$pelicula_id);
+        $id_usuario = isset($_COOKIE['id_usuario']) ? $_COOKIE['id_usuario'] : -1;
+	    $result = $reacciones->findUserMovie($id_usuario,$pelicula_id);
     }
     echo "Pelicula Id : $pelicula_id";
 }

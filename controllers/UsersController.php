@@ -30,6 +30,7 @@ class UsersController {
     public function logOut(){
         require_once "models/User.php";
         $user = new User();
+        setcookie("id_usuario", null, strtotime('+10 second'),'/');
         setcookie("sessionId", null, strtotime('+10 second'),'/');
         setcookie("rol",null, strtotime('+10 second'),'/');
         unset($_SESSION);

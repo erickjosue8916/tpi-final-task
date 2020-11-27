@@ -17,7 +17,7 @@ if (isset($_REQUEST)) {
 
 	$result2 = $peliculas->likedbyUser();//Obtenemos todas las peliculas que el usuario actual le ha dado like
 	$result2 = json_decode($result2, true);
-	
+
 	$html = '<div class="row justify-content-center align-items-center">';
 	foreach ($result['peliculas'] as $pelicula) {//Por cada pelicula
 
@@ -26,12 +26,14 @@ if (isset($_REQUEST)) {
 			if($likesUsuario['titulo'] == $pelicula['titulo'] ){
 				$pelicula['reaccion'] = $likesUsuario['reaccion'];//Significa que el boton debe estar activo
 			}
-		}
+		} 
 
 		$html .= "<div class='col-md-4 container_foto '>
-					<div class='ver_mas text-center'>
-						<button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta])\">Añadir al carrito</button>
-					</div>
+					<div class='ver_mas text-center'>";
+		
+		$html .= isset($_COOKIE['sessionId']) ? "<button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta])\">Añadir al carrito</button>" : " ";
+		
+		$html .=	"</div>
 					<article class='text-left'>
 						<h2> " . $pelicula["titulo"] . "</h2>
 						<h4> " . $pelicula["descripcion"] . "</h4>";

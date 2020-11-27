@@ -17,6 +17,9 @@
 	</div>
 	<div id="peliculas"></div>
 	
+	<?php
+		if(isset($_COOKIE['sessionId'])){
+	?>
 	<!-- Carrito -->
 	<div id="content" class="fabCollapse" class="animate zoomIn">
 		<i id="fab" class="fa fa-shopping-cart"></i>
@@ -42,5 +45,8 @@
 		</div>
 	</div>
 	<!-- Fin Carrito -->
+	<?php
+		}
+	?>
 </main>
 </div>

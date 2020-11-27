@@ -89,6 +89,10 @@
 .input-search::placeholder{
 	color: white;
 }
+
+.label-select{
+	border: none;
+}
 /* Fin Searchbar estilos */
 
 /* Peliculas Cards estilos */

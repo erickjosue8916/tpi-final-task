@@ -14,7 +14,7 @@ function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) 
     <label class="font-weight-light text-white">Alquilar <p class="font-weight-bold text-success">${precioVenta}</p></label>
   </div>
 </div>`
-console.log(html)
+//console.log(html)
   return html
 }
 
@@ -39,9 +39,10 @@ async function actualizarListadoPeliculas() {
 }
 
 async function crearTransaccion() {
-  const tipo = document.getElementById('accion').value
+  //const tipo = document.getElementById('accion').value
+  const tipo = getRadioValue("accion");
   const fecha = moment().format('YYYY-MM-DD')
-  const estado = (tipo === 'Compra') ? 'Cancelado' : 'Pendiente'
+  const estado = (tipo === 'Comprar') ? 'Cancelado' : 'Pendiente'
   checkoutObject.tipo = tipo
   checkoutObject.fecha = fecha
   checkoutObject.estado = estado
@@ -50,7 +51,7 @@ async function crearTransaccion() {
     method: 'POST',
     body: JSON.stringify(checkoutObject)
   })
-  if (typo === 'Compra') alert('Compra realizada')
+  if (tipo === 'Comprar') alert('Compra realizada')
   else alert("Alquiler realizado")
   const peliculasHtml = await request.text()
   const element = document.getElementById('chechoutDetails');
@@ -59,13 +60,30 @@ async function crearTransaccion() {
 }
 
 function setTotalCarrito() {
-  const tipo = document.getElementById('accion').value
+  let tipo = getRadioValue("accion");
+  console.log(tipo);
   checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
-    if (tipo === 'Compra') prev += pelicula.precioVenta
+    if (tipo === "Comprar") prev += pelicula.precioAlquiler
+    else prev += pelicula.precioVenta
+    return prev
+  }, 0)
+  const totalElement = document.getElementById('totalCarrito')
+  totalElement.innerText = `$ ${checkoutObject.total}`
+}
+
+/*//Se comento esta porque los valores me los tira al revez
+function setTotalCarrito() {
+  let tipo = getRadioValue("accion");
+  console.log(tipo);
+  checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
+    if (tipo === "Comprar") prev += pelicula.precioVenta
     else prev += pelicula.precioAlquiler
     return prev
   }, 0)
-}
+  const totalElement = document.getElementById('totalCarrito')
+  totalElement.innerText = `$ ${checkoutObject.total}`
+} 
+*/
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   
   checkoutObject.details.push({id,nombre,imagen,precioAlquiler,precioVenta})
@@ -74,7 +92,7 @@ function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   }) 
   const html = elementsString.join('<hr>')
   setTotalCarrito()
-  console.log(html)
+  //console.log(html)
   const element = document.getElementById('chechoutDetails');
   element.innerHTML = html
   const totalElement = document.getElementById('totalCarrito')
@@ -130,3 +148,17 @@ $(document).ready(function() {
     $(".fa-shopping-cart").toggleClass("fabContentICO");
   });
 });
+
+function getRadioValue(groupName) {
+  var _result;
+  try {
+      var o_radio_group = document.getElementsByName(groupName);
+      for (var a = 0; a < o_radio_group.length; a++) {
+          if (o_radio_group[a].checked) {
+              _result = o_radio_group[a].value;
+              break;
+          }
+      }
+  } catch (e) { }
+  return _result;
+}

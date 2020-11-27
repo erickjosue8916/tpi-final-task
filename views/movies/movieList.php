@@ -42,8 +42,8 @@
 
 			</div>
 			<div class="row p-2 bg-dark mx-auto operacion">
-				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="accion" value="Comprar" /> Comprar</label>
-				<label class="text-center col-6 font-weight-light text-white"><input type="radio" name="accion" value="Alquilar"/> Alquilar</label>
+				<label class="text-center col-6 font-weight-light text-white"><input type="radio" onclick='setTotalCarrito()' name="accion" value="Comprar" checked="checked"/> Comprar</label>
+				<label class="text-center col-6 font-weight-light text-white"><input type="radio" onclick='setTotalCarrito()' name="accion" value="Alquilar"/> Alquilar</label>
 				<h5 class="text-center text-white">Total <span class="badge badge-success" id="totalCarrito">$0.00</span></h5>
 			</div>
 			<div class="alert alert-warning" role="alert">

@@ -8,12 +8,13 @@ require_once "../models/Alquileres.php";
 require_once "../models/Compras.php";
 
 if (isset($_REQUEST)) {
-  $exampleTransaction = [[]];
-  $fecha = (isset($_REQUEST['fecha'])) ? $_REQUEST['fecha']: '2020-11-23';
-  $total = (isset($_REQUEST['transaction'])) ? $_REQUEST['total']: 0;
-  $estado = (isset($_REQUEST['estado'])) ? $_REQUEST['estado']: 'Cancelado';
-  $tipo = (isset($_REQUEST['tipo'])) ? $_REQUEST['tipo']: 'Compra';
-  $detailsTransaccion = (isset($_REQUEST["details"])) ? $_COOKIE['id_usuario'] : 0;
+  $datos = json_decode($_REQUEST['data'], true);
+  var_dump($datos);
+  $fecha = (isset($datos['fecha'])) ? $datos['fecha']: '2020-11-23';
+  $total = (isset($datos['total'])) ? $datos['total']: 0;
+  $estado = (isset($datos['estado'])) ? $datos['estado']: 'Cancelado';
+  $tipo = (isset($datos['tipo'])) ? $datos['tipo']: 'Compra';
+  $detailsTransaccion = (isset($datos["details"])) ? $datos['details'] : 0;
   $transaction = new Transacciones();
   $transaction->setFecha($fecha);
   $transaction->setTotal($total);
@@ -22,22 +23,24 @@ if (isset($_REQUEST)) {
   $transaction->setTipo($tipo);
   $result = $transaction->create();
   $result = json_decode($result, true);
-  var_dump($_REQUEST["details"]);
+  var_dump($result);
   if ($tipo == 'Compra') {
     foreach ($detailsTransaccion as $details) { 
       $compra = new Compras();
-      $compra->setIdTransaccion(1);
-      $compra->setIdPelicula($details["pelicula_id"]);
-      $compra->setCantidad($details["cantidad_id"]);
+      $compra->setIdTransaccion($result['id_transaccion']);
+      $compra->setIdPelicula($details["id_pelicula"]);
+      $compra->setCantidad(1);
+      $compra->create();
     }
   } else {
     foreach ($detailsTransaccion as $details) { 
-      $compra = new Alquileres();
-      $compra->setIdTransaccion(1);
-      $compra->setIdPelicula($details["pelicula_id"]);
-      $compra->setCantidad($details["cantidad_id"]);
-      $compra->setFecha(1);
+      $alquiler = new Alquileres();
+      $alquiler->setIdTransaccion($result['id_transaccion']);
+      $alquiler->setIdPelicula($details["id_pelicula"]);
+      $alquiler->setCantidad(1);
+      $alquiler->setFecha($fecha);
+      $alquiler->create();
     }
   }
-  echo $result;
+  // echo $result;
 }

@@ -218,7 +218,7 @@ class Transacciones extends MySqlConnection {
       'success' => false,
       'error' => ''
     ];
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (fecha, total, id_usuario, estado, tipo) VALUES (:fecha, :total, :id_usuario, :estado, :tipo) ";
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (fecha_transaccion, total_transaccion, id_usuario, estado, tipo_transaccion) VALUES (:fecha, :total, :id_usuario, :estado, :tipo) ";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":fecha", $this->getFecha());
     $stmt->bindValue(":total", $this->getTotal());

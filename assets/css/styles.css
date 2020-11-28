@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 *{
 	/*Fuente general de toda la Pagina*/
 	font-family: 'Roboto', sans-serif;
@@ -11,9 +13,8 @@
 }
 .nav_color{
 	background-color:  #222831;/*#222831*/
-	font-family: 'Raleway', sans-serif;
 	color: aliceblue;
-	font-size: 24px;
+	font-size: 26px;
 }
 
 .opacity_fond{
@@ -22,7 +23,7 @@
 }
 
 .icon{
-	margin-left: 50px;
+	padding-left: 15px;
 }
 
 .nav_color ul li{
@@ -49,28 +50,22 @@
 .formu2{
 	text-align: center;
 	border-radius: 10px;
-	padding:50px;
+	padding: 50px;
 	background-color: rgba(0, 0, 0, 0.589);
 	width: auto;
 	color:white;
 }
-
-
 .opaco{
 	background-image: url(../img/fondo/fondo1.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	opacity: 0.8;
 }
-
-
-
 .nav_color a{
 	display: inline-flex;
 	text-decoration: none;
 	color: white;
 }
-
 .nav_color ul :hover{
 	font-weight: bolder;
 	text-align: center;
@@ -90,6 +85,9 @@
 	color: white;
 }
 
+.custom-select:focus{
+	background-color:  rgba(8, 8, 10, 0.76);
+}
 .label-select{
 	border: none;
 }
@@ -182,6 +180,13 @@
 	outline: none;
 }
 /* Hovers */
+.like__btn:hover {
+	background-color: #db0a1f;
+}
+.disabled:hover {
+	background-color: #5f5f5f;
+	color: #d4cfcf;
+}
 .ver_mas button:hover {
 	color: #dc3545;
 	transition: all 0.5s ease;
@@ -194,11 +199,9 @@
 	opacity: 0.1;
 	transform: scale(1.5);
 }
-
 .container_foto:hover article {
 	transform: translate(2px, -69px);
 }
-
 .container_foto:hover .ver_mas {
 	transform: translate(0px, 0px);
 	opacity: 1;
@@ -312,6 +315,47 @@
 	}
 }
 /* Fin Carrito estilos */
+
+/* Estilos de las tablas */
+.table-styles th h1{
+	font-weight: bold;
+	font-size: 1em;
+	text-align: center;
+	color: white;
+}
+.table-styles td {
+	color: white;
+	font-weight: normal;
+	font-size: 1em;
+	box-shadow: 0 2px 2px -2px #0E1119;
+}
+.table-styles {
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 8px;
+	border-collapse: collapse;
+}
+.table-styles td, .table-styles th {
+	padding: 0.8em;
+}
+.table-styles tr:nth-child(odd) {
+	background-color: #1a1c22;
+}
+.table-styles tr:nth-child(even) {
+	background-color: #242527;
+}
+.table-styles th {
+	background-color: #0f121a;
+}
+.table-styles td:first-child {
+	color: #FB667A;
+}
+.table-styles tr:hover {
+	background-color: #3e4044;
+	box-shadow: 0 6px 6px -6px #0E1119;
+}
+/* Fin Estilos de las tablas */
 
 /* Footer */
 .foot{

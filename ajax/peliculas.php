@@ -29,12 +29,12 @@ if (isset($_REQUEST)) {
 		} 
 
 		$html .= "<div class='col-md-4 container_foto '>
-					<div class='ver_mas text-center'>";
+					";
 		
 		//Si tiene la sesion iniciada, mostrara el boton para agregar la pelicula al carrito
-		$html .= isset($_COOKIE['sessionId']) ? "<button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta])\">Añadir al carrito</button>" : " ";
+		$html .= isset($_COOKIE['sessionId']) ? "<div class='ver_mas text-center'> <button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta])\">Añadir al carrito</button> </div>" : " ";
 		
-		$html .=	"</div>
+		$html .=	"
 					<article class='text-left'>
 						<h2> " . $pelicula["titulo"] . "</h2>
 						<h4> " . $pelicula["descripcion"] . "</h4>";
@@ -43,7 +43,7 @@ if (isset($_REQUEST)) {
 					if($pelicula["reaccion"] == 'Activo'){
 						$html .= "<button type='button' class='like__btn' onclick='changeReaction(". $pelicula['id_pelicula'] . ")'>
 							<i class='like__icon fa fa-heart'></i>
-							<span class='like__text'>Me gusta</span>
+							<span class='like__text'>". $pelicula["likes"] ." Me gusta</span>
 						</button>";
 					}else{
 						$html .= "<button type='button' class='like__btn disabled' onclick='changeReaction(". $pelicula['id_pelicula'] . ")'>

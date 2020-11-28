@@ -46,7 +46,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarExample01">
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0 ">

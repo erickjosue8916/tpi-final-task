@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap');
+
 *{
 	/*Fuente general de toda la Pagina*/
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Noto Sans TC', sans-serif;
 }
 
 .fondo{
@@ -11,9 +13,8 @@
 }
 .nav_color{
 	background-color:  #222831;/*#222831*/
-	font-family: 'Raleway', sans-serif;
 	color: aliceblue;
-	font-size: 24px;
+	font-size: 26px;
 }
 
 .opacity_fond{
@@ -22,7 +23,7 @@
 }
 
 .icon{
-	margin-left: 50px;
+	padding-left: 15px;
 }
 
 .nav_color ul li{
@@ -49,28 +50,22 @@
 .formu2{
 	text-align: center;
 	border-radius: 10px;
-	padding:50px;
+	padding: 50px;
 	background-color: rgba(0, 0, 0, 0.589);
 	width: auto;
 	color:white;
 }
-
-
 .opaco{
 	background-image: url(../img/fondo/fondo1.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	opacity: 0.8;
 }
-
-
-
 .nav_color a{
 	display: inline-flex;
 	text-decoration: none;
 	color: white;
 }
-
 .nav_color ul :hover{
 	font-weight: bolder;
 	text-align: center;
@@ -316,7 +311,58 @@
 }
 /* Fin Carrito estilos */
 
+/* Estilos de las tablas */
+.table-styles th h1{
+	font-weight: bold;
+	font-size: 1em;
+	text-align: left;
+	color: white;
+}
+.table-styles td {
+	color: white;
+	font-weight: normal;
+	font-size: 1em;
+	box-shadow: 0 2px 2px -2px #0E1119;
+}
+.table-styles {
+	text-align: left;
+	width: 80%;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0 0 8em 0;
+	border-radius: 8px;
+}
+.table-styles td, .table-styles th {
+	padding-bottom: 2%;
+	padding-top: 2%;
+	padding-left:2%;  
+}
+/* Background-color of the odd rows */
+.table-styles tr:nth-child(odd) {
+	background-color: #1a1c22;
+}
+/* Background-color of the even rows */
+.table-styles tr:nth-child(even) {
+	background-color: #242527;
+}
+.table-styles th {
+	background-color: #0f121a;
+}
+.table-styles td:first-child {
+	color: #FB667A;
+	padding-right: 6px;
+}
+.table-styles tr:hover {
+	background-color: #3e4044;
+	box-shadow: 0 6px 6px -6px #0E1119;
+}
 
+/* MediaQueries */
+@media (max-width: 800px) {
+	.table-styles td:nth-child(7),
+	.table-styles th:nth-child(7) { display: none; }
+}
+/* Fin Estilos de las tablas */
 
 /* Footer */
 .foot{

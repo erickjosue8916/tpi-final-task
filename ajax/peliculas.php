@@ -48,7 +48,7 @@ if (isset($_REQUEST)) {
 					}else{
 						$html .= "<button type='button' class='like__btn disabled' onclick='changeReaction(". $pelicula['id_pelicula'] . ")'>
 							<i class='like__icon fa fa-heart'></i>
-							<span class='like__text'>Me gusta</span>
+							<span class='like__text'>". $pelicula["likes"] ." Me gusta</span>
 						</button>";
 					}
 		$html .= "	</article>

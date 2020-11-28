@@ -50,13 +50,13 @@ class Alquileres extends MySqlConnection {
       'success' => false,
       'error' => ''
     ];
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (id_transaccion, id_pelicula, cantidad, fecha) VALUES (:id_transaccion, :id_pelicula, :cantidad, :fecha) ";
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (id_transaccion, id_pelicula, cantidad, fecha_devolucion) VALUES (:id_transaccion, :id_pelicula, :cantidad, :fecha) ";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id_transaccion", $this->getIdTransaccion());
     $stmt->bindValue(":id_pelicula", $this->getIdPelicula());
     $stmt->bindValue(":cantidad", $this->getCantidad());
     $stmt->bindValue(":fecha", $this->getFecha());
-
+    
     try {
       $stmt->execute();
       $last_id = $this->db->lastInsertId();

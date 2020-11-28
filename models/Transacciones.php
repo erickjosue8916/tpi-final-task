@@ -70,7 +70,7 @@ class Transacciones extends MySqlConnection {
           $sql .= ($i == 0 ) ? " WHERE " : " AND ";
           switch ($key) {
             case 'fecha':
-              $sql .= "t.fecha LIKE :fecha"; 
+              $sql .= "t.fecha_transaccion LIKE :fecha"; 
               break;
             case 'idUsuario':
               $sql .= "t.id_usuario LIKE :id_usuario"; 
@@ -79,7 +79,7 @@ class Transacciones extends MySqlConnection {
               $sql .= "t.estado LIKE :estado"; 
               break;        
             case 'tipo':
-              $sql .= "t.tipo LIKE :tipo"; 
+              $sql .= "t.tipo_transaccion LIKE :tipo"; 
               break;
               
             default:

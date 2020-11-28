@@ -37,4 +37,29 @@ class UsersController {
         $user->logOut();
         //header("Location: " . BASE_DIR);
     } 
+
+    public function register(){
+        if (empty($_POST)) {
+            require_once "views/registerUser.php";
+        } else {
+        require_once "models/User.php";
+            $User = new User();
+            $User->setNombre($_POST['nombre']);
+            $User->setApellido($_POST['apellido']);
+            $User->setEmail($_POST['email']);
+            $User->setTelefono($_POST['telefono']);
+            $User->setDireccion($_POST['direccion']);
+            $User->setUserName($_POST['username']);
+            $User->setUserPassword($_POST['password']);
+            $User->setRol("Cliente");
+
+            $result = json_decode($User->register(),true);
+            if ($result['success']) {
+                header("Location: " . BASE_DIR . "Users/login");
+            } else {
+                $error = $result['error'];
+                require_once "views/registerUser.php";
+            }
+        }
+    }
 }

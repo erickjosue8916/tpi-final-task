@@ -1,9 +1,9 @@
 /* Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 *{
 	/*Fuente general de toda la Pagina*/
-	font-family: 'Noto Sans TC', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 .fondo{
@@ -180,6 +180,13 @@
 	outline: none;
 }
 /* Hovers */
+.like__btn:hover {
+	background-color: #db0a1f;
+}
+.disabled:hover {
+	background-color: #5f5f5f;
+	color: #d4cfcf;
+}
 .ver_mas button:hover {
 	color: #dc3545;
 	transition: all 0.5s ease;
@@ -192,11 +199,9 @@
 	opacity: 0.1;
 	transform: scale(1.5);
 }
-
 .container_foto:hover article {
 	transform: translate(2px, -69px);
 }
-
 .container_foto:hover .ver_mas {
 	transform: translate(0px, 0px);
 	opacity: 1;

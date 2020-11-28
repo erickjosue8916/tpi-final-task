@@ -72,11 +72,13 @@
               <li class="nav-item ">
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/list" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/logOut" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
-              </li>
               <?php
             }
+            ?>
+            <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/logOut" class="btn <?=($active == "Main") ? "active": ""; ?>">Sign out</a>
+            </li>
+            <?php
           } else {
             ?>
             <li class="nav-item ">

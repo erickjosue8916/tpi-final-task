@@ -1,4 +1,6 @@
 <?php 
+require_once "config/loginVerifier.php";
+
 if (isset($result["transacciones"][0])) {
   $transacciones = $result["transacciones"][0];
 ?>

@@ -1,5 +1,5 @@
 <div class="opaco">
-<main class="container h-100 d-flex justify-content-center align-items-center">
+<main class="container h-auto min-vh-100 justify-content-center align-items-center">
   <content class="formu2">
     <h1>Registro</h1>
     <?php if (isset($error)) {?>

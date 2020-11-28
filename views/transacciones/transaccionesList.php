@@ -3,7 +3,7 @@ require_once "config/loginVerifier.php";
 ?>
 <div class="fondo">
 	<main class="container">
-		<div class="row h-100 justify-content-center align-items-center">
+		<div class="row h-auto min-vh-100 justify-content-center align-items-center">
 			<div class="col">
 			<?php
 				$headers = ['#', 'Fecha', 'Usuario', 'Correo', 'Total', 'Estado', 'Tipo', 'Detalles'];
@@ -14,7 +14,7 @@ require_once "config/loginVerifier.php";
 					'rows' => $rows
 				];
 			?>
-			<h1 class="text-center mb-5 font-weight-light text-white">Transacciones realizadas</h1>
+			<h1 class="text-center m-5 font-weight-light text-white display-4">Transacciones realizadas</h1>
 			<section class="table-responsive">
 				<table class="table-styles">
 					<thead>

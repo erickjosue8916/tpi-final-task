@@ -320,7 +320,7 @@
 .table-styles th h1{
 	font-weight: bold;
 	font-size: 1em;
-	text-align: left;
+	text-align: center;
 	color: white;
 }
 .table-styles td {
@@ -330,23 +330,18 @@
 	box-shadow: 0 2px 2px -2px #0E1119;
 }
 .table-styles {
-	text-align: left;
-	width: 80%;
+	text-align: center;
+	width: 100%;
 	overflow: hidden;
-	margin: 0 auto;
-	padding: 0 0 8em 0;
 	border-radius: 8px;
+	border-collapse: collapse;
 }
 .table-styles td, .table-styles th {
-	padding-bottom: 2%;
-	padding-top: 2%;
-	padding-left:2%;  
+	padding: 0.8em;
 }
-/* Background-color of the odd rows */
 .table-styles tr:nth-child(odd) {
 	background-color: #1a1c22;
 }
-/* Background-color of the even rows */
 .table-styles tr:nth-child(even) {
 	background-color: #242527;
 }
@@ -355,17 +350,10 @@
 }
 .table-styles td:first-child {
 	color: #FB667A;
-	padding-right: 6px;
 }
 .table-styles tr:hover {
 	background-color: #3e4044;
 	box-shadow: 0 6px 6px -6px #0E1119;
-}
-
-/* MediaQueries */
-@media (max-width: 800px) {
-	.table-styles td:nth-child(7),
-	.table-styles th:nth-child(7) { display: none; }
 }
 /* Fin Estilos de las tablas */
 

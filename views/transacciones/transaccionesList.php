@@ -1,3 +1,6 @@
+<?php 
+require_once "config/loginVerifier.php";
+?>
 <div class="fondo">
 	<main class="container">
 		<div class="row h-100 justify-content-center align-items-center">

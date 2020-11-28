@@ -1,4 +1,5 @@
 <?php 
+require_once "config/loginVerifier.php";
 if (isset($result["peliculas"][0])) {
   $pelicula = $result["peliculas"][0];
 ?>

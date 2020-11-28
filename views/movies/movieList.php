@@ -11,7 +11,7 @@
 				<option value="likes">Mas calificada</option>
 			</select>
 			<div class="input-group-append">
-				<label class="input-group-text bg-danger text-white label-select" for="ordenInput">Ordenar por</label>
+				<button class="input-group-text bg-danger text-white label-select" for="ordenInput" onclick='actualizarListadoPeliculas()'>Ordenar por</button>
 			</div>
 		</div>
 
@@ -42,8 +42,8 @@
 
 			</div>
 			<div class="row p-2 bg-dark mx-auto operacion">
-				<label class="text-center col-6 font-weight-light text-white"><input type="radio" onclick='setTotalCarrito()' name="accion" value="Alquilar"/> Alquilar</label>
-				<label class="text-center col-6 font-weight-light text-white"><input type="radio" onclick='setTotalCarrito()' name="accion" value="Comprar" checked="checked"/> Comprar</label>
+				<label class="text-center col-6 font-weight-light text-white"><input type="radio" onclick='setTotalCarrito()' name="accion" value="Alquiler"/> Alquilar</label>
+				<label class="text-center col-6 font-weight-light text-white"><input type="radio" onclick='setTotalCarrito()' name="accion" value="Compra" checked="checked"/> Comprar</label>
 				<h5 class="text-center text-white">Total <span class="badge badge-success" id="totalCarrito">$0.00</span></h5>
 			</div>
 			<div class="alert alert-warning" role="alert">

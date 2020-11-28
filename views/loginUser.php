@@ -31,7 +31,7 @@
         </div>
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block font-weight-light">Ingresar</button>
-        <button type="submit" class="btn btn-outline-success btn-block font-weight-light">Registrate</button>
+        <button type="button" onclick="window.location.href='<?=BASE_DIR?>Users/register'" class="btn btn-outline-success btn-block font-weight-light">Registrate</button>
     </form>
     </div>
     

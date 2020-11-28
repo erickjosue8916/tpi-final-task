@@ -86,4 +86,33 @@ class User extends MySqlConnection {
     unset($_SESSION);
     header('Location: '.BASE_DIR.'Users/login');//Mandamos de regreso a la pagina de login
   }
+
+  public function register(){
+    $result = [
+      'id_usuario' => 0,
+      'success' => false,
+      'error' => ''
+    ];
+    //
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre, apellido, email, telefono, direccion, username, password, rol) VALUES (:nombre, :apellido, :email, :telefono, :direccion, :username, :password, :rol) ";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(":nombre", $this->getNombre());
+    $stmt->bindValue(":apellido", $this->getApellido());
+    $stmt->bindValue(":email", $this->getEmail());
+    $stmt->bindValue(":telefono", $this->getTelefono());
+    $stmt->bindValue(":direccion", $this->getDireccion());
+    $stmt->bindValue(":username", $this->getUserName());
+    $stmt->bindValue(":password", $this->getUserPassword());
+    $stmt->bindValue(":rol", $this->getRol());
+
+    try {
+      $stmt->execute();
+      $last_id = $this->db->lastInsertId();
+      $result['id_usuario'] = $last_id;
+      $result['success'] = true;
+    } catch (\Throwable $th) {
+      $result['error'] = "$th";
+    }
+    return json_encode($result);
+  }
 }

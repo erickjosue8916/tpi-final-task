@@ -44,10 +44,10 @@ if (isset($result["peliculas"][0])) {
                   </div>
                  
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
                 <label for="mlot">Disponibilidad</label>
                 <input type="text" class="form-control" id="mlot" name="disponibilidad" value="<?=$pelicula['disponibilidad']?>" placeholder="Disponibilidad">
-            </div>
+              </div>-->
 
                 <button type="submit" class="btn btn-primary btn-block btn-update">Actualizar</button>
               </form>

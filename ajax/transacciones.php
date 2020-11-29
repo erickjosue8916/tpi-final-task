@@ -52,7 +52,7 @@ if (isset($_REQUEST)) {
       $alquiler->setIdTransaccion($result['id_transaccion']);
       $alquiler->setIdPelicula($details["id_pelicula"]);
       $alquiler->setCantidad(1);
-      $alquiler->setFecha($fecha);
+      $alquiler->setFecha($fechaEntrega);
       $alquiler->create();//Creamos un alquiler
     }else if ($tipo == 'Compra'){
       $totalFinal = $transaction->getTotal() - $pelicula->getPrecioVenta();//Le restamos el valor de la pelicula que no se facturada

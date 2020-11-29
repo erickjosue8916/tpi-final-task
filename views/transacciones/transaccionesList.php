@@ -44,6 +44,7 @@ require_once "config/loginVerifier.php";
 							}
 							$string = $cols["tipo_transaccion"] == "Compra" ? "detalleCompra":"detalleAlquiler";
 							$string = BASE_DIR."Transacciones/" . $string . "&id=".$cols["id_transaccion"];
+							$string .= "&estado=" . $cols["estado"] . "&total=" . $cols["total_transaccion"]
 							?>
 							<td><a class="btn btn-outline-info text-capitalize" href="<?=$string?>">Detalle</a></td>
 						</tr>

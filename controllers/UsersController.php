@@ -75,4 +75,35 @@ class UsersController {
             }
         }
     }
+
+    //Registra un nuevo usuario tipo admin
+    public function registerAdmin(){
+        if (empty($_POST)) {
+            //Si no tiene valores post redirecciona a registrarUser
+            require_once "views/registerAdmin.php";
+        } else {
+            //Si trae datos del post, los toma y registra el nuevo usuario
+            require_once "models/User.php";
+            $User = new User();
+            $User->setNombre($_POST['nombre']);
+            $User->setApellido($_POST['apellido']);
+            $User->setEmail($_POST['email']);
+            $User->setTelefono($_POST['telefono']);
+            $User->setDireccion($_POST['direccion']);
+            $User->setUserName($_POST['username']);
+            $User->setUserPassword($_POST['password']);
+            $User->setRol("Administrador");
+
+            //Totamos el arreglo resultado de crear el registro
+            $result = json_decode($User->register(),true);
+            if ($result['success']) {
+                //Si el proceso es un exito retorna a la pagina de iniciar sesion
+                
+            } else {
+                //Si ocurrio un fallo, imprime ese error
+                $error = $result['error'];
+                require_once "views/registerUser.php";
+            }
+        }
+    }
 }

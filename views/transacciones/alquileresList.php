@@ -24,18 +24,27 @@ $sobreCargo = 0;
 				<h1 class="text-center m-5 font-weight-light text-white display-4">Alquileres realizados</h1>
 				<?php
 						if ($estado === 'Pendiente') {
-							if ($fechaActual < $fechaEntrega) {
-								echo  $fechaActual . "  $fechaEntrega<br>";
+							if ($fechaActual > $fechaEntrega) {
 								$sobreCargo = RETRASO * round(abs($fechaEntrega - $fechaActual)/86400);
+								?>
+								<div class="d-flex justify-content-center">
+									<div class="text-center alert alert-danger w-50" role="alert">
+										<strong>Se ha retrasado en la devolucion</strong>
+										<a class="btn btn-block btn-outline-danger" href="<?=BASE_DIR?>Transacciones/pagarTransaccion&id=<?=$_GET['id']?>&total=<?=$_GET['total']?>">Aplicar sobrecargo de $<?=$sobreCargo?> quedando $<?=$sobreCargo + $total?></a>
+									</div>
+								</div>
+								<?php
 							}
+							else{
 							?>							
 							<div class="d-flex justify-content-center">
-								<div class="text-center alert alert-danger w-50" role="alert">
-									<strong>Retraso en devolucion!</strong>
-									<a class="btn btn-block btn-outline-danger" href="<?=BASE_DIR?>Transacciones/pagarTransaccion&id=<?=$_GET['id']?>&total=<?=$_GET['total']?>">Aplicar sobrecargo de <?=$sobreCargo?> quedando <?=$sobreCargo + $total?></a>
+								<div class="text-center alert alert-info w-50" role="alert">
+									<strong>No hay retrasos en la devolucion</strong>
+									<a class="btn btn-block btn-outline-info" href="<?=BASE_DIR?>Transacciones/pagarTransaccion&id=<?=$_GET['id']?>&total=<?=$_GET['total']?>">Aplicar sobrecargo de $<?=$sobreCargo?> quedando $<?=$sobreCargo + $total?></a>
 								</div>
 							</div>
 							<?php
+							}
 						}
 					?>
 				<section class="table-responsive">

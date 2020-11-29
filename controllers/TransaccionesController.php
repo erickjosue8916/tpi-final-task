@@ -1,6 +1,6 @@
 <?php
 
-const RETRASO = 10.00;
+const RETRASO = 5.00;
 
 class TransaccionesController {
 

@@ -58,6 +58,9 @@
             if ($_COOKIE['rol'] && $_COOKIE['rol'] === 'Administrador') {
               ?>
               <li class="nav-item ">
+                <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Users/registerAdmin" class="btn <?=($active == "Clients") ? "active": ""; ?>">Añadir admin</a>
+              </li>
+              <li class="nav-item ">
                 <a class="nav-link" aria-current="page" href="<?=BASE_DIR?>Peliculas/listAdmin" class="btn <?=($active == "Clients") ? "active": ""; ?>">Peliculas</a>
               </li>
               <li class="nav-item ">

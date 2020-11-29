@@ -1,10 +1,11 @@
 <?php 
-	require_once "config/loginVerifier.php";
-	$estado = (isset($_GET['estado'])) ? $_GET['estado']: 'Pendiente';
-	$total = (isset($_GET['total'])) ? $_GET['total']: 20;
-	$fechaActual = date("Y-m-d");
-	$fechaEntrega = strtotime($result['alquileres'][0]['fecha_devolucion']);
-	$sobreCargo = 0;
+require_once "config/loginVerifier.php";
+$estado = (isset($_GET['estado'])) ? $_GET['estado']: 'Pendiente';
+$total = (isset($_GET['total'])) ? $_GET['total']: 20;
+$fechaActual = strtotime(date("Y-m-d"));
+$fechaEntrega = strtotime($result['alquileres'][0]['fecha_devolucion']);
+$sobreCargo = 0;
+
 ?>
 <div class="fondo">
 	<main class="container">
@@ -24,13 +25,14 @@
 				<?php
 						if ($estado === 'Pendiente') {
 							if ($fechaActual < $fechaEntrega) {
-								$sobreCargo = 5 * count($result['alquileres']);
+								echo  $fechaActual . "  $fechaEntrega<br>";
+								$sobreCargo = RETRASO * round(abs($fechaEntrega - $fechaActual)/86400);
 							}
-							?>
+							?>							
 							<div class="d-flex justify-content-center">
 								<div class="text-center alert alert-danger w-50" role="alert">
 									<strong>Retraso en devolucion!</strong>
-									<button type="button" class="btn btn-block btn-outline-danger">Aplicar sobrecargo de $<?=$sobreCargo?> quedando $<?=$sobreCargo + $total?></button>
+									<a class="btn btn-block btn-outline-danger" href="<?=BASE_DIR?>Transacciones/pagarTransaccion&id=<?=$_GET['id']?>&total=<?=$_GET['total']?>">Aplicar sobrecargo de <?=$sobreCargo?> quedando <?=$sobreCargo + $total?></a>
 								</div>
 							</div>
 							<?php

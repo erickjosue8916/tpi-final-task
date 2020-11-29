@@ -109,9 +109,9 @@ class User extends MySqlConnection {
     $stmt->bindValue(":telefono", $this->getTelefono());
     $stmt->bindValue(":direccion", $this->getDireccion());
     $stmt->bindValue(":username", $this->getUserName());
-    $stmt->bindValue(":password", password_hash($this->getUserPassword(), PASSWORD_ARGON2ID));
+    $stmt->bindValue(":password", password_hash($this->getUserPassword(), PASSWORD_BCRYPT, ['cost' => 4]));
     $stmt->bindValue(":rol", $this->getRol());
-
+    
     try {
       $stmt->execute();
       $last_id = $this->db->lastInsertId();//Obtenemos el id del ultimo cliente agregado

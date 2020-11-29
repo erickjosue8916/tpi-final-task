@@ -78,7 +78,8 @@ function setTotalCarrito() {
 }
 
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
-  
+  const moviesInCheckoutIds = checkoutObject.details.map(movie => movie.id_pelicula)
+  if (moviesInCheckoutIds.includes(id)) return
   checkoutObject.details.push({id_pelicula: id,nombre,imagen,precioAlquiler,precioVenta})
   const elementsString = checkoutObject.details.map(detail => {
     return getProductInChekout(detail)

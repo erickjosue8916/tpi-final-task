@@ -50,8 +50,9 @@ class PeliculasController {
                 $peliculas->setStock($_POST['stock']);
                 $peliculas->setPrecioAlquiler($_POST['precio_alquiler']);
                 $peliculas->setPrecioVenta($_POST['precio_venta']);
-                $peliculas->setDisponibilidad($_POST['disponibilidad']);
-
+                $disponibilidad = $_POST['stock'] > 0 ? "Available" : "Unavailable";
+                $peliculas->setDisponibilidad($disponibilidad);
+                
                 $isSaveImageSucces = $peliculas->guardarImagen($_FILES['movieImage']['tmp_name'], $_FILES['movieImage']['name']);
                 if (!$isSaveImageSucces) {
                     $error = "invalid imageFile";
@@ -94,7 +95,8 @@ class PeliculasController {
             $peliculas->setStock($_POST['stock']);
             $peliculas->setPrecioAlquiler($_POST['precio_alquiler']);
             $peliculas->setPrecioVenta($_POST['precio_venta']);
-            $peliculas->setDisponibilidad($_POST['disponibilidad']);
+            $disponibilidad = $_POST['stock'] > 0 ? "Available" : "Unavailable";
+            $peliculas->setDisponibilidad($disponibilidad);
             
             $result = $peliculas->update($id);
             if ($result['success']) {

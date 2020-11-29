@@ -49,10 +49,10 @@ require_once "config/loginVerifier.php";
                         </div>
                       </div>
                   </div>
-                  <div class="form-group">
+                  <!--<div class="form-group">
                     <label for="mlot">Disponibilidad</label>
                     <input type="text" name="disponibilidad" class="form-control" id="mlot" placeholder="Disponibilidad">
-                </div>
+                </div>-->
 
                     <button type="submit" class="btn btn-primary btn-block btn-create">Agregar</button>
                   </form>

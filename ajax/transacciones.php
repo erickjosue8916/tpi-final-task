@@ -58,7 +58,7 @@ if (isset($_REQUEST)) {
     }
 
     if($pelicula->getStock() == 0){
-      //$pelicula->setDisponibilidad('SinStock');//Si ya no hay stock, entonces deja de estar disponible
+      $pelicula->setDisponibilidad('Unavailable');//Si ya no hay stock, entonces deja de estar disponible
     }
 
     $pelicula->update($details["id_pelicula"]);//Actualizamos la tabla con la nueva cantidad de stock

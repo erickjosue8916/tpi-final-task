@@ -272,5 +272,28 @@ class Transacciones extends MySqlConnection {
     return json_encode($result);
   }
 
+  public function markAsCancelled ($id, $total) {
+    $result = [
+      'id_transaccion' => 0,
+      'success' => false,
+      'error' => ''
+    ];
+    //"UPDATE " . self::TABLE_NAME . " SET fecha_transaccion=:fecha_transaccion,total_transaccion=:total_transaccion,id_usuario=:id_usuario,estado=:estado,tipo_transaccion=:tipo_transaccion WHERE id_transaccion=:id_transaccion"
+    $sql = "UPDATE " . self::TABLE_NAME . " SET total_transaccion=:total,estado=:estado WHERE id_transaccion=:id_transaccion";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(":total", $this->getTotal());
+    $stmt->bindValue(":estado", 'Cancelado');
+    try {
+      $stmt->execute();
+      $edited_id = $id;
+      $result['id_transaccion'] = $edited_id;
+      $result['success'] = true;
+    } catch (\Throwable $th) {
+      $result['error'] = "$th";
+    }
+    //return json_encode($result);
+    return $result;
+  }
+
 
 }

@@ -1,5 +1,20 @@
 <?php 
 require_once "config/loginVerifier.php";
+$estado = (isset($_GET['estado'])) ? $_GET['estado']: 'Pendiente';
+$total = (isset($_GET['total'])) ? $_GET['total']: 20;
+$fechaActual = date("Y-m-d");
+$fechaEntrega = strtotime($result['alquileres'][0]['fecha_devolucion']);
+$sobreCargo = 0;
+
+if ($estado === 'Pendiente') {
+	if ($fechaActual < $fechaEntrega) {
+		$sobreCargo = 5 * count($result['alquileres']);
+	}
+	?>
+	<a href="">Aplicar sobrecargo de <?=$sobreCargo?> quedando <?=$sobreCargo + $total?> </a>
+	<?php
+}
+
 ?>
 <div class="fondo">
 	<main class="container">

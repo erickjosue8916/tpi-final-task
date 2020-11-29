@@ -36,22 +36,22 @@ require_once "config/loginVerifier.php";
 									<input type="text" class="form-control" name="stock" id="mlot" placeholder="Stock">
 								</div>
 
-								<div class="form-group ">
-								<div class="row">
-									<div class="col">
-									<label for="mlot">Precio de alquiler</label>
-									<input type="text" name="precio_alquiler" class="form-control" id="precios" placeholder="Precio de alquiler">
-									</div>
-									<div class="col">
-									<label for="mlot">Precio de venta</label>
-									<input type="text" name="precio_venta" class="form-control" id="precios" placeholder="Precio de venta">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="mlot">Disponibilidad</label>
-								<input type="text" name="disponibilidad" class="form-control" id="mlot" placeholder="Disponibilidad">
-							</div>
+                    <div class="form-group ">
+                      <div class="row">
+                        <div class="col">
+                          <label for="mlot">Precio de alquiler</label>
+                          <input type="text" name="precio_alquiler" class="form-control" id="precios" placeholder="Precio de alquiler">
+                        </div>
+                        <div class="col">
+                          <label for="mlot">Precio de venta</label>
+                          <input type="text" name="precio_venta" class="form-control" id="precios" placeholder="Precio de venta">
+                        </div>
+                      </div>
+                  </div>
+                  <!--<div class="form-group">
+                    <label for="mlot">Disponibilidad</label>
+                    <input type="text" name="disponibilidad" class="form-control" id="mlot" placeholder="Disponibilidad">
+                </div>-->
 
 								<button type="submit" class="btn btn-primary btn-block btn-create">Agregar</button>
 							</form>

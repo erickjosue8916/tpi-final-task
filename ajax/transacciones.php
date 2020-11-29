@@ -14,6 +14,7 @@ if (isset($_REQUEST)) {
   $datos = json_decode($_REQUEST['data'], true);
   //var_dump($datos);
   $fecha = (isset($datos['fecha'])) ? $datos['fecha']: '2020-11-23';
+  $fechaEntrega = (isset($datos['fechaEntrega'])) ? $datos['fechaEntrega']: '2020-11-23';
   $total = (isset($datos['total'])) ? $datos['total']: 0;
   $estado = (isset($datos['estado'])) ? $datos['estado']: 'Cancelado';
   $tipo = (isset($datos['tipo'])) ? $datos['tipo']: 'Compra';
@@ -32,7 +33,7 @@ if (isset($_REQUEST)) {
     $pelicula = new Peliculas();
     $resultP = json_decode($pelicula->details($details["id_pelicula"]),true);//Obtenemos los datos de esa pelicula
 
-    //Seteamos los datos de la pelicula que se obtuvo
+    // Seteamos los datos de la pelicula que se obtuvo
     $pelicula->setTitulo($resultP['peliculas'][0]['titulo']);
     $pelicula->setDescripcion($resultP['peliculas'][0]['descripcion']);
     $pelicula->setStock($resultP['peliculas'][0]['stock'] - 1);//Le quitamos uno al stock
@@ -51,8 +52,8 @@ if (isset($_REQUEST)) {
       $alquiler->setIdTransaccion($result['id_transaccion']);
       $alquiler->setIdPelicula($details["id_pelicula"]);
       $alquiler->setCantidad(1);
-      $alquiler->setFecha($fecha);
-      $alquiler->create();//Creamos un alquiler
+      $alquiler->setFecha($fechaEntrega);
+      $alquiler->create(); //Creamos un alquiler
     }else{
       //No hay stock
     }

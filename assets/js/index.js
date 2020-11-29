@@ -43,9 +43,12 @@ async function crearTransaccion() {
   //const tipo = document.getElementById('accion').value
   const tipo = getRadioValue("accion");
   const fecha = moment().format('YYYY-MM-DD')
+  const fechaEntrega = moment().add(7, 'days').format('YYYY-MM-DD'); 
+
   const estado = (tipo === 'Compra') ? 'Cancelado' : 'Pendiente'
   checkoutObject.tipo = tipo
   checkoutObject.fecha = fecha
+  checkoutObject.fechaEntrega = fechaEntrega
   checkoutObject.estado = estado
   setTotalCarrito()
   const request = await fetch(`${baseDir}ajax/transacciones.php?data=${JSON.stringify(checkoutObject)}`, {
@@ -55,7 +58,8 @@ async function crearTransaccion() {
     }
     // body: JSON.stringify(checkoutObject)
   })
-  // if (tipo === 'Comprar') alert('Compra realizada')
+  if (tipo === 'Compra') alert('Compra realizada')
+  else alert(`Alquiler aprobado. La entrega debe ser realizada para ${fechaEntrega} de no ser asi se aplicara un cargo de $ 5.00`)
   const peliculasHtml = await request.text()
   console.log(peliculasHtml);
   const element = document.getElementById('chechoutDetails');

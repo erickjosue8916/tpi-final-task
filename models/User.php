@@ -6,17 +6,17 @@ class User extends MySqlConnection {
 
   const TABLE_NAME = 'usuarios';
 
-
+  //Definimos los datos necesarios
   private $nombre;
   private $apellido;
   private $email;
   private $telefono;
   private $direccion;
   private $userName;
-
   private $userPassword;
   private $rol;
 
+  //Creamos sus getters y setters
   public function setNombre($nombre){$this->nombre = $nombre;}
   public function getNombre() { return $this->nombre; } 
   
@@ -46,6 +46,7 @@ class User extends MySqlConnection {
     parent::__construct();
   }
 
+  //Cuando el usuario busca iniciar sesion con los datos de usuario y contraseña
   public function login () {
     $result = [
       'success' => false,
@@ -55,15 +56,18 @@ class User extends MySqlConnection {
     $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE username = :username";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":username", $this->getUserName());
+
     if ($stmt->execute()) {
         $nRow = $stmt->rowCount();
-        if ($nRow == 1) {
+        if ($nRow == 1) {//Si se trajo solo un dato
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($this->getUserPassword(), $result["password"])) {
+
                 session_start();
                 $_SESSION["nombre"] = $result["nombre"];
                 $_SESSION["apellido"] = $result["apellido"];
-                setcookie("sessionId", true, strtotime('+3000 hour'), '/'); // time() + (60 * 20)
+
+                setcookie("sessionId", true, strtotime('+3000 hour'), '/'); // seteamos las cookies y el session
                 setcookie("rol", $result["rol"], strtotime('+3000 hour'), '/');
                 setcookie("id_usuario", $result["id_usuarios"], strtotime('+3000 hour'), '/');
                 $result['success']=true;
@@ -78,15 +82,17 @@ class User extends MySqlConnection {
     } else {
       $result['error'] = 'Se produjo un error, inténtalo de nuevo más tarde';
     }
-    return json_encode($result);
+    return json_encode($result);//Retornamos los datos en un arreglo json
   }
 
+  //Cuando el usuario cierra su sesion, se borran las cookies y la session que se creo
   public function logOut() {
     unset($_COOKIE);
     unset($_SESSION);
     header('Location: '.BASE_DIR.'Users/login');//Mandamos de regreso a la pagina de login
   }
 
+  //Cuando un nuevo cliente se va a registrar se ejecuta este metodo
   public function register(){
     $result = [
       'id_usuario' => 0,
@@ -96,7 +102,8 @@ class User extends MySqlConnection {
     //
     $sql = "INSERT INTO " . self::TABLE_NAME . " (nombre, apellido, email, telefono, direccion, username, password, rol) VALUES (:nombre, :apellido, :email, :telefono, :direccion, :username, :password, :rol) ";
     $stmt = $this->db->prepare($sql);
-    $stmt->bindValue(":nombre", $this->getNombre());
+
+    $stmt->bindValue(":nombre", $this->getNombre());//Evitamos la inyección sql
     $stmt->bindValue(":apellido", $this->getApellido());
     $stmt->bindValue(":email", $this->getEmail());
     $stmt->bindValue(":telefono", $this->getTelefono());
@@ -107,12 +114,12 @@ class User extends MySqlConnection {
 
     try {
       $stmt->execute();
-      $last_id = $this->db->lastInsertId();
-      $result['id_usuario'] = $last_id;
+      $last_id = $this->db->lastInsertId();//Obtenemos el id del ultimo cliente agregado
+      $result['id_usuario'] = $last_id;//Pasamos ese id a el arreglo result
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";
     }
-    return json_encode($result);
+    return json_encode($result);//Retornamos los datos en un arreglo json
   }
 }

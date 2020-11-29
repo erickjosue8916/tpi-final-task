@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2020 a las 10:08:58
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 29-11-2020 a las 02:06:12
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_peliculas`
 --
-CREATE DATABASE IF NOT EXISTS `db_peliculas` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `db_peliculas`;
 
 -- --------------------------------------------------------
 
@@ -80,7 +78,7 @@ CREATE TABLE `peliculas` (
   `stock` int(100) NOT NULL,
   `precio_alquiler` float(4,2) NOT NULL,
   `precio_venta` float(4,2) NOT NULL,
-  `disponibilidad` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `disponibilidad` enum('Available','Unavailable') COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -88,11 +86,11 @@ CREATE TABLE `peliculas` (
 --
 
 INSERT INTO `peliculas` (`id_pelicula`, `titulo`, `descripcion`, `imagen`, `stock`, `precio_alquiler`, `precio_venta`, `disponibilidad`) VALUES
-(1, 'Bob Esponja: Al rescate', 'Cuando alguien rapta  Gary Bob Esponja y Patricio se embarcan en una alocada misión muy lejos de Fondo de Bikini para rescatar a su fiel amigo caracol', 'bob_esponja_al_rescate.jpg', 5, 20.50, 18.00, '3'),
-(2, 'Bob Esponja: La pelicula', 'En este largometraje de aventuras, el optimista y alegre Bob Esponja parte para recuperar la corona robada del rey Neptuni', 'bob_esponja_la_pelicula.jpg', 10, 25.25, 20.25, '10'),
-(3, 'Bob Esponja: Un heroe fuera de', 'El panico se apodera de Fondo de Bikini cuando un pirata roba la receta secreta de la Cangreburger. Bo Esponja y sus amigos emprenderan una mision para recuperarla', 'bob_esponja_heroe_fuera_del_agua.jpg', 8, 18.75, 15.25, '3'),
-(4, 'Mad Max: Fury Road', 'Aunque está decidido a vagar solo por el páramo post-apocalíptico, Mad Max se une a Furiosa, una comandante fugitiva, y su banda, quienes están tratando de escapar de un señor de la guerra.', 'madmax.jpg', 5, 25.89, 30.50, '2'),
-(5, 'Bumblebee', 'En 1987, Charlie, una adolescente, encuentra a Bumblebee, muy herido, en el depósito de chatarra al que había llegado mientras huía. Mientras lo restaura, Charlie percibe que lo que ha hallado no es un Volkswagen amarillo corriente.', 'bumblebee.jpg', 5, 30.50, 40.00, '2');
+(1, 'Bob Esponja: Al rescate', 'Cuando alguien rapta  Gary Bob Esponja y Patricio se embarcan en una alocada misión muy lejos de Fondo de Bikini para rescatar a su fiel amigo caracol', 'bob_esponja_al_rescate.jpg', 5, 20.50, 18.00, 'Available'),
+(2, 'Bob Esponja: La pelicula', 'En este largometraje de aventuras, el optimista y alegre Bob Esponja parte para recuperar la corona robada del rey Neptuni', 'bob_esponja_la_pelicula.jpg', 10, 25.25, 20.25, 'Available'),
+(3, 'Bob Esponja: Un heroe fuera de', 'El panico se apodera de Fondo de Bikini cuando un pirata roba la receta secreta de la Cangreburger. Bo Esponja y sus amigos emprenderan una mision para recuperarla', 'bob_esponja_heroe_fuera_del_agua.jpg', 8, 18.75, 15.25, 'Available'),
+(4, 'Mad Max: Fury Road', 'Aunque está decidido a vagar solo por el páramo post-apocalíptico, Mad Max se une a Furiosa, una comandante fugitiva, y su banda, quienes están tratando de escapar de un señor de la guerra.', 'madmax.jpg', 5, 25.89, 30.50, 'Available'),
+(5, 'Bumblebee', 'En 1987, Charlie, una adolescente, encuentra a Bumblebee, muy herido, en el depósito de chatarra al que había llegado mientras huía. Mientras lo restaura, Charlie percibe que lo que ha hallado no es un Volkswagen amarillo corriente.', 'bumblebee.jpg', 5, 30.50, 40.00, 'Available');
 
 -- --------------------------------------------------------
 

@@ -1,6 +1,5 @@
-<div class="opaco">
-<main class="container h-auto min-vh-100 justify-content-center align-items-center">
-  <content class="formu2">
+<main class="container h-100 d-flex justify-content-center align-items-center">
+  <content>
     <h1>Registro</h1>
     <?php if (isset($error)) {?>
       <div class="alert bg-danger text-white" role="alert">
@@ -58,4 +57,3 @@
       </button>
   </content>
 </main>
-</div>

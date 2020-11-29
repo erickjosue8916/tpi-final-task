@@ -53,15 +53,23 @@ if (isset($_REQUEST)) {
       $alquiler->setCantidad(1);
       $alquiler->setFecha($fecha);
       $alquiler->create();//Creamos un alquiler
-    }else{
-      //No hay stock
+    }else if ($tipo == 'Compra'){
+      $totalFinal = $transaction->getTotal() - $pelicula->getPrecioVenta();//Le restamos el valor de la pelicula que no se facturada
+      $transaction->setTotal($totalFinal);
+      $transaction->update($result['id_transaccion']);
+    }else if ($tipo == 'Alquiler'){
+      $totalFinal = $transaction->getTotal() - $pelicula->getPrecioAlquiler();//Le restamos el valor de la pelicula que no se facturada
+      $transaction->setTotal($totalFinal);
+      $transaction->update($result['id_transaccion']);
     }
 
-    if($pelicula->getStock() == 0){
+
+    if($pelicula->getStock() <= 0){
+      $pelicula->setStock(0);
       $pelicula->setDisponibilidad('Unavailable');//Si ya no hay stock, entonces deja de estar disponible
     }
 
-    $pelicula->update($details["id_pelicula"]);//Actualizamos la tabla con la nueva cantidad de stock
+    $pelicula->update($details["id_pelicula"]);//Actualizamos la tabla con la nueva cantidad de stock de la pelicula
   }
   // echo $result;
 }

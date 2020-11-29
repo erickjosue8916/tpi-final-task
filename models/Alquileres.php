@@ -24,6 +24,7 @@ class Alquileres extends MySqlConnection {
     parent::__construct();
   }
 
+  //Lista todos los alquileres actuales
   public function list () {
     $result = [
       'alquileres' => [],
@@ -44,6 +45,7 @@ class Alquileres extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Crea un nuevo alquiler
   public function create () {
     $result = [
       'id_alquileres' => 0,
@@ -68,6 +70,7 @@ class Alquileres extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Retorna los detalles de una o más alquiler
   public function details ($id) {
     $result = [
       'alquileres' => [],
@@ -90,6 +93,7 @@ class Alquileres extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Borrar un alquiler con el id proporcionado
   public function delete ($id) {
     $result = [
       'success' => false,

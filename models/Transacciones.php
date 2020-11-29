@@ -281,6 +281,7 @@ class Transacciones extends MySqlConnection {
     //"UPDATE " . self::TABLE_NAME . " SET fecha_transaccion=:fecha_transaccion,total_transaccion=:total_transaccion,id_usuario=:id_usuario,estado=:estado,tipo_transaccion=:tipo_transaccion WHERE id_transaccion=:id_transaccion"
     $sql = "UPDATE " . self::TABLE_NAME . " SET total_transaccion=:total,estado=:estado WHERE id_transaccion=:id_transaccion";
     $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(":id_transaccion", $id);
     $stmt->bindValue(":total", $total);
     $stmt->bindValue(":estado", 'Cancelado');
     try {

@@ -55,22 +55,13 @@ class TransaccionesController {
     public function pagarTransaccion () {
         if ($_COOKIE["sessionId"]) {
             require_once "models/Transacciones.php";
-            $id = $_POST["id"];
-            $total = $_POST["total"];
+            $id = $_GET["id"];
+            $total = $_GET["total"];
 
-            $fechaLimite = strtotime($_POST["fecha_transaccion"]);
-            $fechaActual = strtotime(date('Y-m-d'));
-            $interval = 0.00;
-            
-            if($fechaActual > $fechaLimite){//La fecha se ha pasado de la limite
-                $interval = round(abs($fechaLimite - $fechaActual)/86400);//Obtenemos la cantidad de días de diferencia
-            }
-
-            $totalExtra = $interval * RETRASO;//Tomamos a cuanto equivale en cargos esos días
             $transaccion = new Transacciones();
-            $total += $totalExtra;//Sumamos el extra adicional por retraso si llega a haber
-            $result = $transaccion->markAsCancelled($id,$total);//Cambiamos el total de acuerdo a la cantidad de dias extra
-            require_once "views/transacciones/list.php";
+            $result = $transaccion->markAsCancelled($id, $total);//Cambiamos el total de acuerdo a la cantidad de dias extra
+            var_dump($result);
+            // require_once "views/transacciones/list.php";
         }
     }
 }

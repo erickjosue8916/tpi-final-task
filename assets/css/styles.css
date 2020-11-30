@@ -40,6 +40,27 @@
 	background-size: cover;
 	opacity: 0.8;
 }
+.nav_color a{
+	display: inline-flex;
+	text-decoration: none;
+	color: white;
+}
+.nav_color ul :hover{
+	font-weight: bolder;
+	text-align: center;
+	color: #dc3545;
+	transition: all 0.5s ease;
+}
+
+/*Estilos carrosel*/
+
+.tamaño{
+	height: 80%;
+width: 100%;
+}
+
+/*Fin estilos carrousel*/
+
 /* Searchbar estilos */
 .input-search{
 	border: none;

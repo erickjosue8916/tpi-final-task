@@ -67,9 +67,9 @@ class User extends MySqlConnection {
                 $_SESSION["nombre"] = $row["nombre"];
                 $_SESSION["apellido"] = $row["apellido"];
 
-                setcookie("sessionId", true, strtotime('+3000 hour'), '/'); // seteamos las cookies y el session
-                setcookie("rol", $row["rol"], strtotime('+3000 hour'), '/');
-                setcookie("id_usuario", $row["id_usuarios"], strtotime('+3000 hour'), '/');
+                setcookie("sessionId", true, strtotime('+1 hour'), '/'); // seteamos las cookies y el session
+                setcookie("rol", $row["rol"], strtotime('+1 hour'), '/');
+                setcookie("id_usuario", $row["id_usuarios"], strtotime('+1 hour'), '/');
                 $result['success']=true;
             }
             else

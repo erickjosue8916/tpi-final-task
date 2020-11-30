@@ -24,6 +24,7 @@ class Alquileres extends MySqlConnection {
     parent::__construct();
   }
 
+  //Lista todos los alquileres actuales
   public function list () {
     $result = [
       'alquileres' => [],
@@ -44,20 +45,24 @@ class Alquileres extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Crea un nuevo alquiler
   public function create () {
     $result = [
+      'id_alquileres' => 0,
       'success' => false,
       'error' => ''
     ];
-    $sql = "INSERT INTO " . self::TABLE_NAME . " (id_transaccion, id_pelicula, cantidad, fecha) VALUES (:id_transaccion, :id_pelicula, :cantidad, :fecha) ";
+    $sql = "INSERT INTO " . self::TABLE_NAME . " (id_transaccion, id_pelicula, cantidad, fecha_devolucion) VALUES (:id_transaccion, :id_pelicula, :cantidad, :fecha) ";
     $stmt = $this->db->prepare($sql);
     $stmt->bindValue(":id_transaccion", $this->getIdTransaccion());
     $stmt->bindValue(":id_pelicula", $this->getIdPelicula());
     $stmt->bindValue(":cantidad", $this->getCantidad());
     $stmt->bindValue(":fecha", $this->getFecha());
-
+    
     try {
       $stmt->execute();
+      $last_id = $this->db->lastInsertId();
+      $result['id_alquileres'] = $last_id;
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";
@@ -65,6 +70,7 @@ class Alquileres extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Retorna los detalles de una o más alquiler
   public function details ($id) {
     $result = [
       'alquileres' => [],
@@ -87,6 +93,7 @@ class Alquileres extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Borrar un alquiler con el id proporcionado
   public function delete ($id) {
     $result = [
       'success' => false,

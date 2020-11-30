@@ -1,6 +1,10 @@
 <?php
 
+const RETRASO = 5.00;
+
 class TransaccionesController {
+
+    
     public function __construct()
     {
         
@@ -18,6 +22,7 @@ class TransaccionesController {
         require_once "views/transacciones/transaccionesList.php";
     }
     
+    // ver el detalle de compra de una transaccion
     public function detalleCompra () {
          if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {
@@ -33,6 +38,7 @@ class TransaccionesController {
         }
     }
 
+    // ver detalle de transaccion (Alquiler)
     public function detalleAlquiler () {
         if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {
@@ -48,5 +54,17 @@ class TransaccionesController {
         }
     }
     
-    
+    // realizar pago de alquiler 
+    public function pagarTransaccion () {
+        if ($_COOKIE["sessionId"]) {
+            require_once "models/Transacciones.php";
+            $id = $_GET["id"];
+            $total = $_GET["total"];
+
+            $transaccion = new Transacciones();
+            $result = $transaccion->markAsCancelled($id, $total);//Cambiamos el total de acuerdo a la cantidad de dias extra
+            
+            header("Location: " . BASE_DIR . "Transacciones/list");
+        }
+    }
 }

@@ -6,14 +6,16 @@ class AlquileresController {
         
     }
 
+    //Lista todos los alquileres
     public function list () {
         require_once "models/Alquileres.php";
         $Alquileres = new Alquileres();
         $result = $Alquileres->list();
         $result = json_decode($result, true);
-        //require_once "views/AlquileresList.php";
+
     }
-    
+
+    //Crea un alquiler
     public function create () {
         if ($_COOKIE["sessionId"]) {
         if ($_COOKIE['rol'] != 'Administrador') {
@@ -40,10 +42,10 @@ class AlquileresController {
                 $error = $result['error'];
                 require_once "views/registerUser.php";
             }
-            
         }
     }
-    
+
+    //Actualiza los datos de un alquiler
     public function update () {
         require_once "models/Alquileres.php";
         $Alquileres = new Alquileres();
@@ -52,6 +54,7 @@ class AlquileresController {
         //require_once "views/AlquileresList.php";
     }
 
+    //Obtiene un/unos alquileres de la lista
     public function details () {
 
         if ($_COOKIE["sessionId"]) {
@@ -66,6 +69,8 @@ class AlquileresController {
         $result = json_decode($result, true);
         //require_once "views/AlquileresDetails.php";
     }
+
+    //Borra un alquiler de la lista
     public function delete () {
         if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {

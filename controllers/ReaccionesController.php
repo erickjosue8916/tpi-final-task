@@ -6,6 +6,7 @@ class ReaccionesController {
         
     }
 
+    //Lista todas las reacciones que existen en la tabla
     public function list () {
         require_once "models/Reacciones.php";
         $Reacciones = new Reacciones();
@@ -13,7 +14,8 @@ class ReaccionesController {
         $result = json_decode($result, true);
         //require_once "views/ReaccionesList.php";
     }
-    
+
+    //Crea una nueva reacción con los datos proporcionados
     public function create () {
         if ($_COOKIE["sessionId"]) {
         if ($_COOKIE['rol'] != 'Administrador') {
@@ -42,31 +44,20 @@ class ReaccionesController {
             
         }
     }
-    
-    public function update () {
-        require_once "models/Reacciones.php";
-        $Reacciones = new Reacciones();
-        $result = $Reacciones->list();
-        $result = json_decode($result, true);
-        //require_once "views/ReaccionesList.php";
-    }
 
+    //Si la reaccion no existe la crea, si esta existe entonces la elimina
     public function changeState(){
         require_once "models/Reacciones.php";
         $reacciones = new Reacciones();
-        if (empty($_POST)) {
-            $id = $_GET["id"];
-            $result = $reacciones->details($id);
-            $result = json_decode($result, true);
-            require_once "views/reaccionChange.php";//View de prueba de la funcion
-        } else {
-            $id_usuario = $_POST['id_usuario'];
-            $id_pelicula = $_POST['id_pelicula'];
-            $result = $reacciones->findUserMovie($id_usuario,$id_pelicula);
-            var_dump($result);
-        }
+        //Tomamos los datos del usuario que dio like y la pelicula a la que le dio like
+        $id_usuario = $_POST['id_usuario'];
+        $id_pelicula = $_POST['id_pelicula'];
+        //Creamos o eliminamos la reaccion y obtenemos si el proceso fue exitoso
+        $result = $reacciones->findUserMovie($id_usuario,$id_pelicula);
+        header("location: " .BASE_DIR);//Redireccionamos a home
     }
 
+    //Obtiene los datos de una transaccion con datos del get
     public function details () {
 
         if ($_COOKIE["sessionId"]) {
@@ -81,6 +72,8 @@ class ReaccionesController {
         $result = json_decode($result, true);
         //require_once "views/ReaccionesDetails.php";
     }
+
+    //Borra una reaccion con el dato que obtenga del get
     public function delete () {
         if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {

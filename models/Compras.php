@@ -20,6 +20,7 @@ class Compras extends MySqlConnection {
     parent::__construct();
   }
 
+  //Lista todas las compras de la tabla
   public function list () {
     $result = [
       'compras' => [],
@@ -40,8 +41,10 @@ class Compras extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Crea una compra nueva
   public function create () {
     $result = [
+      'id_compras' => 0,
       'success' => false,
       'error' => ''
     ];
@@ -53,6 +56,8 @@ class Compras extends MySqlConnection {
 
     try {
       $stmt->execute();
+      $last_id = $this->db->lastInsertId();
+      $result['id_compras'] = $last_id;
       $result['success'] = true;
     } catch (\Throwable $th) {
       $result['error'] = "$th";
@@ -60,6 +65,7 @@ class Compras extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Retorna los detalles de una compra
   public function details ($id) {
     $result = [
       'compras' => [],
@@ -82,6 +88,7 @@ class Compras extends MySqlConnection {
     return json_encode($result);
   }
 
+  //Borrar una compra
   public function delete ($id) {
     $result = [
       'success' => false,

@@ -73,6 +73,15 @@
 	transition: all 0.5s ease;
 }
 
+/*Estilos carrosel*/
+
+.tamaño{
+	height: 80%;
+width: 100%;
+}
+
+/*Fin estilos carrousel*/
+
 /* Searchbar estilos */
 .input-search{
 	border: none;

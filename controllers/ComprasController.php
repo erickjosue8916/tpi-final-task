@@ -6,6 +6,7 @@ class ComprasController {
         
     }
 
+    //Lista todas las compras
     public function list () {
         require_once "models/Compras.php";
         $Compras = new Compras();
@@ -13,7 +14,8 @@ class ComprasController {
         $result = json_decode($result, true);
         //require_once "views/ComprasList.php";
     }
-    
+
+    //Crea una compra
     public function create () {
         if ($_COOKIE["sessionId"]) {
         if ($_COOKIE['rol'] != 'Administrador') {
@@ -42,7 +44,8 @@ class ComprasController {
             
         }
     }
-    
+
+    //Actualiza una compra
     public function update () {
         require_once "models/Compras.php";
         $Compras = new Compras();
@@ -51,8 +54,8 @@ class ComprasController {
         //require_once "views/ComprasList.php";
     }
 
+    //Retorna los detalles de una compra
     public function details () {
-
         if ($_COOKIE["sessionId"]) {
             session_start();
         } else {
@@ -65,6 +68,8 @@ class ComprasController {
         $result = json_decode($result, true);
         //require_once "views/ComprasDetails.php";
     }
+
+    //Borra una compra
     public function delete () {
         if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {

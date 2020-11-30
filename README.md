@@ -1,18 +1,21 @@
 # Tarea Final TPI.
-
-- Al final se perdio la imagen de banner no se por que pero ya lo habia mandado un update antes y si estaba
-- No me quedo tiempo para bajar la imagenes y audio, son los mismos cambiados de nombre
+## Intregrantes
+- Erick Josue Saravia Aragon SA18004
+- Gema Emperatriz Manzano Machuca MM18024
+- Keny Lisbeth Chavez Torres CT18009
+- Carlos Enrique Cordero Linares CL18030
+- Edgar Antonio Reyes Ceron RC18050
 
 # ENVIRONMENT
  VARIABLE | EXAMPLE | DESCRIPTION 
 ----------|---------|------------  
-BASE_DIR  | http://127.0.0.1/tpi/parcial/ | base dir to project
+BASE_DIR  | http://127.0.0.1/tpi-final-task/ | base dir to project
 DEFAULT_CONTROLLER | controllers/ | don't touch
-DEFAULT_ACTION | showHome | method in default controller
+DEFAULT_ACTION | home | method in default controller
 DB_USER | root | database, username 
-DB_PASSWORD | your_password | database, user password
+DB_PASSWORD |  | database, user password
 DB_HOST | 127.0.0.1 | database, host
-DB_NAME | name_db | database, name
+DB_NAME | db_peliculas | database, name
 
 
 ## GUIA de trabajo

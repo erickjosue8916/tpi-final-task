@@ -5,9 +5,8 @@
             </div>
         <!-- Copyright -->
         </footer>
-        <!-- MDB -->
+        
         <?php echo "<script> const baseDir = '" . BASE_DIR . "' </script>"; ?>
-
         <!-- Javascript CDN -->
         <script
             type="text/javascript"

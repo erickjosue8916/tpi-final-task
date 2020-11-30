@@ -107,7 +107,7 @@ class PeliculasController {
             
             $result = $peliculas->update($id);
             if ($result['success']) {
-                header("Location: " . BASE_DIR . "Peliculas/list");
+                header("Location: " . BASE_DIR . "Peliculas/listAdmin");
             } else {
                 $error = $result['error'];
                 require_once "views/movies/movieCreate.php";
@@ -144,7 +144,7 @@ class PeliculasController {
         $Peliculas = new Peliculas();
         $result = $Peliculas->delete($_GET['id']);
         $result = json_decode($result, true);
-        header("Location: " . BASE_DIR . "Peliculas/list");
+        header("Location: " . BASE_DIR . "Peliculas/listAdmin");
     }
     
 }

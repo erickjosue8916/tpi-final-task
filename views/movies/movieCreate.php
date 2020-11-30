@@ -6,8 +6,8 @@ require_once "config/loginVerifier.php";
         <content class="formu2">
 			<h1 class="font-weight-light text-center">Agregar Pelicula</h1> 
 			<div class="row">
-					<div class="col">
-						<form  action="" method="post" enctype="multipart/form-data">
+				<div class="col">
+					<form  action="" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<div class="form-outline mb-4">
 									<input type="text" name="titulo" class="form-control bg-dark text-white" id="mid">
@@ -54,10 +54,9 @@ require_once "config/loginVerifier.php";
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary btn-block btn-create">Agregar</button>
-						</form>
-					</div>
+					</form>
 				</div>
 			</div>
-		</div>
+		</content>
 	</main>
 </div>

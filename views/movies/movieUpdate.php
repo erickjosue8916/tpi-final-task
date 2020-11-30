@@ -9,6 +9,7 @@
 			<h1 class="font-weight-light text-center">Actualizar Pelicula</h1> 
 			<div class="row">
 				<div class="col">
+					<!-- Formulario de actualizacion de peliculas -->
 					<form class="" action="<?=BASE_DIR?>Peliculas/update" method="post">
 						<input type="text" hidden='true' name="id_pelicula" value="<?=$pelicula['id_pelicula']?>" >
 						<div class="form-group">
@@ -50,6 +51,7 @@
 						</div>
 						<button type="submit" class="btn btn-primary btn-block btn-update">Actualizar</button>
 					</form>
+					<!-- Fin formulario de actualizacion de peliculas -->
 				</div>
 			</div>
   		</content>

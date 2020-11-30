@@ -1,9 +1,8 @@
 
 <div class="fondo">
 <main class="container">
-	<!-- En este apartado se muestran las peliculas -->
 	<div class="row justify-content-center align-items-center">
-
+		<!-- Filtrado de peliculas de acuerdo al titulo y la mas calificada -->
 		<div class="input-group mb-3 col-sm m-3">
 			<select class="custom-select input-search text-white" id="ordenInput">
 				<option selected>Seleccione una opción...</option>
@@ -14,7 +13,9 @@
 				<button class="input-group-text bg-danger text-white label-select" for="ordenInput" onclick='actualizarListadoPeliculas()'>Ordenar por</button>
 			</div>
 		</div>
+		<!-- Fin filtrado de peliculas de acuerdo al titulo y la mas calificada -->
 
+		<!-- Busqueda de peliculas mediante el nombre -->
 		<div class="input-group mb-3 col-sm m-3">
 			<input class="form-control input-search text-white" 
 					type="text" 
@@ -26,13 +27,16 @@
 				<button type="button" class="btn btn-danger" onclick='actualizarListadoPeliculas()'><i class="fas fa-search text-grey"></i></button>
 			</div>
 		</div>
+		<!-- Fin busqueda de peliculas mediante el nombre -->
 	</div>
+	<!-- En este apartado se muestran las peliculas -->
 	<div id="peliculas"></div>
-	
+	<!-- Fin apartado donde se muestran las peliculas -->
+
+	<!-- Apartado de carrido de compras -->
 	<?php
 		if(isset($_COOKIE['sessionId'])){//Si tiene la sesion iniciada muestra el carrito
 	?>
-	<!-- Carrito -->
 	<div id="content" class="fabCollapse" class="animate zoomIn">
 		<i id="fab" class="fa fa-shopping-cart"></i>
 		<i id="close" class="fas fa-times-circle fabContent"></i>
@@ -56,9 +60,9 @@
 			</div>
 		</div>
 	</div>
-	<!-- Fin Carrito -->
 	<?php
 		}
 	?>
+	<!-- Fin Apartado de carrido de compras -->
 </main>
 </div>

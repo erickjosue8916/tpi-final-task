@@ -31,7 +31,7 @@ if (isset($_REQUEST)) {
 		if($pelicula['disponibilidad'] == 'Available'){
 			$html .= "<div class='col-md-4 container_foto'>";
 			//Si tiene la sesion iniciada, mostrara el boton para agregar la pelicula al carrito
-			$html .= isset($_COOKIE['sessionId']) ? "<div class='ver_mas text-center'> <button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta])\">Añadir al carrito</button> </div>" : " ";
+			$html .= isset($_COOKIE['sessionId']) ? "<div class='ver_mas text-center'> <button type='button' onclick=\"addToShopping($pelicula[id_pelicula], '$pelicula[imagen]', '$pelicula[titulo]', $pelicula[precio_alquiler], $pelicula[precio_venta], $pelicula[stock])\">Añadir al carrito</button> </div>" : " ";
 			
 			$html .=	"
 						<article>

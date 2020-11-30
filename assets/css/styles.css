@@ -36,9 +36,7 @@
 	background-size: cover;
 	opacity: 0.8;
 }
-.nav_color ul :hover{
-	font-weight: bolder;
-	text-align: center;
+.navbar .nav-item:hover .nav-link{
 	color: #dc3545;
 	transition: all 0.5s ease;
 }

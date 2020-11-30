@@ -98,7 +98,7 @@ class UsersController {
             $result = json_decode($User->register(),true);
             if ($result['success']) {
                 //Si el proceso es un exito retorna a la pagina de iniciar sesion
-                
+                header("Location: " . BASE_DIR . "Peliculas/listAdmin");
             } else {
                 //Si ocurrio un fallo, imprime ese error
                 $error = $result['error'];

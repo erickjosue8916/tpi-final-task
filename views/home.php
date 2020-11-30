@@ -7,6 +7,7 @@ if ($_COOKIE["sessionId"]) {
 }
 ?>
 <div class="fondo">
+
 <main class="container h-100 d-flex justify-content-center align-items-center">
 <div class="tamaño">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -46,5 +47,6 @@ if ($_COOKIE["sessionId"]) {
   </div>
 </div>
 </main>
+
 
 </div>

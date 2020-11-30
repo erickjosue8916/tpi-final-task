@@ -72,7 +72,7 @@
     border-radius: 9px;
 }
 .container_foto article {
-	padding: 10%;
+	padding: 6%;
 	position: absolute;
 	bottom: 0;
 	z-index: 1;
@@ -80,8 +80,8 @@
 }
 .container_foto h2 {
 	color: #fff;
-	font-weight: 800;
-	font-size: 25px;
+	font-weight: 700;
+	font-size: 23px;
 	border-bottom: #fff solid 1px;
 }
 .container_foto h4 {

@@ -37,9 +37,10 @@ if (isset($_REQUEST)) {
 						<article>
 							<h2> " . $pelicula["titulo"] . "</h2>
 							<h4> " . $pelicula["descripcion"] . "</h4>
-							<div class='text-center pb-2'>
-								<span class='badge badge-pill badge-success'>Comprar $". $pelicula["precio_venta"] ."</span>
-								<span class='badge badge-pill badge-success'>Alquilar $". $pelicula["precio_alquiler"] ."</span>
+							<div class='text-center pb-2 text-success'>
+								<span class='badge'>Comprar $". $pelicula["precio_venta"] ."</span>
+								<span class='badge'>Alquilar $". $pelicula["precio_alquiler"] ."</span>
+								<span class='badge'>Stock ". $pelicula["stock"] ."</span>
 							</div>
 							";
 							

@@ -1,4 +1,5 @@
-# PARCIAL MVC
+# Tarea Final TPI.
+
 - Al final se perdio la imagen de banner no se por que pero ya lo habia mandado un update antes y si estaba
 - No me quedo tiempo para bajar la imagenes y audio, son los mismos cambiados de nombre
 

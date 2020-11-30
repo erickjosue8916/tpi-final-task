@@ -81,7 +81,11 @@ function setTotalCarrito() {
 }
 
 // agregar pelicula al carrito
-function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
+function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta, stock) {
+  if (stock === 0) {
+    alert('Ya no quedan unidades disponibles para esta unidad')
+    return
+  }
   const moviesInCheckoutIds = checkoutObject.details.map(movie => movie.id_pelicula)
   if (moviesInCheckoutIds.includes(id)) return // verificar que la pelicula no se encuentre ya en la pelicula
   checkoutObject.details.push({id_pelicula: id,nombre,imagen,precioAlquiler,precioVenta}) //  agregar elemento al detalle del carrito

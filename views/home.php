@@ -22,11 +22,11 @@ if ($_COOKIE["sessionId"]) {
       <video  src="<?=BASE_DIR?>assets/img/carrousel/1.mp4" width="100%" height="100%" autoplay  controlls loop></video>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="<?=BASE_DIR?>assets/img/carrousel/img2.png" alt="Second slide">
+        <img class="d-block w-100" width="100%" height="100%" src="<?=BASE_DIR?>assets/img/carrousel/img2.png" alt="Second slide">
       </div>
       <div class="carousel-item">
         <a href="<?=BASE_DIR?>Users/register">
-        <img class="d-block w-100" src="<?=BASE_DIR?>assets/img/carrousel/3.png" alt="Third slide">
+        <img class="d-block w-100" width="100%" height="100%" src="<?=BASE_DIR?>assets/img/carrousel/3.png" alt="Third slide">
         </a>
         
       </div>

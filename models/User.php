@@ -60,16 +60,16 @@ class User extends MySqlConnection {
     if ($stmt->execute()) {
         $nRow = $stmt->rowCount();
         if ($nRow == 1) {//Si se trajo solo un dato
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (password_verify($this->getUserPassword(), $result["password"])) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($this->getUserPassword(), $row["password"])) {
 
                 session_start();
-                $_SESSION["nombre"] = $result["nombre"];
-                $_SESSION["apellido"] = $result["apellido"];
+                $_SESSION["nombre"] = $row["nombre"];
+                $_SESSION["apellido"] = $row["apellido"];
 
                 setcookie("sessionId", true, strtotime('+3000 hour'), '/'); // seteamos las cookies y el session
-                setcookie("rol", $result["rol"], strtotime('+3000 hour'), '/');
-                setcookie("id_usuario", $result["id_usuarios"], strtotime('+3000 hour'), '/');
+                setcookie("rol", $row["rol"], strtotime('+3000 hour'), '/');
+                setcookie("id_usuario", $row["id_usuarios"], strtotime('+3000 hour'), '/');
                 $result['success']=true;
             }
             else

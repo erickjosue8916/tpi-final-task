@@ -6,13 +6,12 @@ require_once "config/loginVerifier.php";
 		<div class="row h-auto min-vh-100 justify-content-center align-items-center">
 			<div class="col-md-10">
 				<?php
-					$headers = ['#', 'Titulo', 'Descripcion', 'Imagen', 'Stock', 'Preciolquiler', 'PrecioVenta', 'Disponibilidad', 'Likes', 'Editar', 'Eliminar'];
-
 					$data = $result['peliculas'];
 				?>
 				<h1 class="text-center m-5 font-weight-light text-white display-4">Peliculas</h1>
 
 				<div class="row justify-content-center align-items-center">
+					<!-- Filtrado de peliculas de acuerdo a la disponibilidad -->
 					<div class="input-group col-sm mb-2">
 						<select class="custom-select input-search text-white" id="ordenInput" onchange="window.location=this.value">
 							<option selected>Filtrar por...</option>
@@ -21,10 +20,12 @@ require_once "config/loginVerifier.php";
 							<option value="<?=BASE_DIR?>Peliculas/listAdmin">Ambos</option>
 						</select>
 					</div>
+					<!-- Fin filtrado de peliculas de acuerdo a la disponibilidad -->
 				</div>
 					<?php
 						foreach ($data as $key => $pelicula) {
 							?>
+								<!-- Apartado donde se muestra la informacion de las peliculas -->
 								<div class="media m-2 bg-dark p-2 rounded text-white">
 									<img class="mr-3 rounded" style="width: 100px; height:150px;" src="<?=BASE_DIR?>assets/img/movies/<?=$pelicula["imagen"]?>" alt="Imagen de la pelicula">
 									<div class="media-body">
@@ -45,6 +46,7 @@ require_once "config/loginVerifier.php";
 										</div>
 									</div>
 								</div>
+								<!-- Fin apartado donde se muestra la informacion de las peliculas -->
 							<?php
 						}
 					?>
@@ -68,6 +70,7 @@ require_once "config/loginVerifier.php";
 						</div>
 					</div>
 				</div>
+				<!-- Fin aviso Modal -->
 			</div>
 		</div>
 	</main>

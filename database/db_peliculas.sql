@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2020 a las 14:31:55
+-- Tiempo de generación: 30-11-2020 a las 14:49:22
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.30
 
@@ -202,9 +202,13 @@ INSERT INTO `usuarios` (`id_usuarios`, `nombre`, `apellido`, `email`, `telefono`
 (12, 'Gema', 'Manzano', 'gemita@gmail.com', 63659874, 'Ciudad Pacifica, San Miguel', 'Gema18', '$2y$04$I38.5dvkf9E8vH/yRpKxZ.VSf.cktfcy0h3y4UTywftIkwfZ9Xad6', 'Cliente'),
 (13, 'Carlos', 'Cordero', 'carlos@gmail.com', 71746164, 'Canton El Progreso, San Miguel', 'Carlos18', '$2y$04$7GC8zOMxiSpdCcA5LuTfxeJNMetR7jkwvOqVYG3XuNTR6ApVzM5Fa', 'Cliente'),
 (15, 'Diego', 'Herrera', 'diego@gmail.com', 71005665, 'Chinameca, San Miguel', 'Diego20', '$2y$04$h4umvrtXfGugqJHZ6hy7jeZpOSraO9d41ERSczG1Ahw3y5eXYVsc2', 'Administrador'),
-(16, 'Roxana', 'Torres', 'roxa@gmail.com', 61477879, 'Moncagua, San Miguel', 'Roxy20', '$2y$04$wZRcFkBlQgQ3nWRfKOvMt.tLinCaAtDR0HrTqufx4jrd/uKDZJmoi', 'Administrador'),
 (17, 'Rebeca', 'Chavez', 'rebe@gmail.com', 73435566, 'Nueva Guadalupe San Miguel', 'Rebe', '$2y$04$bEZcGVoAn0jOIgGBdrVRz.QC7KEGEeHFxSStzEwwZEdwx3yuOqvSK', 'Cliente'),
-(18, 'Yosibeth', 'Villalobos', 'yosi@gmail.com', 78401214, 'Mercedes Umaña, Usulutan ', 'Yosi', '$2y$04$E3.FtMonNQDnq8SkLSXaRuyhoGD/.Mcvo2QJnThP5KcYFpo3LRErm', 'Cliente');
+(18, 'Yosibeth', 'Villalobos', 'yosi@gmail.com', 78401214, 'Mercedes Umaña, Usulutan ', 'Yosi', '$2y$04$E3.FtMonNQDnq8SkLSXaRuyhoGD/.Mcvo2QJnThP5KcYFpo3LRErm', 'Cliente'),
+(19, 'Edgar', 'Ceron', 'ceron@gmail.com', 61205560, 'Jucuapa, Usulutan', 'Edgar20', '$2y$04$uFBHNxRpnGtMchB9GU/Bzuw0QYj6K1KdzPsQpDJUZN1sZediMXSaa', 'Administrador'),
+(20, 'Carlos', 'Linares', 'linares@gmail.com', 71706560, 'Santiago de Maria, Usulutan', 'Carlos20', '$2y$04$vMNtkMaFhMRgxClZv8skfuSGOPr4WxEaaEHXIqzJzjBD/GHW4WJKe', 'Administrador'),
+(21, 'Gema', 'Machuca', 'machuca@gmail.com', 65601230, 'San Martin, San Salvador', 'Gema20', '$2y$04$RBQLHAdenw.uqcUel48xX.gLPlduPR2UbN7jV68kAq2liL80oWlde', 'Administrador'),
+(22, 'Erick', 'Aragon', 'aragon@gmail.com', 75809070, 'Lolotique, San Miguel', 'Erick20', '$2y$04$6Gy/96r.v300a5xNANwuZ.jBP2FkBlwIPzYsP/qc8Y0bBuGVJXjmu', 'Administrador'),
+(23, 'Keny', 'Chavez', 'chavez@gmail.com', 60632020, 'Santa Ana, Santa Ana', 'Keny20', '$2y$04$ICP/.LH4Y3WFsnoXAiQK5.e1g8XZcz/MkkhF.s1XOk94C87tZBD9W', 'Administrador');
 
 --
 -- Índices para tablas volcadas
@@ -291,7 +295,7 @@ ALTER TABLE `transacciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_usuarios` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

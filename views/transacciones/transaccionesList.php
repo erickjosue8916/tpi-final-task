@@ -14,7 +14,7 @@ require_once "config/loginVerifier.php";
 					'rows' => $rows
 				];
 			?>
-			<h1 class="text-center m-5 font-weight-light text-white display-4">Transacciones realizadas</h1>
+			<h1 class="text-center mb-5 font-weight-light text-white display-4">Transacciones realizadas</h1>
 			<section class="table-responsive">
 				<table class="table-styles">
 					<thead>

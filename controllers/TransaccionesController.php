@@ -1,6 +1,6 @@
 <?php
 
-const RETRASO = 10.00;
+const RETRASO = 5.00;
 
 class TransaccionesController {
 
@@ -22,6 +22,7 @@ class TransaccionesController {
         require_once "views/transacciones/transaccionesList.php";
     }
     
+    // ver el detalle de compra de una transaccion
     public function detalleCompra () {
          if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {
@@ -37,6 +38,7 @@ class TransaccionesController {
         }
     }
 
+    // ver detalle de transaccion (Alquiler)
     public function detalleAlquiler () {
         if ($_COOKIE["sessionId"]) {
             if ($_COOKIE['rol'] != 'Administrador') {
@@ -52,25 +54,17 @@ class TransaccionesController {
         }
     }
     
+    // realizar pago de alquiler 
     public function pagarTransaccion () {
         if ($_COOKIE["sessionId"]) {
             require_once "models/Transacciones.php";
-            $id = $_POST["id"];
-            $total = $_POST["total"];
+            $id = $_GET["id"];
+            $total = $_GET["total"];
 
-            $fechaLimite = strtotime($_POST["fecha_transaccion"]);
-            $fechaActual = strtotime(date('Y-m-d'));
-            $interval = 0.00;
-            
-            if($fechaActual > $fechaLimite){//La fecha se ha pasado de la limite
-                $interval = round(abs($fechaLimite - $fechaActual)/86400);//Obtenemos la cantidad de días de diferencia
-            }
-
-            $totalExtra = $interval * RETRASO;//Tomamos a cuanto equivale en cargos esos días
             $transaccion = new Transacciones();
-            $total += $totalExtra;//Sumamos el extra adicional por retraso si llega a haber
-            $result = $transaccion->markAsCancelled($id,$total);//Cambiamos el total de acuerdo a la cantidad de dias extra
-            require_once "views/transacciones/list.php";
+            $result = $transaccion->markAsCancelled($id, $total);//Cambiamos el total de acuerdo a la cantidad de dias extra
+            
+            header("Location: " . BASE_DIR . "Transacciones/list");
         }
     }
 }

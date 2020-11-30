@@ -1,6 +1,9 @@
+// objeto a mandar via ajax
 let checkoutObject = {
   details: []
 }
+
+// obtener html para insertar en la vista del carrito, (nueva pelicula)
 function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) {
   let html = `
 <div class="row">
@@ -18,29 +21,21 @@ function getProductInChekout({id, imagen, nombre, precioAlquiler, precioVenta}) 
   return html
 }
 
-async function guardarAlquiler () {
-  
-}
-
-async function guardarCompra () {
-  
-}
-
+// actualizar via ajax listado de peliculas
 async function actualizarListadoPeliculas() {
   const filter = document.getElementById('busquedaInput').value || null
   const sort = document.getElementById('ordenInput').value || 'titulo'
-  const form = sort == 'titulo' ? 'asc' : 'desc';
-  let url = `${baseDir}ajax/peliculas.php?sort[${sort}]=${form}`
+  const form = (sort == 'titulo') ? 'asc' : 'desc';
+  let url = `${baseDir}ajax/peliculas.php?limit=1000000&sort[${sort}]=${form}`
   if (filter) url += `&filter[titulo]=${filter}`
   const element = document.getElementById('peliculas')
   const request = await fetch(url, {})
   const peliculasHtml = await request.text()
-  // console.log(peliculasHtml)
   element.innerHTML = peliculasHtml
 }
 
+// procesar transaccion
 async function crearTransaccion() {
-  //const tipo = document.getElementById('accion').value
   const tipo = getRadioValue("accion");
   const fecha = moment().format('YYYY-MM-DD')
   const fechaEntrega = moment().add(7, 'days').format('YYYY-MM-DD'); 
@@ -51,28 +46,32 @@ async function crearTransaccion() {
   checkoutObject.fechaEntrega = fechaEntrega
   checkoutObject.estado = estado
   setTotalCarrito()
+
+  // enviar transaccion via ajax
   const request = await fetch(`${baseDir}ajax/transacciones.php?data=${JSON.stringify(checkoutObject)}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
-    // body: JSON.stringify(checkoutObject)
   })
   if (tipo === 'Compra') alert('Compra realizada')
   else alert(`Alquiler aprobado. La entrega debe ser realizada para ${fechaEntrega} de no ser asi se aplicara un cargo de $ 5.00`)
   const peliculasHtml = await request.text()
-  console.log(peliculasHtml);
+  
+  /// Resetear carrito
   const element = document.getElementById('chechoutDetails');
-  element.innerHTML = ''
+  element.innerHTML = '' 
   checkoutObject.details = []
   checkoutObject.total = 0
   const totalElement = document.getElementById('totalCarrito')
   totalElement.innerText = `$ 0.00`
 }
 
+// calcular el total del carrito en base a al detalle de peliculas
 function setTotalCarrito() {
   let tipo = getRadioValue("accion");
   checkoutObject.total = checkoutObject.details.reduce((prev, pelicula) => {
+    // verificar que monto se tomara de la pelicula en base al tipo de transaccion
     if (tipo === "Compra") prev += pelicula.precioVenta
     else prev += pelicula.precioAlquiler
     return prev
@@ -81,20 +80,22 @@ function setTotalCarrito() {
   totalElement.innerText = `$ ${checkoutObject.total}`
 }
 
+// agregar pelicula al carrito
 function addToShopping (id, imagen, nombre, precioAlquiler, precioVenta) {
   const moviesInCheckoutIds = checkoutObject.details.map(movie => movie.id_pelicula)
-  if (moviesInCheckoutIds.includes(id)) return
-  checkoutObject.details.push({id_pelicula: id,nombre,imagen,precioAlquiler,precioVenta})
+  if (moviesInCheckoutIds.includes(id)) return // verificar que la pelicula no se encuentre ya en la pelicula
+  checkoutObject.details.push({id_pelicula: id,nombre,imagen,precioAlquiler,precioVenta}) //  agregar elemento al detalle del carrito
   const elementsString = checkoutObject.details.map(detail => {
     return getProductInChekout(detail)
   }) 
   const html = elementsString.join('<hr>')
-  setTotalCarrito()
-  //console.log(html)
+  setTotalCarrito() // actualizar el total del carrito
   const element = document.getElementById('chechoutDetails');
-  element.innerHTML = html
+  element.innerHTML = html // imprimir en pantalla el nuevo elemento del carrito
+  alert('Pelicula agregada al carrito')
 }
 
+// Cambiar reaccion de usuario
 async function changeReaction (peliculaId) {
   const url = `${baseDir}ajax/reaccion.php?pelicula_id=${peliculaId}`
   $result = await (await fetch(url, {})).text()
@@ -102,32 +103,18 @@ async function changeReaction (peliculaId) {
   await chargeProducts()
 }
 
+// Cargar perliculas
 async function chargeProducts() {
   const element = document.getElementById('peliculas')
-  const request = await fetch(`${baseDir}ajax/peliculas.php`, {})
+  const request = await fetch(`${baseDir}ajax/peliculas.php?limit=100000`, {})
   const peliculasHtml = await request.text()
-  // console.log(peliculasHtml)
   element.innerHTML = peliculasHtml
 }
 
 (async () => {
   const peliculasDOM = document.getElementById('peliculas');
-  const filtroNombre = document.getElementById('buscarNombre')
-  let aux = "";
-  if (peliculasDOM) {
-
+  if (peliculasDOM) { // si es la vista de peliculas cargar el listado de forma dinamica (AJAX)
     await chargeProducts(peliculasDOM)
-
-    /* if(filtroNombre && filtroNombre.value){
-      aux+= "&filter[titulo]=" + filtroNombre.value;
-    }
-    console.log(aux);
-    //const request = await fetch(`${baseDir}ajax/peliculas.php${aux}`, {})
-    const request = await fetch(`${baseDir}ajax/peliculas.php`, {})
-    const peliculasHtml = await request.text()
-    console.log(peliculasHtml)
-    peliculasDOM.innerHTML = peliculasHtml */
-
   }
 })()
 

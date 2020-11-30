@@ -35,7 +35,7 @@ class User extends MySqlConnection {
   public function setUserName($userName) { $this->userName = $userName; } 
   public function getUserName() { return $this->userName; } 
   
-  public function setUserPassword($userPassword) { $this->userPassword = $userPassword; } 
+  public function setUserPassword($userPassword) { $this->userPassword = $userPassword;} 
   public function getUserPassword() { return $this->userPassword; }
 
   public function setRol($rol) { $this->rol = $rol; } 
@@ -61,7 +61,8 @@ class User extends MySqlConnection {
         $nRow = $stmt->rowCount();
         if ($nRow == 1) {//Si se trajo solo un dato
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($this->getUserPassword() === $result["password"]) {//Si la contraseña coincide con la ingresada por el usuario
+            if (password_verify($this->getUserPassword(), $result["password"])) {
+
                 session_start();
                 $_SESSION["nombre"] = $result["nombre"];
                 $_SESSION["apellido"] = $result["apellido"];
@@ -108,9 +109,9 @@ class User extends MySqlConnection {
     $stmt->bindValue(":telefono", $this->getTelefono());
     $stmt->bindValue(":direccion", $this->getDireccion());
     $stmt->bindValue(":username", $this->getUserName());
-    $stmt->bindValue(":password", $this->getUserPassword());
+    $stmt->bindValue(":password", password_hash($this->getUserPassword(), PASSWORD_BCRYPT, ['cost' => 4]));
     $stmt->bindValue(":rol", $this->getRol());
-
+    
     try {
       $stmt->execute();
       $last_id = $this->db->lastInsertId();//Obtenemos el id del ultimo cliente agregado

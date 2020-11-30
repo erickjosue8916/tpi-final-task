@@ -1,3 +1,4 @@
+
 <?php
 if ($_COOKIE["sessionId"]) {
   session_start();

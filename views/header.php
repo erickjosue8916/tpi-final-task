@@ -38,7 +38,7 @@
 			<div class="navbar-collapse collapse w-100 justify-content-center" id="navbar5">
 				<ul class="navbar-nav">
 					<li class="nav-item m-2 active">
-						<a class="nav-link" aria-current="page" href="<?=BASE_DIR?>" class="btn <?=($active == "Main") ? "active": ""; ?>">Home</a>
+						<a class="nav-link" aria-current="page" href="<?=BASE_DIR?>" class="btn <?=($active == "Main") ? "active": ""; ?>">Inicio</a>
 					</li>
 					<?php
 						if (isset($_COOKIE["sessionId"])) {

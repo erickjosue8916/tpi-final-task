@@ -13,12 +13,12 @@ require_once "config/loginVerifier.php";
 				<h1 class="text-center m-5 font-weight-light text-white display-4">Peliculas</h1>
 
 				<div class="row justify-content-center align-items-center">
-					<div class="input-group col-sm mt-3">
+					<div class="input-group col-sm mb-2">
 						<select class="custom-select input-search text-white" id="ordenInput" onchange="window.location=this.value">
-							<option selected>Seleccione una opción...</option>
-							<option value="<?=BASE_DIR?>Peliculas/listAdmin">Ambos</option>
+							<option selected>Filtrar por...</option>
 							<option value="<?=BASE_DIR?>Peliculas/listAdmin&filter[disponibilidad]=Available">Disponibles</option>
 							<option value="<?=BASE_DIR?>Peliculas/listAdmin&filter[disponibilidad]=Unavailable">No disponibles</option>
+							<option value="<?=BASE_DIR?>Peliculas/listAdmin">Ambos</option>
 						</select>
 					</div>
 				</div>

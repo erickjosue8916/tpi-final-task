@@ -82,7 +82,17 @@
 					?>
 				</ul>
 			</div>
-			<div class="w-25"><!--spacer--></div>
+			<div class="w-25"><!--spacer-->
+				<?php
+					if (isset($_COOKIE["sessionId"])) {
+						?>
+						<span class="navbar-text">
+							Bienvenido/a <?= $_COOKIE["sessionId"]?>
+						</span>
+					<?php
+					}
+				?>	
+		    </div>
 		</nav>
 		<!-- Fin Navbar -->
 	</header>

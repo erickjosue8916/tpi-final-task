@@ -52,7 +52,7 @@
 				<p class="mb-0 font-weight-light">El tiempo de devolucion de una pelicula alquilada es de 1 semana</p>
 			</div>
 			<div class="text-center mt-3 p-2">
-				<button type="button" class="btn btn-block btn-outline-danger" onclick="crearTransaccion()">Realizar Transaccion</button>
+				<button type="button" class="btn btn-block btn-outline-danger" onclick="crearTransaccion(); window.location=this.value" value = "<?=BASE_DIR?>Peliculas/list;">Realizar Transaccion</button>
 			</div>
 		</div>
 	</div>

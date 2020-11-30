@@ -40,7 +40,6 @@
 	background-size: cover;
 	opacity: 0.8;
 }
-<<<<<<< HEAD
 .nav_color a{
 	display: inline-flex;
 	text-decoration: none;
@@ -62,8 +61,6 @@ width: 100%;
 
 /*Fin estilos carrousel*/
 
-=======
->>>>>>> dbd164a3e7f4f644bcbbc07c1540c4a962488d13
 /* Searchbar estilos */
 .input-search{
 	border: none;

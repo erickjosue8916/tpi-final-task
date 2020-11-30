@@ -32,7 +32,7 @@ require_once "config/loginVerifier.php";
 										<?=$pelicula["descripcion"]?>
 										<div class="mt-2 d-flex justify-content-start">
 											<h6 class="font-weight-light mr-2">Precio de venta  <span class="badge badge-success">$<?=$pelicula["precio_venta"]?></span></h6>
-											<h6 class="font-weight-light mr-2">Precio de alquiler  <span class="badge badge-success">$<?=$pelicula["precio_venta"]?></span></h6>
+											<h6 class="font-weight-light mr-2">Precio de alquiler  <span class="badge badge-success">$<?=$pelicula["precio_alquiler"]?></span></h6>
 										</div>
 										<div class="mt-2 d-flex justify-content-start">
 											<h6 class="font-weight-light mr-2">Stock  <span class="badge badge-info"><?=$pelicula["stock"]?></span></h6>

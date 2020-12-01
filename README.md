@@ -15,7 +15,7 @@ DEFAULT_ACTION | home | method in default controller
 DB_USER | root | database, username 
 DB_PASSWORD |  | database, user password
 DB_HOST | 127.0.0.1 | database, host
-DB_NAME | db_peliculas | database, name
+DB_DATABASE | db_peliculas | database, name
 
 
 ## GUIA de trabajo
